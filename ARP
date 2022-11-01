@@ -13,4 +13,7 @@ Arp Requests can be broadcast on 00:00:00:00:00:00, FF:FF:FF:FF:FF:FF (Data Link
 
 There are other protocols in Arp family, such as RARP, INARP, etc... Inarp looked particularly interesting for further research
 
+Apparently you can change ARP TTL using Registry Value
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
+
 
