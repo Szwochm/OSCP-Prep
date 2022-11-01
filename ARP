@@ -1,0 +1,12 @@
+Windows 10 show arp cache 
+arp -a
+
+TTL for ARP on switches is several minutes while on Windows its in the seconds
+https://learn.microsoft.com/en-US/troubleshoot/windows-server/networking/address-resolution-protocol-arp-caching-behavior
+
+In Windows...
+netsh interface ipv4 show interfaces -- find ID for given interface
+
+netsh interface ipv4 show interface <idx> find all info, such as TTL (Called Reachable Time, once it expires, ARP entry becomes "Stale" and host must make another request
+
+
