@@ -9,4 +9,8 @@ netsh interface ipv4 show interfaces -- find ID for given interface
 
 netsh interface ipv4 show interface <idx> find all info, such as TTL (Called Reachable Time, once it expires, ARP entry becomes "Stale" and host must make another request
 
+Arp Requests can be broadcast on 00:00:00:00:00:00, FF:FF:FF:FF:FF:FF (Data Link) or 255.255.255.255 (IP)
+
+There are other protocols in Arp family, such as RARP, INARP, etc... Inarp looked particularly interesting for further research
+
 
