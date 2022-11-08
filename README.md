@@ -63,4 +63,4 @@ https://attack.mitre.org/techniques/T1557/001/
 
 ## Responder / MultiRelay
 - The Responder, and MultiRelay tools offer many MITM services, not just LLMNR and NBT-NS. DNS, WPAD, and SMB looked interesting...
-- Disable SMB and HTTP servers on responder to prevent Multi Relay conflicts [(1)]([url](https://www.ivoidwarranties.tech/posts/pentesting-tuts/responder/cheatsheet/))
+- Disable SMB and HTTP servers on responder to prevent Multi Relay conflicts [(1)](https://www.ivoidwarranties.tech/posts/pentesting-tuts/responder/cheatsheet/)
