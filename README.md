@@ -41,12 +41,16 @@ INE Mentioned DHCP MITM attacks, but did not give tools on how to achieve this. 
 - No tools given, research further
 
 ### LLMNR and NBT-NS 
+https://attack.mitre.org/techniques/T1557/001/
 - Capture NTLMV1/2 or LM Hashes
 - Responder / Multi Relay
 <details> 
   <summary>Q:What needs to be enabled/disabled for these attacks to work? </summary>
    A: Smb-Signing must be disabled 
 </details>
+
+####Data Sources:
+
 
 ## Responder / MultiRelay
 - The Responder, and MultiRelay tools offer many MITM services, not just LLMNR and NBT-NS. DNS, WPAD, and SMB looked interesting...
