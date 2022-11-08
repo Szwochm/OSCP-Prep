@@ -39,6 +39,7 @@ INE Mentioned DHCP MITM attacks, but did not give tools on how to achieve this. 
 
 ### Public Key Exchange
 - No tools given, research further
+- MD5 is 32 **hex** characters, Sha-1 is 40 chars, Sha-256 is 64 characters
 
 ### LLMNR and NBT-NS 
 https://attack.mitre.org/techniques/T1557/001/
