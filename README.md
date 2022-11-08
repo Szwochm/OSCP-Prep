@@ -113,5 +113,5 @@ TCP Dump only get packets that are to or from your computer
 
 
 # Progress
-![INE Systems Proof](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![INE Systems Proof](https://github.com/Szwochm/OSCP-Prep/blob/main/Systems%20Proof.PNG?raw=true)
 ![INE Network Proof](https://github.com/Szwochm/OSCP-Prep/blob/main/Network%20Proof.PNG?raw=true)
