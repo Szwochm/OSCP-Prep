@@ -57,3 +57,4 @@ https://attack.mitre.org/techniques/T1557/001/
 
 ## Responder / MultiRelay
 - The Responder, and MultiRelay tools offer many MITM services, not just LLMNR and NBT-NS. DNS, WPAD, and SMB looked interesting...
+- Don't understand when to disable services... Searches say its to prevent collisions but I still don't fully understand.
