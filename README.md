@@ -50,7 +50,10 @@ https://attack.mitre.org/techniques/T1557/001/
 </details>
 
 #### Data Sources:
-
+- Ports UDP 5355, 137 if LLMNR or NetBios are disabled
+- Traffic from unknown devices, local traffic metadata
+- Service created (Events 4697, 7045)
+- Changes to Registry key HKLM\Software\Policies\Microsoft\Windows NT\DNSClient for enable multicast.
 
 ## Responder / MultiRelay
 - The Responder, and MultiRelay tools offer many MITM services, not just LLMNR and NBT-NS. DNS, WPAD, and SMB looked interesting...
