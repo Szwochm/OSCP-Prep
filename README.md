@@ -1,7 +1,7 @@
 ## 11/2/2022
 # OSCP-Prep
 
-Progress Screen Shows on bottom!
+Progress Screen Shots on bottom!
 
 Notes on various topics while I prepare for the OSCP exam
 
