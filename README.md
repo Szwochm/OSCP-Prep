@@ -45,7 +45,7 @@ INE Mentioned DHCP MITM attacks, but did not give tools on how to achieve this. 
 - Responder / Multi Relay
 <details> 
   <summary>Q:What needs to be enabled/disabled for these attacks to work? </summary>
-   A1: Smb-Signing must be disabled 
+   A: Smb-Signing must be disabled 
 </details>
 
 ## Responder / MultiRelay
