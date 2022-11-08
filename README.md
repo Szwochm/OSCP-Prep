@@ -26,3 +26,10 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
 
 
 ## MITM
+
+### ARP Poisoning
+
+### DHCP
+INE Mentioned DHCP MITM attacks, but did not give tools on how to achieve this. Will have to research further.
+-DHCP Discovery is on Port 67
+-Until IP is assigned, host uses source address of 0.0.0.0
