@@ -6,9 +6,13 @@
 
 ![INE eCPPT Progress](https://github.com/Szwochm/OSCP-Prep/blob/main/Progress%20INE.PNG?raw=true)
 
-- [x] Penetration Testing: System Security (12 Hrs 50 Mins)
-- [InProgress ] Penetration Testing: Network Security (33 Hrs, 14 Mins)
-- [ ] Add delight to the experience when all tasks are complete :tada:
+- [x] Penetration Testing: System Security (12 Hrs, 50 Mins)
+- [ ] Penetration Testing: Network Security (33 Hrs, 14 Mins) **IN PROGRESS: 40% completed**
+- [ ] PowerShell for Pentesters (6 Hrs, 29 Mins)
+- [ ] Penetration Testing: Web App Security (9 Hrs, 44 Mins)
+- [ ] Penetration Testing: Wi-Fi (5 Hrs, 14 Mins)
+- [ ] Penetration Testing: Metasploit & Ruby (7 Hrs, 51 Mins)
+- [ ] eCPPTv2 Exam Prep (1 Hr, 15 Mins)
 
 
 
