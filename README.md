@@ -80,3 +80,28 @@ Ine hasn't actually mentioned this tool yet but I see it mentioned while looking
 
 ## TCP DUMP
 Windows actually has a built-in packet sniffer called pktmon...
+
+https://jvns.ca/tcpdump-zine.pdf
+
+Pipe tcpdump output into wireshark
+
+`ssh some.remote.hosttcpdump - pni any -w - - s0 - U port 8888 | wireshark -k- i-`
+
+tcpdump on loopback interface
+
+`tcpdump -i lo`
+
+Write TCPdump to pcap, only capture 1000 packets. (-c for count)
+`tcpdump host 8.8.8.8 -c 1000 -w filename.pcap`
+
+Show HTTP (not HTTPS) requests (-A for Ascii)
+`tcpdump -A `
+
+TCP Dump do not resolve hostnames
+`tcpdump -n`
+
+TCP Dump ethernet information (Macs and stuff)
+`tcpdump -e`
+
+TCP Dump only get packets that are to or from your computer 
+`tcpdump -p`
