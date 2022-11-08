@@ -31,6 +31,8 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
 ### ARP Poisoning
 https://attack.mitre.org/techniques/T1557/002/
 
+netdiscover can be useful to find hosts using arp
+
 Dsniff / ArpSpoof
 ### DHCP
 https://attack.mitre.org/techniques/T1557/003/
