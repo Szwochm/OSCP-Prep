@@ -71,3 +71,12 @@ https://attack.mitre.org/techniques/T1557/001/
 - Responder, "tricks" the victim with responses. MultiRelay forwards the hashes to achieve passthehash attacks
 
 **- INE didn't mention this, but searches returned that this is one way to take over a domain. AD Domain Takeovers are part of the new OSCP. Keep an eye on this**
+
+## 11/8/2022
+
+## MIMIKATZ
+
+Ine hasn't actually mentioned this tool yet but I see it mentioned while looking up other things I think it would be cool to demo on how to craft an instance that sneaks past AV and maybe extract some creds from a browser etc...
+
+## TCP DUMP
+Windows actually has a built-in packet sniffer called pktmon...
