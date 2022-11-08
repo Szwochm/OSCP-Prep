@@ -1,4 +1,4 @@
-## Nov 2nd
+## 11/2/2022
 # OSCP-Prep
 Notes on various topics while I prepare for the OSCP exam
 
