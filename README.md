@@ -1,11 +1,17 @@
 ## 11/2/2022
 # OSCP-Prep
 
-Progress Screen Shots on bottom!
 
-Notes on various topics while I prepare for the OSCP exam
+# Progress
 
-Note that these notes are not meant to be used to teach a class or do a presentation, and thus are not fully expanded. These are notes of things that I think may be useful to review in the future. Also I have already finished INE's System, and Information Gathering / Enumeration Sections, so there won't be notes here (I used Notion for those)
+![INE Systems Proof](https://github.com/Szwochm/OSCP-Prep/blob/main/Systems%20Proof.PNG?raw=true)
+![INE Network Proof](https://github.com/Szwochm/OSCP-Prep/blob/main/Network%20Proof.PNG?raw=true)
+
+
+# Intent
+These are notes on various topics while I prepare for the OSCP exam
+
+These notes are not meant to be used to teach a class or do a presentation, and thus are not fully expanded. These are notes of things that I think may be useful to review in the future. Also I have already finished INE's System, and Information Gathering / Enumeration Sections, so there won't be notes here (I used Notion for those)
 
 
 ## Arp
@@ -113,8 +119,3 @@ TCP Dump ethernet information (Macs and stuff)
 TCP Dump only get packets that are to or from your computer 
 
 `tcpdump -p`
-
-
-# Progress
-![INE Systems Proof](https://github.com/Szwochm/OSCP-Prep/blob/main/Systems%20Proof.PNG?raw=true)
-![INE Network Proof](https://github.com/Szwochm/OSCP-Prep/blob/main/Network%20Proof.PNG?raw=true)
