@@ -6,7 +6,6 @@ Note that these notes are not meant to be used to teach a class or do a presenta
 
 
 ## Arp
-https://attack.mitre.org/techniques/T1557/002/
 
 Windows 10 show arp cache 
 `arp -a`
@@ -30,7 +29,8 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
 ## MITM
 
 ### ARP Poisoning
-
+https://attack.mitre.org/techniques/T1557/002/
+Dsniff
 ### DHCP
 INE Mentioned DHCP MITM attacks, but did not give tools on how to achieve this. Will have to research further. I did see a DHCP option in the Responder tool...
 - DHCP Discovery is on Port 67
