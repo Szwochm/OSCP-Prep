@@ -45,4 +45,4 @@ INE Mentioned DHCP MITM attacks, but did not give tools on how to achieve this. 
 - Responder / Multi Relay
 
 ## Responder / MultiRelay
-- The Responder, and MultiRelay tools offer many MITM services, not just LLMNR and NBT-NS. DNS, WPAD.
+- The Responder, and MultiRelay tools offer many MITM services, not just LLMNR and NBT-NS. DNS, WPAD, and SMB looked interesting...
