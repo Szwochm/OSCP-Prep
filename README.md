@@ -4,8 +4,13 @@
 
 # Progress
 
-![INE Systems Proof](https://github.com/Szwochm/OSCP-Prep/blob/main/Systems%20Proof.PNG?raw=true)
-![INE Network Proof](https://github.com/Szwochm/OSCP-Prep/blob/main/Network%20Proof.PNG?raw=true)
+![INE eCPPT Progress](https://github.com/Szwochm/OSCP-Prep/blob/main/Progress%20INE.PNG?raw=true)
+
+- [x] Penetration Testing: System Security (12 Hrs 50 Mins)
+- [ ] 40% Completed Penetration Testing: Network Security (33 Hrs, 14 Mins)
+- [ ] Add delight to the experience when all tasks are complete :tada:
+
+
 
 
 # Intent
