@@ -30,7 +30,8 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
 
 ### ARP Poisoning
 https://attack.mitre.org/techniques/T1557/002/
-Dsniff
+
+Dsniff / ArpSpoof
 ### DHCP
 INE Mentioned DHCP MITM attacks, but did not give tools on how to achieve this. Will have to research further. I did see a DHCP option in the Responder tool...
 - DHCP Discovery is on Port 67
