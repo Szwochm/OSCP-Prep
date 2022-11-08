@@ -33,3 +33,6 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
 INE Mentioned DHCP MITM attacks, but did not give tools on how to achieve this. Will have to research further.
 - DHCP Discovery is on Port 67
 - Until IP is assigned, host uses source address of 0.0.0.0
+- DHCP Servers all sends offers, client picks the best one
+- **Attackers abuse LEASE time to beat out legit DHCP servers**
+- DHCP responds with DHCP ACK to Dest IP 255.255.255.255
