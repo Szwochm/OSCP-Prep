@@ -140,7 +140,7 @@ Replaced by Bettercap
 
 ## Cain&Abel
 
-Outdated, use Bettercap, hashcat, airsnort, etc...
+Outdated, use Bettercap, hashcat, airsnort, JTR, etc...
 
 ## Macof
 
@@ -152,9 +152,10 @@ enable ip forwarding
 
 ## Arpspoof
 
+Remember that you have to launch arpspoof twice... 1st time <target 1 spoof> <target 2>... 2nd time <target 2 spoof> <target 1>
 Intercept traffic using a 3rd party tool like wireshark
 
-Also needs ip forwarding
+Also needs ip forwarding as Macof ^
 
 ## Better Cap
 
@@ -171,6 +172,16 @@ Manually specific gateway using `-G`
 `-x` To sniff plaintext data such as FTP and HTTP Post
 
 Example: `bettercap -I <interface> -T <target> -X -P "HTTPAUTH,URL,FTP,POST"`
+
+## Poisoning and Sniffing Lab notes
+
+After you sniff some smb creds, here is how you mount an smb location...
+
+mkdir /tmp/finance
+
+mount -t cifs -o user=almir,password=Corinthians2012,rw,vers=1.0 //172.16.5.10/finance /tmp/finance
+
+ls -l /tmp/finance/
 
 
 
