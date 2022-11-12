@@ -4,7 +4,7 @@
 
 ## 11/11/2022
 
-Cain & Abel did alot of extra stuff such as installing a shell, I wish I was around for it in its glory days
+Cain & Abel did **alot** of extra stuff such as installing a shell, I wish I was around for it in its glory days
 
 ## The spoofing notes will be short since OSCP doesn't allow that, and half of these tools are outdated anyways
 
