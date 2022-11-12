@@ -1,7 +1,7 @@
 ## 11/12/2022
 ## Poisoning and Exploit with Responder Lab
 
-I don't know how to use this tool efficienctly, I will have to invest more time into it next time I study
+I don't know how to use this tool efficiently, I will have to invest more time into it next time I study
 
 !!!MultiRelay uses Runas.exe to run commands as user, and Svc.exe to create a service for the command. If you try to use x86 on x64 or vice versa you will have problems...!!!
 
