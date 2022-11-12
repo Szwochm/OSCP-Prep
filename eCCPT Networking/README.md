@@ -5,7 +5,7 @@ MultiRelay uses Runas.exe to run commands as user, and Svc.exe to create a servi
 
 Create x86 binaries like this
 
-ls /usr/share/responder/tools/MultiRelay/bin
+`ls /usr/share/responder/tools/MultiRelay/bin
 
 rm /usr/share/responder/tools/MultiRelay/bin/Runas.exe  
 
@@ -15,7 +15,7 @@ ls /usr/share/responder/tools/MultiRelay/bin
 
 i686-w64-mingw32-gcc /usr/share/responder/tools/MultiRelay/bin/Runas.c -o /usr/share/responder/tools/MultiRelay/bin/Runas.exe -municode -lwtsapi32 -luserenv
 
-i686-w64-mingw32-gcc /usr/share/responder/tools/MultiRelay/bin/Syssvc.c -o /usr/share/responder/tools/MultiRelay/bin/Syssvc.exe -municode
+i686-w64-mingw32-gcc /usr/share/responder/tools/MultiRelay/bin/Syssvc.c -o /usr/share/responder/tools/MultiRelay/bin/Syssvc.exe -municode`
 
 
 ## Cain & Abel Lab
