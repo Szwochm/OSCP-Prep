@@ -12,6 +12,8 @@
 - [ ] Penetration Testing: Wi-Fi (5 Hrs, 14 Mins)
 - [ ] Penetration Testing: Metasploit & Ruby (7 Hrs, 51 Mins)
 - [ ] eCPPTv2 Exam Prep (1 Hr, 15 Mins)
+- [ ] Offensive Security Pen-200 Course
+- [ ] 
 
 # Intent
 These are notes on various topics while I prepare for the OSCP exam
