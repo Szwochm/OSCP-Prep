@@ -1,7 +1,7 @@
 ## 11/12/2022
 ## Poisining and Exploit with Responder Lab
 
-MultiRelay uses Runas.exe to run commands as user, and Svc.exe to create a service for the command. If you try to use x86 on x64 or vice versa you will have problems...
+!!!MultiRelay uses Runas.exe to run commands as user, and Svc.exe to create a service for the command. If you try to use x86 on x64 or vice versa you will have problems...!!!
 
 Create x86 binaries like this
 
