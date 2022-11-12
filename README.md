@@ -177,14 +177,45 @@ Example: `bettercap -I <interface> -T <target> -X -P "HTTPAUTH,URL,FTP,POST"`
 
 After you sniff some smb creds, here is how you mount an smb location...
 
-mkdir /tmp/finance
+`mkdir /tmp/finance`
 
-mount -t cifs -o user=almir,password=Corinthians2012,rw,vers=1.0 //172.16.5.10/finance /tmp/finance
+`mount -t cifs -o user=almir,password=Corinthians2012,rw,vers=1.0 //172.16.5.10/finance /tmp/finance`
 
-ls -l /tmp/finance/
+`ls -l /tmp/finance/`
 
 
+## Intercepting SSL Traffic
 
+To configure ettercap...
+
+in /etc/ettercap/etter.conf
+
+change `ec_uid` and `ec_gid` to 0
+
+uncomment `redir_command_on "iptables..."` and `redir_command_off "iptables..."`
+
+# SSL Strip (Outdated)
+
+MITMs between victim and server, uses http connection for victim, https for server
+
+Manipulates HTTP headers to obtain cookies and elimnate cache pages being requested
+
+Must be used in conjunction with another arp spoofing tool
+
+-f to subsitute favicon, -w to write to file, -l to designate port
+
+
+Ettercap set up port redirection
+
+`iptable -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-ports 8080`
+
+**Bettercap implements SSLstrip**
+
+--proxy--https
+
+SSLstrip is defeated by HSTS Policy, which prevents HTTPs to Http downgrade!
+
+(Vulnerable browser guide)[https://caniuse.com/stricttransportsecurity]
 
 
 
