@@ -4,6 +4,8 @@
 
 ## 11/11/2022
 
+Cain & Abel did alot of extra stuff such as installing a shell, I wonder if bettercap has those options
+
 ## The spoofing notes will be short since OSCP doesn't allow that, and half of these tools are outdated anyways
 
 ## Ettercap
