@@ -131,3 +131,54 @@ TCP Dump only get packets that are to or from your computer
 `tcpdump -p`
 
 ## 11/11/2022
+
+## The spoofing notes will be short since OSCP doesn't allow that, and half of these tools are outdated anyways
+
+## Ettercap
+
+Replaced by Bettercap
+
+## Cain&Abel
+
+Outdated, use Bettercap, hashcat, airsnort, etc...
+
+## Macof
+
+Spam switch to fill up cam table, and sniff traffic on those ports
+
+enable ip forwarding
+
+`echo 1 > /proc/sys/net/ipv4/ip_forward`
+
+## Arpspoof
+
+Intercept traffic using a 3rd party tool like wireshark
+
+Also needs ip forwarding
+
+## Better Cap
+
+Sniff traffic
+
+use `--no-spoofing option` to find targets
+
+disable NBNS name resolution using `--no-target-nbns` flag
+
+`-T` Arp Spoof
+
+Manually specific gateway using `-G`
+
+`-x` To sniff plaintext data such as FTP and HTTP Post
+
+Example: `bettercap -I <interface> -T <target> -X -P "HTTPAUTH,URL,FTP,POST"`
+
+
+
+
+
+
+
+
+
+
+
