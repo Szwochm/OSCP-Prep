@@ -194,7 +194,7 @@ change `ec_uid` and `ec_gid` to 0
 
 uncomment `redir_command_on "iptables..."` and `redir_command_off "iptables..."`
 
-# SSL Strip (Outdated)
+# SSL Strip (Outdated succeeded by sslstrip+)
 
 MITMs between victim and server, uses http connection for victim, https for server
 
