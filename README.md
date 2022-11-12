@@ -215,7 +215,7 @@ Ettercap set up port redirection
 
 SSLstrip is defeated by HSTS Policy, which prevents HTTPs to Http downgrade!
 
-(Vulnerable browser guide)[https://caniuse.com/stricttransportsecurity]
+[Vulnerable browser guide](https://caniuse.com/stricttransportsecurity)
 
 
 
