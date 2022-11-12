@@ -213,7 +213,9 @@ Ettercap set up port redirection
 
 --proxy--https
 
-SSLstrip is defeated by HSTS Policy, which prevents HTTPs to Http downgrade!
+SSLstrip is defeated by HSTS Policy, which prevents HTTPs to Http downgrade! (Only if they connected prior, you can still attack them on their first connection!)
+
+Although this is defeated by [Preload Lists](https://caniuse.com/stricttransportsecurity). Preload lists can be defeated by subdomains, or by a domain that is sold and rebought by a new owner.
 
 [Vulnerable browser guide](https://caniuse.com/stricttransportsecurity)
 
