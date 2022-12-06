@@ -9,9 +9,9 @@ I'm given the hints that I have to use Scapy to perform an ICMP Redirect attack.
 1) Send a new redirect every ten minutes, or right before victim contacts target
 2) Following up your redirect request with a spoofed (of the target) TCP SYN packet, they will respond with Syn-Ack
 
-"Unfortunately, the most intuitive and widely-documented way of disabling ICMP redirects on Linux (by writing 0 to /proc/sys/net/ipv4/conf/all/accept_redirects) doesn't always work!". proc is also the way to enable packet forwarding. Seems like anytime I need to do some sort of network configuration on a linux device /proc/sys/net/ipv4 is a good place to start.
+*"Unfortunately, the most intuitive and widely-documented way of disabling ICMP redirects on Linux (by writing 0 to /proc/sys/net/ipv4/conf/all/accept_redirects) doesn't always work!"*. Proc is also the way to enable packet forwarding. Seems like anytime I need to do some sort of network configuration on a linux device /proc/sys/net/ipv4 is a good place to start.
 
-"This arcane logic means that for a non-router (i.e. most servers), not only must **/proc/sys/net/ipv4/conf/all/accept_redirects** be 0, but so must **/proc/sys/net/ipv4/conf/interface/accept_redirects**"
+*"This arcane logic means that for a non-router (i.e. most servers), not only must **/proc/sys/net/ipv4/conf/all/accept_redirects** be 0, but so must **/proc/sys/net/ipv4/conf/interface/accept_redirects***"
 
 This reference had some interesting points but I still do not understand ICMP redirection attacks. Only that I can forge a redirect request, and force it to stick in the cache.
 
