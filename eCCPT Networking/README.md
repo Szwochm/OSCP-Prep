@@ -11,6 +11,8 @@ I'm given the hints that I have to use Scapy to perform an ICMP Redirect attack.
 
 "Unfortunately, the most intuitive and widely-documented way of disabling ICMP redirects on Linux (by writing 0 to /proc/sys/net/ipv4/conf/all/accept_redirects) doesn't always work!". proc is also the way to enable packet forwarding. Seems like anytime I need to do some sort of network configuration on a linux device /proc/sys/net/ipv4 is a good place to start.
 
+"This arcane logic means that for a non-router (i.e. most servers), not only must **/proc/sys/net/ipv4/conf/all/accept_redirects** be 0, but so must **/proc/sys/net/ipv4/conf/interface/accept_redirects**"
+
 
 
 
