@@ -13,6 +13,16 @@ I'm given the hints that I have to use Scapy to perform an ICMP Redirect attack.
 
 "This arcane logic means that for a non-router (i.e. most servers), not only must **/proc/sys/net/ipv4/conf/all/accept_redirects** be 0, but so must **/proc/sys/net/ipv4/conf/interface/accept_redirects**"
 
+This reference had some interesting points but I still do not understand ICMP redirection attacks. Only that I can forge a redirect request, and force it to stick in the cache.
+
+Questions I need answered:
+
+How can I check if a device is vulnerable? I know that the /proc/.../accept_redirections settings dictate whether it is possible, but how can I scan this from the outside?
+
+What exactly happens to the traffic flow on a redirect request? Why does this cause DOS in the reference above? I thought MITM attacks (usually) just allow for traffic to be sniffed / manipulated in transit.
+
+What are some data sources?
+
 
 
 
