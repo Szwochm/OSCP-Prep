@@ -10,6 +10,12 @@ regsv32
 
 I need to look into selecting payloads... You can do everything right but just using a slightly different payload can change the succuess of an attack. Lab crashed again for the 3rd time, going to move on next content. Will circle back on OSCP labs
 
+## Starting Exploitation Subsection
+
+## Low Hanging Fruits
+
+We can use ncrack, medusa, or hydra to brute force passwords. Medusa and Hydra support more protocols, but ncrack is better and supports rdp
+
 ## 11/12/2022
 ## Poisoning and Exploit with Responder Lab
 
