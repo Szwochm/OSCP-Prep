@@ -15,6 +15,10 @@ Create x86 binaries like this
 
 `ls /usr/share/responder/tools/MultiRelay/bin`
 
+MinGW is a complete runtime environment to support Windows Binaries.
+
+-municode causes unicode preprocessor macro to be predefined. Choose Unicode capable runtime code.
+
 `i686-w64-mingw32-gcc /usr/share/responder/tools/MultiRelay/bin/Runas.c -o /usr/share/responder/tools/MultiRelay/bin/Runas.exe -municode -lwtsapi32 -luserenv`
 
 `i686-w64-mingw32-gcc /usr/share/responder/tools/MultiRelay/bin/Syssvc.c -o /usr/share/responder/tools/MultiRelay/bin/Syssvc.exe -municode`
