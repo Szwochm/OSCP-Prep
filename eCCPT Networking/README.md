@@ -38,6 +38,15 @@ Iterate through in form
      
 `host=FILE0 user=FILE1 password=FILE2 0=hosts.txt 1=logins.txt 2=pwd.txt`
 
+Ignore results that contain a specific login failure message
+
+'patator ... -x ignore:mesg='Login failure message'`
+
+Example 1
+
+patator ssh_login host=x.x.x.x user=FILE0 password=FILE1 0=users.txt 1=password.txt
+
+
 
 ## 11/12/2022
 ## Poisoning and Exploit with Responder Lab
