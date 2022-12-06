@@ -23,6 +23,8 @@ What exactly happens to the traffic flow on a redirect request? Why does this ca
 
 What are some data sources?
 
+How can I use Scapy to create this attack?
+
 
 
 
