@@ -30,9 +30,9 @@ Show help for ssh
 
 Iterate through in form
 
-for i in hosts
+    for i in hosts
 
-    for j in logins
+     for j in logins
   
         for j in passwords
      
