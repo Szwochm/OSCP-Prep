@@ -34,7 +34,8 @@ for i in hosts
 
     for j in logins
   
-     for j in passwords
+        for j in passwords
+     
 `host=FILE0 user=FILE1 password=FILE2 0=hosts.txt 1=logins.txt 2=pwd.txt`
 
 
