@@ -16,6 +16,28 @@ I need to look into selecting payloads... You can do everything right but just u
 
 We can use ncrack, medusa, or hydra to brute force passwords. Medusa and Hydra support more protocols, but ncrack is better and supports rdp
 
+ncrack can be used with nmap
+
+Patator usage guide
+
+Show Available Modules
+
+`patator`
+
+Show help for ssh 
+
+`patator ssh_login --help`
+
+Iterate through in form
+
+for i in hosts
+
+  for j in logins
+  
+    for j in passwords
+`host=FILE0 user=FILE1 password=FILE2 0=hosts.txt 1=logins.txt 2=pwd.txt`
+
+
 ## 11/12/2022
 ## Poisoning and Exploit with Responder Lab
 
