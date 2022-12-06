@@ -1,3 +1,15 @@
+## 12/6/2022
+
+## Poisoning and Exploit with Responder Lab cont...
+
+MinGW is a complete runtime environment to support Windows Binaries.
+
+-municode causes unicode preprocessor macro to be predefined. Choose Unicode capable runtime code.
+
+regsv32 
+
+I need to look into selecting payloads... You can do everything right but just using a slightly different payload can change the succuess of an attack. Lab crashed again for the 3rd time, going to move on next content. Will circle back on OSCP labs
+
 ## 11/12/2022
 ## Poisoning and Exploit with Responder Lab
 
@@ -15,9 +27,7 @@ Create x86 binaries like this
 
 `ls /usr/share/responder/tools/MultiRelay/bin`
 
-MinGW is a complete runtime environment to support Windows Binaries.
 
--municode causes unicode preprocessor macro to be predefined. Choose Unicode capable runtime code.
 
 `i686-w64-mingw32-gcc /usr/share/responder/tools/MultiRelay/bin/Runas.c -o /usr/share/responder/tools/MultiRelay/bin/Runas.exe -municode -lwtsapi32 -luserenv`
 
