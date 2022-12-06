@@ -1,5 +1,19 @@
 ## 12/6/2022
 
+## ICMP Redirect attack Lab
+
+I'm given the hints that I have to use Scapy to perform an ICMP Redirect attack..
+
+[1](https://www.agwa.name/blog/post/icmp_redirect_attacks_in_the_wild) Victim has to contact target within 10 minutes of getting the redirect for it to stick. You can achieve this by doing...
+
+1) Send a new redirect every ten minutes, or right before victim contacts target
+2) Following up your redirect request with a spoofed (of the target) TCP SYN packet, they will respond with Syn-Ack
+
+"Unfortunately, the most intuitive and widely-documented way of disabling ICMP redirects on Linux (by writing 0 to /proc/sys/net/ipv4/conf/all/accept_redirects) doesn't always work!". proc is also the way to enable packet forwarding. Seems like anytime I need to do some sort of network configuration on a linux device /proc/sys/net/ipv4 is a good place to start.
+
+
+
+
 ## Poisoning and Exploit with Responder Lab cont...
 
 MinGW is a complete runtime environment to support Windows Binaries.
