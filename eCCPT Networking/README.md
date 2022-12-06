@@ -4,7 +4,7 @@
 
 I'm given the hints that I have to use Scapy to perform an ICMP Redirect attack..
 
-[1](https://www.agwa.name/blog/post/icmp_redirect_attacks_in_the_wild) Victim has to contact target within 10 minutes of getting the redirect for it to stick. You can achieve this by doing...
+[[1]](https://www.agwa.name/blog/post/icmp_redirect_attacks_in_the_wild) Victim has to contact target within 10 minutes of getting the redirect for it to stick. You can achieve this by doing...
 
 1) Send a new redirect every ten minutes, or right before victim contacts target
 2) Following up your redirect request with a spoofed (of the target) TCP SYN packet, they will respond with Syn-Ack
