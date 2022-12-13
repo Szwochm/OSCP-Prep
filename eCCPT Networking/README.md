@@ -17,17 +17,17 @@ This reference had some interesting points but I still do not understand ICMP re
 
 Questions I need answered:
 
-How can I check if a device is vulnerable? I know that the /proc/.../accept_redirections settings dictate whether it is possible, but how can I scan this from the outside?
+**How can I check if a device is vulnerable?** I know that the /proc/.../accept_redirections settings dictate whether it is possible, but how can I scan this from the outside?
 
-What exactly happens to the traffic flow on a redirect request? Why does this cause DOS in the reference above? I thought MITM attacks (usually) just allow for traffic to be sniffed / manipulated in transit.
+**What exactly happens to the traffic flow on a redirect request? **Why does this cause DOS in the reference above? I thought MITM attacks (usually) just allow for traffic to be sniffed / manipulated in transit.
 
 Answer: It just tells a host that a more optimized route is a available. The host uses the new route (which could be an attacker)
 
-What are some data sources?
+****What are some data sources?
 
 Answer Haven't seen anything on MITRE for ICMP attacks specifically. Route caches are stored in RAM (So no files to analyze) Network analysis with an IDS may be the only way to prevent this attacks other than configuring systems to ignore ICMP Redirect requests.
 
-How can I use Scapy to create this attack?
+****How can I use Scapy to create this attack?
 
 Answer:[Scapy usage example](https://initone.dz/icmp-redirect-attack-explained/)
 
