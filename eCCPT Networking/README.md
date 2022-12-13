@@ -21,10 +21,15 @@ How can I check if a device is vulnerable? I know that the /proc/.../accept_redi
 
 What exactly happens to the traffic flow on a redirect request? Why does this cause DOS in the reference above? I thought MITM attacks (usually) just allow for traffic to be sniffed / manipulated in transit.
 
+Answer: It just tells a host that a more optimized route is a available. The host uses the new route (which could be an attacker)
+
 What are some data sources?
+
+Answer Haven't seen anything on MITRE for ICMP attacks specifically. Route caches are stored in RAM (So no files to analyze) Network analysis with an IDS may be the only way to prevent this attacks other than configuring systems to ignore ICMP Redirect requests.
 
 How can I use Scapy to create this attack?
 
+Answer:[Scapy usage example](https://initone.dz/icmp-redirect-attack-explained/)
 
 
 
