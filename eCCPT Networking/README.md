@@ -43,6 +43,8 @@ Answer Haven't seen anything on MITRE for ICMP attacks specifically. Route cache
 
 Answer:[Scapy usage example](https://initone.dz/icmp-redirect-attack-explained/)
 
+[Scapy script](https://github.com/Szwochm/OSCP-Prep/blob/main/eCCPT%20Networking/icmpredirect-scapy.py)
+
 
 
 
