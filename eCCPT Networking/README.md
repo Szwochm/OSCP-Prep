@@ -1,3 +1,15 @@
+## 12/13/2022
+
+`iptables -t nat -A POSTROUTING -s 10.100.13.0/255.255.255.0 -o eth1 -j MASQUERADE`
+
+Ip tables is the command to interface with Linux Firewall. It allows you to configure packet filter rules.
+
+-o eth1: assigns eth1 as outbound interface
+
+-t nat: This table is consulted for a new connection. Using Post Routing it alters packets on the way out.
+
+IP masquerading is a process where one computer acts as an IP gateway for a network. All computers on the network send their IP packets through the gateway, which replaces the source IP address with its own address and then forwards it to the internet.
+
 ## 12/6/2022
 
 ## ICMP Redirect attack Lab
@@ -30,6 +42,7 @@ Answer Haven't seen anything on MITRE for ICMP attacks specifically. Route cache
 **How can I use Scapy to create this attack?**
 
 Answer:[Scapy usage example](https://initone.dz/icmp-redirect-attack-explained/)
+
 
 
 
