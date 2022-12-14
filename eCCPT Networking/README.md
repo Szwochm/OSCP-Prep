@@ -1,3 +1,12 @@
+## 12/14/2022
+
+Learning about Windows LM authentication. This uses DES. Going to dive into DES as I have seen it mentioned many times (Triple Des isn't banned until 2023).
+
+DES is a Block Cipher which means that it has Key Gen, Encryption and Decryption functions.
+
+![image](https://user-images.githubusercontent.com/1501624/207729116-1c7ad3fd-bed8-4dd5-b184-d8a9684b262a.png)
+
+
 ## 12/13/2022
 
 `iptables -t nat -A POSTROUTING -s 10.100.13.0/255.255.255.0 -o eth1 -j MASQUERADE`
