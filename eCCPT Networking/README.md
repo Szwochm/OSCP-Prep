@@ -1,10 +1,25 @@
 ## 12/14/2022
 
-Learning about Windows LM authentication. This uses DES. Going to dive into DES as I have seen it mentioned many times (Triple Des isn't banned until 2023).
+Learning about Windows LM authentication. This uses DES. Going to dive into DES as I have seen it mentioned many times (Triple Des isn't banned until 2023) but I still only vaguely know about it.
 
 DES is a Block Cipher which means that it has Key Gen, Encryption and Decryption functions.
+[Block Ciphers](https://www.youtube.com/watch?v=oVCCXZfpu-w)
 
 ![image](https://user-images.githubusercontent.com/1501624/207729116-1c7ad3fd-bed8-4dd5-b184-d8a9684b262a.png)
+
+It is a symmetric algorithm (Use same key to encrypt and decrypt)
+
+Block Ciphers Encryption **should be** injective (CS 301 throwback). Every X maps to a unique Y (basically no collisions)
+![image](https://user-images.githubusercontent.com/1501624/207730097-f7bba9f2-f42b-4e22-8485-47a83f89801a.png)
+
+
+Block Ciphers Encryption **should be** surjective. Every Y has an X.
+![image](https://user-images.githubusercontent.com/1501624/207730335-9e3b1842-b4ae-4d26-9e8b-87b14821b71f.png)
+
+
+`Question: Is there a way to realistically prove Bijection without just trying every possible combination?`
+
+
 
 
 ## 12/13/2022
