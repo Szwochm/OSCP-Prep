@@ -17,7 +17,10 @@ Block Ciphers Encryption **should be** surjective. Every Y has an X.
 ![image](https://user-images.githubusercontent.com/1501624/207730335-9e3b1842-b4ae-4d26-9e8b-87b14821b71f.png)
 
 
-`Question: Is there a way to realistically prove Bijection without just trying every possible combination?`
+**Question:** Is there a way to realistically prove Bijection without just trying every possible combination?
+
+'Both types of hashes generate a 128-bit stored value. Most password crackers today crack the LM hash first, then crack the NT hash by simply trying all upper and lower case combinations of the case-insensitive password cracked by the LM hash. '
+
 
 
 
