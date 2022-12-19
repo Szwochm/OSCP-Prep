@@ -1,3 +1,8 @@
+##12/16/2022
+## Windows Security
+###Windows LM
+Take password, convert to uppercase. Pad with 0s until 14 bytes. Split in half. Add 1 parity byte to both. Encrypt using DES protocol on each 8 Byte segment using key phrase KGS!@#$%
+
 ## 12/14/2022
 
 Learning about Windows LM authentication. This uses DES. Going to dive into DES as I have seen it mentioned many times (Triple Des isn't banned until 2023) but I still only vaguely know about it.
