@@ -1,7 +1,25 @@
 ## 12/16/2022
 ## Windows Security
+
+LM and NTLMv1 is easy to crack. They are stored in SAM (host) / NTDS (domain controller), and can be dumped using tools like mimicatz.
+
+NTLMv2 is much harder to crack and it uses blobs, and HMAC-MD5 hashing to create its hashes. It also incorperates the time into the challenge. Its not impossible, but unless the password is very easy, cracking it will be hard. The best way to exploit NTLM v2 is by simply passing the hash using a relay attack.
+
+For Windows authentication, if the challenge ends with the byte sequence of 2f85252cc731bb25, this indicates that the password is 7 chars or less.
+
+[1](https://hunter2.gitbook.io/darthsidious/getting-started/intro-to-windows-hashes) [2](https://medium.com/@petergombos/lm-ntlm-net-ntlmv2-oh-my-a9b235c58ed4)
 ### Windows LM
+
+Note: Windows LM is depreciated but may be used in older systems from compatibility. Some systems will send both NT and LM hash to challenge responses.
+
 Take password, convert to uppercase. Pad with 0s until 14 bytes. Split in half. Add 1 parity byte to both. Encrypt using DES protocol on each 8 Byte segment using key phrase KGS!@#$%
+
+### Windows NTLM V1
+
+Take the password, convert to unicode. Take the 16 bytes and pad with 5 null bytes until you get 21 bytes. Split into 3 segments. Add 1 parity byte to each segment. 
+
+
+
 
 ## 12/14/2022
 
