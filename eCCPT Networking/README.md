@@ -7,7 +7,7 @@ NTLMv2 is much harder to crack and it uses blobs, and HMAC-MD5 hashing to create
 
 For Windows authentication, if the challenge ends with the byte sequence of 2f85252cc731bb25, this indicates that the password is 7 chars or less.
 
-[1](https://hunter2.gitbook.io/darthsidious/getting-started/intro-to-windows-hashes) [2](https://medium.com/@petergombos/lm-ntlm-net-ntlmv2-oh-my-a9b235c58ed4)
+[[1]](https://hunter2.gitbook.io/darthsidious/getting-started/intro-to-windows-hashes) [[2]](https://medium.com/@petergombos/lm-ntlm-net-ntlmv2-oh-my-a9b235c58ed4)
 ### Windows LM
 
 Note: Windows LM is depreciated but may be used in older systems from compatibility. Some systems will send both NT and LM hash to challenge responses.
