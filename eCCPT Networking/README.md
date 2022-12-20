@@ -1,7 +1,7 @@
 ## 12/19/2022
 
 ## More Windows Security
-Unquoted Executable Paths: Windows programs have a setting that describes the path to a desired executable. If that path is unquoted, we can abuse this and place.
+Unquoted Service Paths: Windows services have a setting that describes the path to a desired executable. If that path is unquoted, we can abuse this and place.
 
 [Example Ref](https://medium.com/@SumitVerma101/windows-privilege-escalation-part-1-unquoted-service-path-c7a011a8d8ae)
 
