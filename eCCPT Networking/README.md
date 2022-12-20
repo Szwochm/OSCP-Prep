@@ -1,3 +1,14 @@
+## 12/19/2022
+
+## More Windows Security
+Windows tokens come in two forms: Impersonation (non-interactive) and Delegation (interactive / remote login). When a user with delegation tokens logs off, those tokens become Impersonation tokens with much of the same permissions as the Delegation tokens. They tokens persist until reboot. We can steal these tokens using Incognito.
+
+VA and Exploiting Lab:
+[[ Lab Report: Findings]](https://github.com/Szwochm/OSCP-Prep/blob/main/eCCPT%20Networking/Va-Exploiting-Lab/report.html)
+
+This is my first time attempting to create a lab report. I'm not happy with how it looks, but its a start.
+
+
 ## 12/16/2022
 ## Windows Security
 
