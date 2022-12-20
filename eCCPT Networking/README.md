@@ -1,12 +1,22 @@
 ## 12/19/2022
 
 ## More Windows Security
+Unquoted Executable Paths: Windows programs have a setting that describes the path to a desired executable. If that path is unquoted, we can abuse this and place.
+
+[Example Ref](https://medium.com/@SumitVerma101/windows-privilege-escalation-part-1-unquoted-service-path-c7a011a8d8ae)
+
+![image](https://user-images.githubusercontent.com/1501624/208587720-fe570452-7bff-4a07-b792-7715e0c58489.png)
+
+
+
 Windows tokens come in two forms: Impersonation (non-interactive) and Delegation (interactive / remote login). When a user with delegation tokens logs off, those tokens become Impersonation tokens with much of the same permissions as the Delegation tokens. They tokens persist until reboot. We can steal these tokens using Incognito.
 
 VA and Exploiting Lab:
+
+Note:This is my first time attempting to create a lab report. I'm not happy with how it looks, but its a start.
 [[ Lab Report: Findings]](https://github.com/Szwochm/OSCP-Prep/blob/main/eCCPT%20Networking/Va-Exploiting-Lab/report.html)
 
-This is my first time attempting to create a lab report. I'm not happy with how it looks, but its a start.
+
 
 
 ## 12/16/2022
