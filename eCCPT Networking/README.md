@@ -1,4 +1,10 @@
 ## 12/19/2022
+## Nessus Lab
+
+[Working with Nessus](https://www.offensive-security.com/metasploit-unleashed/working-with-nessus/)
+
+This was a tough lab. I spent an hour and a half on it with no progress. Will try again tomorrow.
+
 
 ## More Windows Security
 Unquoted Service Paths: Windows services have a setting that describes the path to a desired executable. If that path is unquoted, we can abuse this and place.
