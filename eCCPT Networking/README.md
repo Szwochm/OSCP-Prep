@@ -1,3 +1,8 @@
+## 12/20/2022
+
+## Nessus Lab Cont.
+
+Figured out an initial foot hold. One of the targets had HeartBleed exploit. I tried this exploit initially yesterday but did not realize that you had to set the verbose mode to TRUE to be able to see the memory leak. In the memory leak I found credentials for SSH. I must learn to how to thoroughly investigate potential exploits. This stops me from constantly bouncing back and fourth between potential attack vectors so I can more methodically move through my enumeration.
 ## 12/19/2022
 ## Nessus Lab
 
