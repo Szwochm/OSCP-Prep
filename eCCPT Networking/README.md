@@ -1,3 +1,11 @@
+## 12/25/2022
+
+## Client Exploit Lab
+
+ Lab crashed twice, and after a few hours of attempting to solve it, I used the solution which also didn't work. Going to skip this one.
+ 
+ I did get a nifty script to send an email though using smtplib [script](https://github.com/Szwochm/OSCP-Prep/blob/main/sendSmtp)
+
 ## 12/20/2022
 
 ## Nessus Lab Cont.
