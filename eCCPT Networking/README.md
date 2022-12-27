@@ -24,7 +24,7 @@ This would make it not feasible to attempt to crack the hash, so I saved the has
 
 I used exploit/windows/smb/smb_relay and sucuessfully obtained a root on the target.
 
-The lab crashed. I looked at the solution to see if I missed anything, and I finished all of the tasks sucuessfully before the lab crashed.
+The lab crashed. I looked at the solution to see if I missed anything, and I finished all of the tasks sucessfully before the lab crashed.
 
 
 POST LAB Questions: The challenges did not contain the string that implies that a string is less than 7 characters (2f85252cc731bb25). However after extracting the hashes in an elevated meterpreter session, and cracking them, I noticied that they are empty. aad3b435b51404eeaad3b435b51404ee (LM) and 31d6cfe0d16ae931b73c59d7e0c089c0 (NTLM) [(empty hashes)](https://security.stackexchange.com/questions/169923/john-the-ripper-not-displaying-cracked-password) correspond to an empty password. If the hashes were empty why did they not show 2f85252cc731bb25 in the challenge? empty is less than 7 characters.
