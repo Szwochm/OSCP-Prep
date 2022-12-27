@@ -3,6 +3,8 @@
 
 ## Post Exploitation: Persistence
 
+Alot of content here is just commands, I'll have to use ANKI to better try to remember.
+
 We can use msfvenom to create payloads. We can use BDF(Linux) and Shellter (Windows + Wine) to inject the payloads
 
 3 ways to maintain persistence:  1) Password Hashes (crack or pass) for services, 2) Users for services, 3)Backdoors
@@ -61,6 +63,8 @@ Windows enumerate users in group
 Windows add user to Administrators
 
 `net localgroup "Administrators" <user> /add`
+
+Summary: Escalate privileges, Harvest Creds, Create New users, add them to the correct groups (like Remote Desktop Users), with the correct permissions (System), open firewall ports if needed. Start the services, and add the users to the services.
 
 
 ## DNS and SMB Relay Attack
