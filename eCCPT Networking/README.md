@@ -34,6 +34,27 @@ Windows Credentials Editor is another potential tool to work with credentials, l
 
 You can check which services are enabled by using `net start`
 
+meterpreter scripts
+
+Enumerate services:
+
+
+`run service_manager -l`
+
+`run post/windows/gather/enum_services`
+
+Enable RDP
+
+` run getgui -e`
+
+Windows add user to "Remote Desktop Users" group
+
+`net localgroup "Remote Desktop Users" <username> /add`
+
+Windowows: enumerate groups
+
+`net` [[Built-in Groups]](https://ss64.com/nt/syntax-security_groups.html)
+
 
 
 
