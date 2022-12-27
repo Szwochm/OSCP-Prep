@@ -15,7 +15,9 @@ HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters : A
 
 HKEY_LOCAL_MACHINE\System\Microsoft\Windows\CurrentVersion\Policies\System: Add DWORD LocalAccountTokenFilterPolicy and set to 1
 
-You can set Registry values via powershell session using Set-ItemProperty -Path
+You can set Registry values via powershell session using `Set-ItemProperty -Path`
+
+You can set Registry values via CLI using `reg add`
 
 
 
