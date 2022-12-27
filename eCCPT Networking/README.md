@@ -18,7 +18,7 @@ Thus I created  a host file that contained 172.x.x.ME wildcard.foo
 
 After responding to the requests using dnsspoof I noticed that the victim was attempting to connect using ports 445 and 139. This led me to start capturing smb traffic.
 
-I used metasploits `auxiliary/server/capture/smb` and I captured a NTLM hash from aline. Observations: 1. Lm was disabled 2. The NTLM hash was v2 3.The challenge did not contain 2f85252cc731bb25 so I knew that the password was 8 characters or longer. 
+I used metasploits `auxiliary/server/capture/smb` and I captured a NTLM hash from user aline. Observations: 1. Lm was disabled 2. The NTLM hash was v2 3.The challenge did not contain 2f85252cc731bb25 so I knew that the password was 8 characters or longer. 
 
 This would make it not feasible to attempt to crack the hash, so I saved the hash and moved on to attempting a relay attack.
 
