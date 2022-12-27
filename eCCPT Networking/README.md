@@ -55,13 +55,12 @@ Windowows: enumerate groups
 
 `net` [[Built-in Groups]](https://ss64.com/nt/syntax-security_groups.html)
 
+Windows enumerate users in group
+`net localgroup "Administrators"`
 
+Windows add user to Administrators
 
-
-
-
-
-
+`net localgroup "Administrators" <user> /add`
 
 
 ## DNS and SMB Relay Attack
