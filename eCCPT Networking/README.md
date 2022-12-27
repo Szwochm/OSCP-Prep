@@ -10,7 +10,7 @@ This lead me to arpspoof using `arpspoof -i eth1 -r 172.x.x.5 -t 172.x.x.30` and
 
 x.x.x.30 was down so I stopped attempting to arpspoof that target. I noticed that x.x.x.5 was sending DNS requests to fileserver.foo.
 
-I began to read about the dnsspoof tool and it said that you must create a hosts file. Thus I created  a host file that contained <myip> *.foo
+I began to read about the dnsspoof tool and it said that you must create a hosts file. Thus I created  a host file that contained 172.x.x.ME wildcard.foo
 
 [[1]](https://null-byte.wonderhowto.com/how-to/hack-like-pro-spoof-dns-lan-redirect-traffic-your-fake-website-0151620/) [[2]](https://tournasdimitrios1.wordpress.com/2011/03/03/dns-spoofing-with-dnsspoof-on-linux/) Then I ran `dnsspoof -f hosts -i eth1` and began responding the dns requests. I also tried using responder as I noticed that it had a dns option but it did not seem to pick up on the traffic.
 
