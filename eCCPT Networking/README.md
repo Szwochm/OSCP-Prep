@@ -30,6 +30,10 @@ When using mimikatz, you get the most features using a 64bit process (to host me
 
 `migrate <pid>`
 
+Windows Credentials Editor is another potential tool to work with credentials, logon sessions, Kerberos etc..
+
+You can check which services are enabled by using `net start`
+
 
 
 
