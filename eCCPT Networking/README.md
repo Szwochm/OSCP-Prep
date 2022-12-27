@@ -1,3 +1,32 @@
+## 12/27/2022
+
+## DNS and SMB Relay Attack
+
+I started with an initial nmap scan of `nmap -sS -sC -sV -p- 172.16.5.*`. This came back showing that all available hosts had smbv2 and had disabled signing. Smb relays will be possible on this network. I also searched for port 53 on any hosts incase I have to position myself between the targets and a dns server. There is no dns service on the network.
+
+I sniffed the network and noticed that 172.x.x.5 was sending arp requests for 172.x.x.30. I also enabled ip_forwarding on my machine.
+
+This lead me to arpspoof using `arpspoof -i eth1 -r 172.x.x.5 -t 172.x.x.30` and vice versa.
+
+x.x.x.30 was down so I stopped attempting to arpspoof that target. I noticed that x.x.x.5 was sending DNS requests to fileserver.foo.
+
+I began to read about the dnsspoof tool and it said that you must create a hosts file. Thus I created  a host file that contained <myip> *.foo
+
+[[1]](https://null-byte.wonderhowto.com/how-to/hack-like-pro-spoof-dns-lan-redirect-traffic-your-fake-website-0151620/) [[2]](https://tournasdimitrios1.wordpress.com/2011/03/03/dns-spoofing-with-dnsspoof-on-linux/) Then I ran `dnsspoof -f hosts -i eth1` and began responding the dns requests. I also tried using responder as I noticed that it had a dns option but it did not seem to pick up on the traffic.
+
+After responding to the requests using dnsspoof I noticed that the victim was attempting to connect using ports 445 and 139. This led me to start capturing smb traffic.
+
+I used metasploits `auxiliary/server/capture/smb` and I captured a NTLM hash from aline. Observations: 1. Lm was disabled 2. The NTLM hash was v2 3.The challenge did not contain 2f85252cc731bb25 so I knew that the password was 8 characters or longer. 
+
+This would make it not feasible to attempt to crack the hash, so I saved the hash and moved on to attempting a relay attack.
+
+I used exploit/windows/smb/smb_relay and sucuessfully obtained a root on the target.
+
+The lab crashed. I looked at the solution to see if I missed anything, and I finished all of the tasks sucuessfully before the lab crashed.
+
+
+POST LAB Questions: The challenges did not contain the string that implies that a string is less than 7 characters (2f85252cc731bb25). However after extracting the hashes in an elevated meterpreter session, and cracking them, I noticied that they are empty. aad3b435b51404eeaad3b435b51404ee (LM) and 31d6cfe0d16ae931b73c59d7e0c089c0 (NTLM) [(empty hashes)](https://security.stackexchange.com/questions/169923/john-the-ripper-not-displaying-cracked-password) correspond to an empty password. If the hashes were empty why did they not show 2f85252cc731bb25 in the challenge? empty is less than 7 characters.
+
 ## 12/25/2022
 
 ## Client Exploit Lab
