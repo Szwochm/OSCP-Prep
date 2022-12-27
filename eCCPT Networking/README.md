@@ -14,9 +14,9 @@ We can use msfvenom to create payloads. We can use BDF(Linux) and Shellter (Wind
 Bypass local admin status_access_denied message by adding two registry entries
 
 
-HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters : Add DWORD RequireSecuritySignature and set to 0
+`HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters` : Add DWORD RequireSecuritySignature and set to 0
 
-HKEY_LOCAL_MACHINE\System\Microsoft\Windows\CurrentVersion\Policies\System: Add DWORD LocalAccountTokenFilterPolicy and set to 1
+`HKEY_LOCAL_MACHINE\System\Microsoft\Windows\CurrentVersion\Policies\System`: Add DWORD LocalAccountTokenFilterPolicy and set to 1
 
 
 You can set Registry values via powershell session using `Set-ItemProperty -Path`
