@@ -4,7 +4,7 @@
 
 I started with an initial nmap scan of `nmap -sS -sC -sV -p- 172.16.5.*`. This came back showing that all available hosts had smbv2 and had disabled signing. Smb relays will be possible on this network. I also searched for port 53 on any hosts incase I have to position myself between the targets and a dns server. There is no dns service on the network.
 
-I sniffed the network and noticed that 172.x.x.5 was sending arp requests for 172.x.x.30. I also enabled ip_forwarding on my machine.
+I was watching network traffic using wireshark and noticed that 172.x.x.5 was sending arp requests for 172.x.x.30. I also enabled ip_forwarding on my machine.
 
 This lead me to arpspoof using `arpspoof -i eth1 -r 172.x.x.5 -t 172.x.x.30` and vice versa.
 
