@@ -23,6 +23,17 @@ You can set Registry values via powershell session using `Set-ItemProperty -Path
 
 You can set Registry values via CLI using `reg add`
 
+When using mimikatz, you get the most features using a 64bit process (to host meterpreter or other shell). You can migrate to another process by using...
+
+`ps -A x86_64 -s` : list all 64 bit processes, look for one with the same privs as you.
+
+
+`migrate <pid>`
+
+
+
+
+
 
 
 
