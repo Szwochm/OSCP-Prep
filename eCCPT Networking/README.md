@@ -1,3 +1,21 @@
+## 12/28/2022
+
+### DLL Hijacking
+
+A.k.a DLL Preloading or Insecure Library Loading
+
+Can I create some sort of mnemonic device to remember this? 
+
+![image](https://user-images.githubusercontent.com/1501624/209873963-f9e50eb6-d7b0-417f-aa0a-4436a2c55203.png)
+
+Also Linux isn't covered in this, but linux shared object hijacking is a thing as well. Something to pay attention to.
+
+
+msg
+
+### Manually setting up persistence
+
+reg setval -k HKLM\\software\\microsoft\\windows\\currentversion\\run -d "<Path to reverse shell>" -v <nameOfRegistryValue>
 
 ## 12/27/2022
 
