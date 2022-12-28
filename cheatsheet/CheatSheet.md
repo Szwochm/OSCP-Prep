@@ -4,6 +4,14 @@
 
 `wmic service get name,pathname,displayname,startmode | findstr /i auto | findstr /i /v "C:\Windows\\" | findstr /i /v """ `
 
+Unquoted Service Path: See if user has permissions to launch found executable...
+
+`sc stop SERVICE`
+
+`sc start SERVICE`
+
+
+
 [[Bypass Uac]](https://github.com/hfiref0x/UACME)
 [[UACME Hackersploit video]](https://www.youtube.com/watch?v=RXX0FHM9SEk)
 
