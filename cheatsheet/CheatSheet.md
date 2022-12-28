@@ -11,3 +11,11 @@
 Generate Payloads
 
 https://www.revshells.com/
+
+## Meterpreter
+
+create shell and check gcc version
+
+`execute -f /bin/sh -i -c`
+
+`gcc --version`
