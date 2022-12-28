@@ -10,6 +10,10 @@ Unquoted Service Path: See if user has permissions to launch found executable...
 
 `sc start SERVICE`
 
+Unquoted Service Path: See if you can (M)odify designated folder
+
+`icacls "FOLDERNAME"`
+
 
 
 [[Bypass Uac]](https://github.com/hfiref0x/UACME)
