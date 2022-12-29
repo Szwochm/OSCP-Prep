@@ -6,7 +6,7 @@ One thing I notice is that you need admin privs to run procmon. How would you do
 
 May seem trivial but I learned that you can't just copy paste .dll files using a text editor.... I created the payload dll on the Kali attacker box but, I wasn't able to set up a reverse tcp shell or ftp connection to the Windows box. So I tried that as a last resort. The only way to transfer the files was to host a webserver and on the designated host access the webserver.
 
-Also trivial, but I re-learned painfully that you can access subdirectories even if the directory is blocked from you...
+Also trivial, but I **re-learned** painfully that you can access subdirectories even if the directory is blocked from you...
 During my enumeration I ignored Users/Admin/Desktop/DVTA..* because I could not even look inside Users/Admin/ from the file explorer. This set me back about 45 minutes of attempting to find Modification privileges in 20 system folders. Next time just use `icacls` on every directory, don't use the file explorer.
 
 Internet Explorer was hardened, even adding my attacker box to the trusted sites, and trusted intranet  in the IE settings did not let me bypass the content blockers. Had to use 
