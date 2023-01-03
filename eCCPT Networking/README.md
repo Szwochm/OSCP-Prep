@@ -1,5 +1,28 @@
 ## 1/3/2022
 
+## Labs
+
+### Post-Exploitation Lab
+
+## Videos
+
+### Session Gopher
+
+Session Gopher steals locally stored creds. RDP, PUTTY, WinSCP
+
+Powershell Download Cradle mentioned again.
+
+
+
+
+### Meterpreter SSL Cert Impersonation & Detection Evasion
+
+Exploits leave traces that make it easy for IDS to pinpoint and block payloads. One example is SSL Certificates. We can use metasploit
+`gather/impersonate_ssl`
+
+They mentioned something called a download "cradle". First time seeing this but it seems like a command line file to use internet explorer to download a file.
+
+
 ### Mapping the Network
 
 Check interfaces, arp tables, ip routes
