@@ -10,7 +10,8 @@
 
 
 ## 1/2/2022
-
+ 
+ Found out that Microsoft is depreciated wmic. I should look for alternatives. Seems alot of cyber tools come in, have their moment of glory and then leave.
 
 
 ## 1/1/2022
