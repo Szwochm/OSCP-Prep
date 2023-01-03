@@ -1,12 +1,25 @@
 ## 1/3/2022
 
+### Mapping the Network
+
+Check interfaces, arp tables, ip routes
+
+`ipconfig /dnsdisplay`
+
+Also covered using routes to attack victims outside of initial scan scope
+
+
+
+
 ### DNS Tunneling
 
 1. Get a domain from godaddy
-2. Use Iodine to set up DNS listener
+2. Use Iodine to set up DNS server listener
 3. Have server configured BEFORE engagement. 
 4. `cat /etc/resolve.conf` to find dns server
 5. ping dns server 
+6. Use Iodine Client to create tunnel
+7. forward traffic via SSH socks proxy to protect data in transit.
 
 
 ## 1/2/2022
@@ -21,8 +34,6 @@
 You can port forward via SSH to send plaintext traffic like telnet using the SSH protocol to secure it.
 
 There are four ways to Social Engineer. Pretexting, Baiting, Phishing, and Physical. The number one idea mentioned was to make the situation as familiar as possible while also using emotions. SET was mentioned but I was already aware of the framework. Kevin Mitnic's name has been mentioned anywhere Social Engineering has been mentioned. I should look into this guy.
-
-
 
 
 ## 12/29/2022
