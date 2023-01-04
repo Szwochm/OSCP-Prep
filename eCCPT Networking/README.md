@@ -6,6 +6,8 @@
 
 **How do we know which UACME bypass to use?**
 
+Answer:
+
 When using Akagi, make sure to use the entire path of the shell. It will not work otherwise.
 
 **Why did using windows/x64/meterpreter/reverse_tcp fail but the regular meterpreter did not?**
