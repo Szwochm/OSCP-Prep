@@ -6,7 +6,7 @@
 
 **How do we know which UACME bypass to use?**
 
-Answer: Unknown...
+Answer: INE's section on UACME isn't fleshed out enough. You have to know how each bypass works, investigate the environment to pick the correct bypass. I wonder if there's a tool to automate this that isn't a metasploit module.
 
 Observation: When using Akagi, make sure to use the entire path of the shell. It will not work otherwise.
 
