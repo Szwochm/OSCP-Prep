@@ -8,7 +8,7 @@
 
 Answer: INE's section on UACME isn't fleshed out enough. You have to know how each bypass works, investigate the environment to pick the correct bypass. I wonder if there's a tool to automate this that isn't a metasploit module.
 
-Observation: When using Akagi, make sure to use the entire path of the shell. It will not work otherwise.
+Observation: When using Akagi, make sure to use the entire path of the payload. It will not work otherwise even if ran from the same directory.
 
 **Why did using windows/x64/meterpreter/reverse_tcp fail but the regular meterpreter did not?**
 Answer: I noticed some oddities. 1. multiple sessions using the same local ports. I would assume once a port is in use, it can no longer be used. For windows/meterpreter/reverse_tcp this didn't appear to be a problem. However for windows/x64 this was a problem. Changing Lport to 4445 instead of 4444 seemed to fix the issue. I'm not even sure what question to ask about this.
