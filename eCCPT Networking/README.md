@@ -1,10 +1,16 @@
 ## 1/5/2022
 
+## Blind Penetration Test
+
 Microsoft IIS default webroot folder is inetpub
 
 When using a webshell you might not be able to use cd but you might be able to still use dir or exec programs.
 
 davtest and cadaver can both be used to test web apps for file uploads.
+
+One reliable way to migrate from a webshell is to upload a msfvenom payload and then execute it using the webshell. Finding where the exe is located can be tricky.
+
+I understand that you can steal tokens and use them to impersonate services, I just dont know how you would do it manually. I've seen powershell scripts but have not tested them. Also seen JuicyPotato, and other tools 
 
 
 ## 1/4/2022
