@@ -1,3 +1,16 @@
+## 1/5/2022
+
+Microsoft IIS default webroot folder is inetpub
+
+When using a webshell you might not be able to use cd but you might be able to still use dir or exec programs.
+
+davtest and cadaver can both be used to test web apps for file uploads.
+
+
+## 1/4/2022
+
+Started studying the webapp pentesting slides. 
+
 ## 1/3/2022
 
 ## Labs
