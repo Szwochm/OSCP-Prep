@@ -1,0 +1,4 @@
+for u in $(cat users.txt);
+          do rpcclient -U "" <IP> -N \
+          --comand="lookupnames $u";
+done | grep "User: 1"
