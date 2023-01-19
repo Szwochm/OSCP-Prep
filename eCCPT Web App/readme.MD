@@ -1,4 +1,9 @@
+## Information Gathering
+
 We can use [Netcraft](https://sitereport.netcraft.com/) to generate site reports 
+
+
+### Fingerprint Webapp
 
 Fingerprint websites using...
 
@@ -25,4 +30,10 @@ IIS 7.5 on Windows Server 2008 R2*	Oct 22, 2009	Jan 14, 2020
 IIS 7.0 on Windows Server 2008*	May 6, 2008	Jan 14, 2020
 
 IIS 6.0 on Windows Server 2003	May 28, 2003	Jul 14, 2015
+
+### Enumerating Subdomains
+
+Google: site:<target domain>
+  
+  
 
