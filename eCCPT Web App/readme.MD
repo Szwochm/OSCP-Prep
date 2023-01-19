@@ -1,3 +1,5 @@
+[Passive Information Gathering Cheatsheet](https://vulp3cula.gitbook.io/hackers-grimoire/recon/passive-information-gathering)
+
 ## Information Gathering
 
 We can use [Netcraft](https://sitereport.netcraft.com/) to generate site reports 
@@ -34,8 +36,15 @@ IIS 6.0 on Windows Server 2003	May 28, 2003	Jul 14, 2015
 ### Enumerating Subdomains
 
 Google: site:<target domain>
+
+dnsenum: `dns enum -p \<pages to process\> -s \<limit results to 100 subdomains\> --threads 5 \<domain\>`
+
+theharvester: `theharvester -d microsoft.com -b google -l 5`
+
   
-dnsenum: `dns enum -p \<pages to process\> -s \<limit results to 100 subdomains\> --threads 5 \<domain\>
+  
+
+  
   
   
   
