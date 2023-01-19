@@ -35,7 +35,7 @@ IIS 6.0 on Windows Server 2003	May 28, 2003	Jul 14, 2015
 
 Google: site:<target domain>
   
-dnsenum: `dns enum -p <pages to process> -s <limit results to 100 subdomains> --threads 5 <domain>
+dnsenum: `dns enum -p \<pages to process\> -s \<limit results to 100 subdomains\> --threads 5 \<domain\>
   
   
   
