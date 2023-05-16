@@ -1,0 +1,39 @@
+Linux privilege escalation
+
+
+Processes
+ps -aux
+
+route tables
+route or routel
+
+find connections 
+
+ss -anp
+
+Cron stuff
+
+Show permissions for every folder that starts with the name cron recursively.
+ls -lah /etc/cron*
+
+crontab -l
+sudo crontab -l (may be runnable if user has the permission)
+
+dpkg -l (list every installed package
+
+find all writable directory by current user
+find / -writable -type d 2>/dev/null
+
+Mounts - In summary, mount shows the current mount status, /etc/fstab represents the expected configuration, and lsblk provides information about the block devices and their partitions present on the system.
+
+cat /etc/fstab
+
+mount
+
+lsblk
+
+lsmod - list all kernel modules
+
+list module info using /sbin/modinfo mod
+
+
