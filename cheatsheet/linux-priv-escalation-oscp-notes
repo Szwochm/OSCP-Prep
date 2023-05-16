@@ -40,3 +40,16 @@ lsmod - list all kernel modules
 list module info using /sbin/modinfo mod
 
 group 0 is root, 42 is shadow.... Be careful if you change your accounts info, you may break your only foot-point. its better to just make a new account
+
+
+sudo -l lets you check what this account can run as sudo, super useful!
+
+check the following for potentially stored plain text creds... immediately try to do su - root as these are likely creds needed for higher privs scripts...
+
+.bashrc
+
+.bashanything really
+
+env
+
+
