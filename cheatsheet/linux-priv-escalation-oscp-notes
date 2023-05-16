@@ -24,6 +24,9 @@ dpkg -l (list every installed package
 find all writable directory by current user
 find / -writable -type d 2>/dev/null
 
+find all permissions with SUID set. (allows you to
+find / -perm -u=s -type f 2>/dev/null
+
 Mounts - In summary, mount shows the current mount status, /etc/fstab represents the expected configuration, and lsblk provides information about the block devices and their partitions present on the system.
 
 cat /etc/fstab
@@ -36,4 +39,4 @@ lsmod - list all kernel modules
 
 list module info using /sbin/modinfo mod
 
-
+group 0 is root, 42 is shadow.... Be careful if you change your accounts info, you may break your only foot-point. its better to just make a new account
