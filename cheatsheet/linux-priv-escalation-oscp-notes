@@ -83,10 +83,10 @@ uname -r
 
 arch 
 x86_64
-search for exploit
 
 put it all together (kernal exploit) ...
 
+search for exploit
 searchsploit "linux kernel Ubuntu 16 Local Privilege Escalation"   | grep  "4." | grep -v " < 4.4.0" | grep -v "4.8"
 use the newest version that matches what you got... I'm assuming you can tell which one is newer using the number at the end example 45010 is newer than 42275
 also becareful that 4.13.9 kernal is newer than 4.4.0.... I'm not sure why I immediately assumed the opposite.
