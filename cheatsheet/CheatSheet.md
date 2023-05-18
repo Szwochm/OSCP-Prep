@@ -34,6 +34,10 @@ Generate Payloads
 
 https://www.revshells.com/
 
+
+https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master
+sql injections, linux priv escalation, it has its all
+
 ## Meterpreter
 
 create shell and check gcc version
