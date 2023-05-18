@@ -1,5 +1,9 @@
 Linux privilege escalation
 
+run command over ssh super helpful
+cd /usr/share/peass/linpeas
+ssh student@192.168.235.52 -p 2222 'bash -s' < linpeas.sh
+
 
 Processes
 ps -aux
@@ -23,6 +27,9 @@ dpkg -l (list every installed package
 
 find all writable directory by current user
 find / -writable -type d 2>/dev/null
+
+NOTE: Try 
+find / -writable -type f 2>/dev/null for writable scripts that may be hidden inside a directory!
 
 find all permissions with SUID set. (allows you to
 find / -perm -u=s -type f 2>/dev/null
