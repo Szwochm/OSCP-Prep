@@ -4,7 +4,7 @@ run command over ssh super helpful
 cd /usr/share/peass/linpeas
 ssh student@192.168.235.52 -p 2222 'bash -s' < linpeas.sh
 
-
+try polkit pkexec, just try it.
 Processes
 ps -aux
 
