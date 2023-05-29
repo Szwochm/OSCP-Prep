@@ -1,0 +1,64 @@
+          Well Known SIDs
+S-1-0-0                       Nobody        
+S-1-1-0	                      Everybody
+S-1-5-11                      Authenticated Users
+S-1-5-18                      Local System
+S-1-5-domainidentifier-500    Administrator
+
+Tokens describe the security context of a user
+When a user starts a process / thread, they are assigned a primary token. This is a copy of the user's access token.
+
+Impersonation tokens are used to give different contexts than the process that owns the thread.
+
+When processes are started or objects are created, they receive the integrity level of the principal performing this operation. 
+One exception is if an executable file has a low integrity level, the process's integrity level will also be low.
+
+- System: SYSTEM (kernel, ...)
+- High: Elevated users
+- Medium: Standard 
+- Low: very restricted rights often used in sandboxed[^privesc_win_sandbox]
+
+Key Information for Windows privilege escalation
+-Username and hostname
+  whoami - you can infer data from hostname such as WEB01 for a web server or MSSQL01
+  
+- Group memberships of the current user
+  whoami /groups
+  
+- Existing users and groups
+  net user OR Powershell -> Get-LocalUser - list all users
+  
+  for groups keep an eye on things like helpdesk, backup, administrator, etc... rdp's pretty important too.
+  net localgroup OR Get-LocalGroup -> List all groups
+  Get-LocalGroupMember <groupnam> - List all users of group
+  
+- Operating system, version and architecture
+  systeminfo
+
+- Network information
+  ipconfig /all
+    is dhcp enabled? Is there a dns server? Is there a subnetmask or mac address?
+    
+  route print
+  
+  netstat -ano
+    -a to display all active TCP connections as well as TCP and UDP ports, -n to disable name resolution, and -o to show the process ID for each connection.
+  
+- Installed applications
+  show all x32 apps
+  Get-ItemProperty "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*" | select displayname
+  
+  show all x64 apps
+  Get-ItemProperty "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*" | select displayname 
+  
+  Or just check Program Files in C:\
+  
+- Running processes
+  Get-Process
+  Get-Process | Select-Object Name, Id, Path, Company, IntegrityLevel -- Integrity didn't show for me.. maybe it needs admin perms to show
+
+
+
+ A skilled penetration tester's goal is therefore not to blindly attempt privilege escalation on every machine at any cost,
+ but to identify machines where privileged access leads to further compromise of the client's infrastructure.
+
