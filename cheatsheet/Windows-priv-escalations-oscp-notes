@@ -50,13 +50,21 @@ Key Information for Windows privilege escalation
   
   show all x64 apps
    Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" | select displayname
+   
+   ```mystuff
+   NOTE: These paths only work if the apps properly register themselves... If you can't find anything, try this...
+   "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"
+   : This path contains information about application executable paths.
+   
+   "HKCR\Installer\Products"
+   : This path contains information about installed products as recorded by the Windows Installer.```
   
   Or just check Program Files in C:\
   
 - Running processes
   Get-Process
   
-  my stuff
+  ```my stuff
   Get-Process | Select-Object Name, Id, Path, Company, IntegrityLevel -- Integrity didn't show for me.. maybe it needs admin perms to show
   
   search by pid
@@ -67,6 +75,7 @@ Key Information for Windows privilege escalation
   
   search by name with wildcard
   Get-Process | Where-Object { $_.Name -like "*myapp*" }
+  ```
 
 
 
