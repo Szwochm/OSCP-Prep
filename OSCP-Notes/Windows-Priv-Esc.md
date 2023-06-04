@@ -88,9 +88,14 @@ Key Information for Windows privilege escalation
  (Get-PSReadlineOption).HistorySavePath
           
  alternatively
- type $((Get-PSReadlineOption).HistorySavePath
+          
+ type $((Get-PSReadlineOption).HistorySavePath)
 
 PowerShell Remoting by default uses WinRM for Cmdlets such as Enter-PSSession. Therefore, a user needs to be in the local group Windows Management Users to be a valid user for these Cmdlets. However, instead of WinRM, SSH can also be used for PowerShell remoting.
+          
+Kali - login using winrm (NOTE SPECIAL CHARS MAY NEED TO BE ESCAPED)
+          
+evil-winrm -i 192.168.50.220 -u daveadmin -p "qwertqwertqwert123\!\!"
 
           
           
