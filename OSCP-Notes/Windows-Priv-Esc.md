@@ -83,6 +83,18 @@ Key Information for Windows privilege escalation
           
   Get-Process | Where-Object { $_.Name -like "*myapp*" }
   ```
+ 
+ ### Hidden in plain sight
+       
+Find password DB for keePass. Obviously for other password managers, this needs to be changed
+          
+ Get-ChildItem -Path C:\ -Include *.kdbx -File -Recurse -ErrorAction SilentlyContinue
+          
+Find config files that may have passwords in plain text...
+          
+ Get-ChildItem -Path C:\xampp -Include *.txt,*.ini -File -Recurse -ErrorAction SilentlyContinue
+          
+
           
  ### Information Gold Mine
           
