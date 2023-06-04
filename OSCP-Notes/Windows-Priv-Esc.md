@@ -62,29 +62,35 @@ Key Information for Windows privilege escalation
   Or just check Program Files in C:\
   
 - Running processes
+          
   Get-Process
   
   ```my stuff
+          
   Get-Process | Select-Object Name, Id, Path, Company, IntegrityLevel -- Integrity didn't show for me.. maybe it needs admin perms to show
   
   search by pid
+          
   Get-Process | Where-Object { $_.Id -eq <PID> } | Select-Object Name, Id, Path
   
   search by processname
+          
   Get-Process | Where-Object { $_.Name -eq "process_name" }
   
   search by name with wildcard
+          
   Get-Process | Where-Object { $_.Name -like "*myapp*" }
   ```
           
- Get Powershell History
+ Powershell find history
           
  Get-History
  (Get-PSReadlineOption).HistorySavePath
+          
  alternatively
  type $((Get-PSReadlineOption).HistorySavePath
 
-Newline
+PowerShell Remoting by default uses WinRM for Cmdlets such as Enter-PSSession. Therefore, a user needs to be in the local group Windows Management Users to be a valid user for these Cmdlets. However, instead of WinRM, SSH can also be used for PowerShell remoting.
 
           
           
