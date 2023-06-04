@@ -76,6 +76,22 @@ Key Information for Windows privilege escalation
   search by name with wildcard
   Get-Process | Where-Object { $_.Name -like "*myapp*" }
   ```
+          
+ Get Powershell History
+          
+ Get-History
+ (Get-PSReadlineOption).HistorySavePath
+ alternatively
+ type $((Get-PSReadlineOption).HistorySavePath
+
+Newline
+
+          
+          
+       
+
+          
+         
 
 
 
