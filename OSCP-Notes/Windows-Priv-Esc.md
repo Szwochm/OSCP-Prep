@@ -18,6 +18,8 @@ One exception is if an executable file has a low integrity level, the process's 
 - Medium: Standard 
 - Low: very restricted rights often used in sandboxed[^privesc_win_sandbox]
 
+### Situational Awareness
+
 Key Information for Windows privilege escalation
 -Username and hostname
   whoami - you can infer data from hostname such as WEB01 for a web server or MSSQL01
@@ -82,7 +84,7 @@ Key Information for Windows privilege escalation
   Get-Process | Where-Object { $_.Name -like "*myapp*" }
   ```
           
- Powershell find history
+ ### Information Gold Mine
           
  Get-History
  (Get-PSReadlineOption).HistorySavePath
@@ -97,6 +99,13 @@ Kali - login using winrm (NOTE SPECIAL CHARS MAY NEED TO BE ESCAPED)
           
 evil-winrm -i 192.168.50.220 -u daveadmin -p "qwertqwertqwert123\!\!"
 
+          
+If RDP is annoying try this..
+xfreerdp /u:USER /p:'PASSWORD' /v:$target /cert-ignore /w:1366 /h:768
+          
+xfreerdp /u:daveadmin /p:'mypassword' /v:'192.168.208.220' /cert-ignore /w:1366 /h:768
+          
+Search for event 4104 to see ScriptBlockLog events
           
           
        
