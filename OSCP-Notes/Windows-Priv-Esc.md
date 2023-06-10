@@ -154,6 +154,11 @@ Find perms
           
 icacls "C:\xampp\apache\bin\httpd.exe" or Get-ACL
           
+Find out how the service starts           
+Get-CimInstance -ClassName win32_service | Select Name, StartMode | Where-Object {$_.Name -like 'mysql'}
+          
+PowerUp.ps1 detects priv escalation vectors
+          
 
           
 
