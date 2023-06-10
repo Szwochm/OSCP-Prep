@@ -165,7 +165,8 @@ PS C:\Users\dave> powershell -ep bypass
 ...
 PS C:\Users\dave>  . .\PowerUp.ps1
 
-PS C:\Users\dave> Get-ModifiableServiceFile ```
+PS C:\Users\dave> Get-ModifiableServiceFile 
+          ```
           
 
           
