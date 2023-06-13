@@ -50,4 +50,4 @@ fg
 
 
 
-freerdp /u:admin /p:'mypassword' /v:'192.168.208.220' /cert-ignore /w:1366 /h:768
+xfreerdp /u:admin /p:'mypassword' /v:'192.168.208.220' /cert-ignore /w:1366 /h:768
