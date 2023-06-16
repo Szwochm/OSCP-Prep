@@ -52,7 +52,7 @@ Get-CimInstance -ClassName win32_service | Select Name, StartMode | Where-Object
 shutdown /r /t 0
 
 ==============================================
-verify user john with the password Password123! if using Powerup AbuseFunction
+verify user john with the password Password123! if using Powerup AbuseFunction or with adduser.c
 net 
 
 
