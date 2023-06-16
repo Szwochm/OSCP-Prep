@@ -51,5 +51,8 @@ Get-CimInstance -ClassName win32_service | Select Name, StartMode | Where-Object
 #If yes, reboot system
 shutdown /r /t 0
 
+==============================================
+verify user john with the password Password123! if using Powerup AbuseFunction
+net 
 
 
