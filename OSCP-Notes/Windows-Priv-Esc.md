@@ -218,9 +218,12 @@ runas /user:john "cmd.exe"
 ### DLL Hijacking
 
 Dlls can have optional entry point functions called DLLmain (executes when dll is attached)
-
+s
 compile dll on kali
 x86_64-w64-mingw32-gcc myDLL.cpp --shared -o myDLL.dll
+
+use procmon to find a target... If you can't use procmon, put potential targets on a local machine, and try there
+
           
 
           
