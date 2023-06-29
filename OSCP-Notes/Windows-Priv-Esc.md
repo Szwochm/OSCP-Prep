@@ -224,6 +224,8 @@ x86_64-w64-mingw32-gcc myDLL.cpp --shared -o myDLL.dll
 
 use procmon to find a target... If you can't use procmon, put potential targets on a local machine, and try there
 
+filter by Processname then Result:NAME NOT FOUND, finally Operation: CreateFile
+
           
 
           
