@@ -217,8 +217,26 @@ runas /user:john "cmd.exe"
 
 ### DLL Hijacking
 
+When can we use this technique?
+When the DLL's used by a service are writable, or if the search order allows for DLL Hijacking...
+
+DLL Search Order
+
+1. The directory from which the application loaded.
+
+2. The system directory.
+
+3. The 16-bit system directory.
+
+4. The Windows directory. 
+
+5. The current directory.
+
+6. The directories that are listed in the PATH environment variable.
+
+
 Dlls can have optional entry point functions called DLLmain (executes when dll is attached)
-s
+
 compile dll on kali
 x86_64-w64-mingw32-gcc myDLL.cpp --shared -o myDLL.dll
 
@@ -226,8 +244,19 @@ use procmon to find a target... If you can't use procmon, put potential targets 
 
 filter by Processname then Result:NAME NOT FOUND, finally Operation: CreateFile
 
-          
+### Unquoted Service Path
 
+When can we use this technique? 
+
+We can use this attack when we have Write permissions to a service's main directory or subdirectories but cannot replace files within them.\
+
+How does it work?
+
+Every Service and Process has a path to an executable. If you do not use an absolute path by using quotes such 
+as C:\Program Files\My Program\My service\service.exe instead of "C:\Program Files\My Program\My service\service.exe", Windows will check every space by appending .exe to the preceeding arguement
+
+Examples... 
+C:\Program.exe, C:\Program Files\My.exe,
           
        
 
@@ -239,5 +268,4 @@ filter by Processname then Result:NAME NOT FOUND, finally Operation: CreateFile
 
 
 
- A skilled penetration tester's goal is therefore not to blindly attempt privilege escalation on every machine at any cost,
- but to identify machines where privileged access leads to further compromise of the client's infrastructure.
+ # A skilled penetration tester's goal is therefore not to blindly attempt privilege escalation on every machine at any cost, but to identify machines where privileged access leads to further compromise of the client's infrastructure.
