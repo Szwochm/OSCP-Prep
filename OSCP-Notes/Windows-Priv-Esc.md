@@ -257,10 +257,22 @@ as C:\Program Files\My Program\My service\service.exe instead of "C:\Program Fil
 
 Examples... 
 C:\Program.exe, C:\Program Files\My.exe,
-          
-       
 
-          
+List all running/stopped services in powershell using
+PS: Get-CimInstance -ClassName win32_service | Select Name,State,PathName
+
+Note: Wmic use in CMD. Powershell behaved weirdly...       
+INE Version of WMIC to find targets
+cmd: wmic service get name,pathname,displayname,startmode | findstr /i auto | findstr /i /v "C:\Windows\\" | findstr /i /v """
+
+OSCP Version
+cmd: wmic service get name,pathname |  findstr /i /v "C:\Windows\\" | findstr /i /v """
+
+Check if you can start and stop service
+PS: Start-Service GammaService
+PS: Stop-Service GammaService
+
+
          
 
 
