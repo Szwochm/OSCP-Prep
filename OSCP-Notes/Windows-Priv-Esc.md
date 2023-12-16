@@ -295,6 +295,15 @@ Also the Services MCM snippet provides more info than task manager does...
 schtasks /query /fo LIST /v | more
 Get-ScheduledTask
 
+check for who runs the service, when it will trigger, and if we can write to the location, then proceed like any other service binary hijack
+
+### Exploits
+
+SeImpersonatePrivilege -- given to accounts in the Local Administrators group as well as the device's LOCAL SERVICE, NETWORK SERVICE, and SERVICE accounts.
+
+SeBackupPrivilege, SeAssignPrimaryToken, SeLoadDriver, and SeDebug are privileges commonly used for escalation
+
+We will use PrintSpoofer tool by itm4n to create a controlled name pipe. 
          
 
 
