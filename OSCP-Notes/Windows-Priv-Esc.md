@@ -308,13 +308,17 @@ SeBackupPrivilege, SeAssignPrimaryToken, SeLoadDriver, and SeDebug are privilege
 We will use PrintSpoofer tool by itm4n to create a controlled name pipe. 
 
 Enumerate Privs
+
 whoami /priv
 
 can I enumerate the privs of other users??
+s
 Yes but you need admin privileges, powershell scripting enabled, its a headache
 
 Get newest version of Print Spoofer
+
 wget https://github.com/itm4n/PrintSpoofer/releases/download/v1.0/PrintSpoofer64.exe
+
 Notes on how to compile from binary on QOL cheatsheet
 
 
