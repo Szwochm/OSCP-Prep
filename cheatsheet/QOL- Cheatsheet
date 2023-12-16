@@ -43,7 +43,6 @@ runas /user:john "cmd.exe"
 powershell -Command "Start-Process cmd -Verb RunAs"
 
 
-
 ========================================================================================
 Exfiltrate data from a windows target 
 https://book.hacktricks.xyz/generic-methodologies-and-resources/exfiltration#smb
