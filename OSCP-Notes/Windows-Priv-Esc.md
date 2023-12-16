@@ -319,7 +319,7 @@ Get newest version of Print Spoofer
 
 wget https://github.com/itm4n/PrintSpoofer/releases/download/v1.0/PrintSpoofer64.exe
 
-Notes on how to compile from binary on QOL cheatsheet
+You can also compile from source code on that repo, but it was taking too long, journey for another day
 
 
 
