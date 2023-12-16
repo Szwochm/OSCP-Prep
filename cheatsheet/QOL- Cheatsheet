@@ -80,4 +80,8 @@ tar -xzvf your_archive.tar.gz
 I have examples of code to compile in the Scripts Folder
 https://github.com/Szwochm/OSCP-Prep/tree/main/Scripts
 
+If that doesn't work check the inside the file
+
+for visual code projects on kali you basically have to install Visual Code for Kali as far as I'm aware. 
+
 
