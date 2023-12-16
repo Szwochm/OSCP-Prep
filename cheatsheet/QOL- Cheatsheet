@@ -61,8 +61,5 @@ move test2.txt z:\test2.txt
 cleanup on target
 net use z: /delete
 
-========================================================================================
-Windows Services
-schtasks /query /fo LIST /v | more
-Get-ScheduledTask
+
 
