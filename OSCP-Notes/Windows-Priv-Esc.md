@@ -290,6 +290,11 @@ Get-WmiObject Win32_Service | Select-Object Name, StartName
 Also the Services MCM snippet provides more info than task manager does...
 
 
+### Windows Services
+
+schtasks /query /fo LIST /v | more
+Get-ScheduledTask
+
          
 
 
