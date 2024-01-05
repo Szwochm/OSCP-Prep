@@ -48,10 +48,18 @@ A distinguished name has to do with AD naming convention so for example
 CN=Stephanie,CN=Users,DC=corp,DC=com is read RIGHT -> LEFT
 com.corp.Users.Stephanie
 
+For example we can get PDC using getPDC script which can return would be DC1.corp.com, thats the distinguished name
+
 We can query any DC, but the Primary DC is the best.
 
 Powershell -- Invoke Domain Class and GetCurrentDomain Methods
 [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
 
 When scripting in powershell we must use bypass
+
 powershell -ep bypass
+
+
+We can also use ADSI to get DN for the domain using a domain object
+
+([adsi]'').distinguishedName
