@@ -1,8 +1,11 @@
-## Active Directory
+## Active Directory Basics
+
 xfreerdp /u:stephanie /d:corp.com /v:192.168.233.70
+
 net user /domain
 
 net user jeffadmin /domain
+
 net group /domain
 
 
@@ -27,3 +30,9 @@ net group /domain
 Enumerating a custom group is a good start
 
 net group "Sales Department" /domain
+
+## Enumerating Active Directory using PowerShell and .NET Classes
+
+Note: LDAP is not exclusive to AD. Other services use it as well.
+
+Note: Powershell cmdlets like Get-AdUser are only installed by default on DC
