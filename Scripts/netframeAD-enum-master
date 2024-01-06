@@ -1,0 +1,51 @@
+MASTER 
+=======================================
+So basically you can execute netframe syntax in powershell and essentially use it as an IDE
+
+[System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
+
+System.DirectoryServices.ActiveDirectory is the namespace
+Domain is the class
+Get Current Domain is the method
+
+Other classes include DomainController, Foreest, ForestTrustRelationshipInformation, DirectoryContext, ForestMode, ActiveDirectoryInterSiteTransport
+
+PdcRoleOwner property = Primary Domain Controller
+=======================================
+Script #1 -- Find Primary Domain Controller to add to LDAP path
+
+# Store the domain object in the $domainObj variable
+$domainObj = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
+
+# Print the variable
+$domainObj
+
+#Save as a .ps1 file, in cmd do "powershell -ep bypass" then .\scriptname
+
+RETURN
+
+Forest                  : corp.com
+DomainControllers       : {DC1.corp.com}
+Children                : {}
+DomainMode              : Unknown
+DomainModeLevel         : 7
+Parent                  :
+<!!! HERE --- PdcRoleOwner            : DC1.corp.com --- HERE !!!>
+RidRoleOwner            : DC1.corp.com
+InfrastructureRoleOwner : DC1.corp.com
+Name                    : corp.com
+=======================================
+Script #2 -- Find PdcRoleOwner, extract PdcRoleOwner property from the domain object
+
+# Store the domain object in the $domainObj variable
+$domainObj = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
+
+# Store the PdcRoleOwner name to the $PDC variable
+$PDC = $domainObj.PdcRoleOwner.Name
+
+# Print the $PDC variable
+$PDC
+
+=======================================
+
+=======================================
