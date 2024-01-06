@@ -15,7 +15,9 @@ function LDAPSearch {
 }
 
 #Usage: more details in the master file on what these output
-#1 (in powershell) Import-Module .\function.ps1
+#1 powershell -ep bypass
+#1.5 Import-Module .\function.ps1
+
 #2 LDAPSearch -LDAPQuery "(samAccountType=805306368)"
 #3 LDAPSearch -LDAPQuery "(objectclass=group)"
 
