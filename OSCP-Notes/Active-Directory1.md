@@ -63,3 +63,5 @@ powershell -ep bypass
 We can also use ADSI to get DN for the domain using a domain object
 
 ([adsi]'').distinguishedName
+
+Net-frame has alot of details so added a master file explaining the building of the script in the OSCP Scripts folder
