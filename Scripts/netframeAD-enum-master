@@ -1,6 +1,6 @@
 MASTER 
-=======================================
-So basically you can execute netframe syntax in powershell and essentially use it as an IDE
+=============================================================================
+So basically you can execute netframe syntax in powershell and essentially use it as an IDE (although its not an IDE)
 
 [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
 
@@ -11,7 +11,7 @@ Get Current Domain is the method
 Other classes include DomainController, Foreest, ForestTrustRelationshipInformation, DirectoryContext, ForestMode, ActiveDirectoryInterSiteTransport
 
 PdcRoleOwner property = Primary Domain Controller
-=======================================
+=============================================================================
 Script #1 -- Find Primary Domain Controller to add to LDAP path
 
 # Store the domain object in the $domainObj variable
@@ -21,7 +21,7 @@ $domainObj = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain
 $domainObj
 
 #Save as a .ps1 file, in cmd do "powershell -ep bypass" then .\scriptname
-
+........................................
 RETURN
 
 Forest                  : corp.com
@@ -34,7 +34,7 @@ Parent                  :
 RidRoleOwner            : DC1.corp.com
 InfrastructureRoleOwner : DC1.corp.com
 Name                    : corp.com
-=======================================
+=============================================================================
 Script #2 -- Find PdcRoleOwner, extract PdcRoleOwner property from the domain object
 
 # Store the domain object in the $domainObj variable
@@ -46,6 +46,263 @@ $PDC = $domainObj.PdcRoleOwner.Name
 # Print the $PDC variable
 $PDC
 
-=======================================
+........................................
+RETURN
+DC1.corp.com
+=============================================================================
+Script #3 -- ADSI to extract LDAP usable DN for domain
 
-=======================================
+([adsi]'').distinguishedName
+
+........................................
+RETURN
+DC=corp,DC=com
+
+=============================================================================
+Script #4 -- Use netframe to create a domain object, extract property PDC from it. Use ADSI to get DN, extract, and print the DN only not PDC
+
+# Store the domain object in the $domainObj variable
+$domainObj = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
+
+# Store the PdcRoleOwner name to the $PDC variable
+$PDC = $domainObj.PdcRoleOwner.Name
+
+# Store the Distinguished Name variable into the $DN variable
+$DN = ([adsi]'').distinguishedName
+
+# Print the $DN variable
+$DN
+
+........................................
+RETURN
+DC=corp,DC=com
+
+=============================================================================
+Script #5 put it all together to generate an LDAP acceptable path for further enumeration
+
+$PDC = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain().PdcRoleOwner.Name
+$DN = ([adsi]'').distinguishedName 
+$LDAP = "LDAP://$PDC/$DN"
+$LDAP
+........................................
+RETURN
+LDAP://DC1.corp.com/DC=corp,DC=com
+This is what an LDAP path should look like!!! Can also have a port
+
+=============================================================================
+!!! Searching AD using our script !!!
+One thing to note with DirectoryEntry is that we can pass it credentials to authenticate to the domain. However, since we are already logged in, there is no need to do that here.
+
+Step 1: Pass LDAP path to $direntry = New-Object System.DirectoryServices.DirectoryEntry(<PATH>)
+Step 2: create a searcher $dirsearcher = New-Object System.DirectoryServices.DirectorySearcher($direntry)
+Step 3:Use DirectorySearcher class FindAll method
+
+Keep in mind that if we use an ldap path that isn't at the root of the AD tree we will only be able to enumerate from that node and down
+anything higher will be missed. This is why we use PDC
+
+Script #6 -- Searching AD using our script (notes outline in the 5 lines above)
+
+$PDC = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain().PdcRoleOwner.Name
+$DN = ([adsi]'').distinguishedName 
+$LDAP = "LDAP://$PDC/$DN"
+
+$direntry = New-Object System.DirectoryServices.DirectoryEntry($LDAP)
+
+$dirsearcher = New-Object System.DirectoryServices.DirectorySearcher($direntry)
+$dirsearcher.FindAll()
+
+........................................
+RETURN -- every object in entire domain
+Path
+----
+LDAP://DC1.corp.com/DC=corp,DC=com
+LDAP://DC1.corp.com/CN=Users,DC=corp,DC=com
+LDAP://DC1.corp.com/CN=Computers,DC=corp,DC=com
+LDAP://DC1.corp.com/OU=Domain Controllers,DC=corp,DC=com
+truncated...
+
+=============================================================================
+!!! Filter Results !!!
+We can do the same thing but filter the results  instead
+
+https://learn.microsoft.com/en-us/windows/win32/adschema/a-samaccounttype
+
+We took SAM_USER_OBJECT 0x30000000, converted it to decimal using
+https://www.rapidtables.com/convert/number/hex-to-decimal.html
+
+to list every account
+
+Script #7 -- List every account
+
+$PDC = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain().PdcRoleOwner.Name
+$DN = ([adsi]'').distinguishedName 
+$LDAP = "LDAP://$PDC/$DN"
+
+$direntry = New-Object System.DirectoryServices.DirectoryEntry($LDAP)
+
+$dirsearcher = New-Object System.DirectoryServices.DirectorySearcher($direntry)
+$dirsearcher.filter="samAccountType=805306368"
+$dirsearcher.FindAll()
+
+........................................
+RETURN -- every "normal" account
+
+Path                                                         Properties
+----                                                         ----------
+LDAP://DC1.corp.com/CN=Administrator,CN=Users,DC=corp,DC=com {logoncount, codepage, objectcategory, description...}
+LDAP://DC1.corp.com/CN=Guest,CN=Users,DC=corp,DC=com         {logoncount, codepage, objectcategory, description...}
+LDAP://DC1.corp.com/CN=krbtgt,CN=Users,DC=corp,DC=com        {logoncount, codepage, objectcategory, description...}
+truncated...
+
+=============================================================================
+#Script 8 -- enumerate every user on domain
+
+$domainObj = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
+$PDC = $domainObj.PdcRoleOwner.Name
+$DN = ([adsi]'').distinguishedName 
+$LDAP = "LDAP://$PDC/$DN"
+
+$direntry = New-Object System.DirectoryServices.DirectoryEntry($LDAP)
+
+$dirsearcher = New-Object System.DirectoryServices.DirectorySearcher($direntry)
+$dirsearcher.filter="samAccountType=805306368"
+$result = $dirsearcher.FindAll()
+
+Foreach($obj in $result)
+{
+    Foreach($prop in $obj.Properties)
+    {
+        $prop
+    }
+
+    Write-Host "-------------------------------"
+}
+
+........................................
+RETURN -- every property of every user on the domain.. note we can use any of these properties such as
+$dirsearcher.filter="name=jeffadmin"
+...
+logoncount                     {173}
+codepage                       {0}
+objectcategory                 {CN=Person,CN=Schema,CN=Configuration,DC=corp,DC=com}
+dscorepropagationdata          {9/3/2022 6:25:58 AM, 9/2/2022 11:26:49 PM, 1/1/1601 12:00:00 AM}
+usnchanged                     {52775}
+instancetype                   {4}
+name                           {jeffadmin}
+badpasswordtime                {133086594569025897}
+pwdlastset                     {133066348088894042}
+objectclass                    {top, person, organizationalPerson, user}
+badpwdcount                    {0}
+samaccounttype                 {805306368}
+lastlogontimestamp             {133080434621989766}
+usncreated                     {12821}
+objectguid                     {14 171 173 158 0 247 44 76 161 53 112 209 139 172 33 163}
+memberof                       {CN=Domain Admins,CN=Users,DC=corp,DC=com, CN=Administrators,CN=Builtin,DC=corp,DC=com}
+whencreated                    {9/2/2022 11:26:48 PM}
+adspath                        {LDAP://DC1.corp.com/CN=jeffadmin,CN=Users,DC=corp,DC=com}
+useraccountcontrol             {66048}
+cn                             {jeffadmin}
+countrycode                    {0}
+primarygroupid                 {513}
+whenchanged                    {9/19/2022 6:44:22 AM}
+lockouttime                    {0}
+lastlogon                      {133088312288347545}
+distinguishedname              {CN=jeffadmin,CN=Users,DC=corp,DC=com}
+admincount                     {1}
+samaccountname                 {jeffadmin}
+objectsid                      {1 5 0 0 0 0 0 5 21 0 0 0 30 221 116 118 49 27 70 39 209 101 53 106 82 4 0 0}
+lastlogoff                     {0}
+accountexpires                 {9223372036854775807}
+
+=============================================================================
+Script #10 Filter based on user is jeffadmin, and then only show their memberof property
+
+$dirsearcher = New-Object System.DirectoryServices.DirectorySearcher($direntry)
+$dirsearcher.filter="name=jeffadmin"
+$result = $dirsearcher.FindAll()
+
+Foreach($obj in $result)
+{
+    Foreach($prop in $obj.Properties)
+    {
+        $prop.memberof
+    }
+
+    Write-Host "-------------------------------"
+}
+........................................
+RETURNS every group jeffadmin is a member of
+CN=Domain Admins,CN=Users,DC=corp,DC=com
+CN=Administrators,CN=Builtin,DC=corp,DC=com
+
+=============================================================================
+USAGE: Import-Module .\function.ps1
+LDAPSearch -LDAPQuery "(samAccountType=805306368)"
+LDAPSearch -LDAPQuery "(objectclass=group)"
+
+Usage will be re-iterated with results below script
+
+Script 11 -- Powershell, take code, save it as function.ps1, import it into powershell, then use it as a powershell cmdlet
+function LDAPSearch {
+    param (
+        [string]$LDAPQuery
+    )
+
+    $PDC = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain().PdcRoleOwner.Name
+    $DistinguishedName = ([adsi]'').distinguishedName
+
+    $DirectoryEntry = New-Object System.DirectoryServices.DirectoryEntry("LDAP://$PDC/$DistinguishedName")
+
+    $DirectorySearcher = New-Object System.DirectoryServices.DirectorySearcher($DirectoryEntry, $LDAPQuery)
+
+    return $DirectorySearcher.FindAll()
+
+}
+
+..............--------...............
+USAGE: enumerate users
+Import-Module .\function.ps1
+
+LDAPSearch -LDAPQuery "(samAccountType=805306368)"
+RETURNS all users
+Path                                                         Properties
+----                                                         ----------
+LDAP://DC1.corp.com/CN=Administrator,CN=Users,DC=corp,DC=com {logoncount, codepage, objectcategory, description...}
+LDAP://DC1.corp.com/CN=Guest,CN=Users,DC=corp,DC=com         {logoncount, codepage, objectcategory, description...}
+LDAP://DC1.corp.com/CN=krbtgt,CN=Users,DC=corp,DC=com        {logoncount, codepage, objectcategory, description...}
+LDAP://DC1.corp.com/CN=dave,CN=Users,DC=corp,DC=com          {logoncount, codepage, objectcategory, usnchanged...}
+LDAP://DC1.corp.com/CN=stephanie,CN=Users,DC=corp,DC=com     {logoncount, codepage, objectcategory, dscorepropagatio...
+LDAP://DC1.corp.com/CN=jeff,CN=Users,DC=corp,DC=com          {logoncount, codepage, objectcategory, dscorepropagatio...
+..............--------...............
+USAGE: enumerate groups
+LDAPSearch -LDAPQuery "(objectclass=group)"
+RETURNS more groups than net use
+
+LDAP://DC1.corp.com/CN=Read-only Domain Controllers,CN=Users,DC=corp,DC=com            {usnchanged, distinguishedname, grouptype, whencreated...}
+LDAP://DC1.corp.com/CN=Enterprise Read-only Domain Controllers,CN=Users,DC=corp,DC=com {iscriticalsystemobject, usnchanged, distinguishedname, grouptype...}
+LDAP://DC1.corp.com/CN=Cloneable Domain Controllers,CN=Users,DC=corp,DC=com            {iscriticalsystemobject, usnchanged, distinguishedname, grouptype...}
+LDAP://DC1.corp.com/CN=Protected Users,CN=Users,DC=corp,DC=com                         {iscriticalsystemobject, usnchanged, distinguishedname, grouptype...}
+LDAP://DC1.corp.com/CN=Key Admins,CN=Users,DC=corp,DC=com                              {iscriticalsystemobject, usnchanged, distinguishedname, grouptype...}
+
+
+..............--------...............
+Usage: Enumerate every group and display members
+
+foreach ($group in $(LDAPSearch -LDAPQuery "(objectCategory=group)")) {
+>> $group.properties | select {$_.cn}, {$_.member}
+>> }
+
+..............--------...............
+Usage: Enumerate a Sale Department specifically
+
+$sales = LDAPSearch -LDAPQuery "(&(objectCategory=group)(cn=Sales Department))"
+
+Sub-usage - show every member of Sales
+$sales.properties.member
+
+Take-away: This custom tool shows every object not just global objects. It also shows groups can be members of other groups via nesting which net.exe does not
+
+
+
+
+
