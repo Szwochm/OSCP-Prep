@@ -20,6 +20,7 @@ function LDAPSearch {
 
 #2 LDAPSearch -LDAPQuery "(samAccountType=805306368)"
 #3 LDAPSearch -LDAPQuery "(objectclass=group)"
+# 3.5 LDAPSearch -LDAPQuery "(&(objectClass=user)(cn=jen))"
 
 #4 foreach ($group in $(LDAPSearch -LDAPQuery "(objectCategory=group)")) {
 #4 >> $group.properties | select {$_.cn}, {$_.member}
