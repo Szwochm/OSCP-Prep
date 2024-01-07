@@ -138,7 +138,7 @@ One limitation, however, is that PsLoggedOn relies on the Remote Registry servic
 
 take note of who's logged on every machine
 
-### Enumeration Through Service Principal Names (service accounts)
+### Enumeration Through Service Principal Names (service accounts) 21.3.3
 
 In Windows, if a user launches an app, it runs in their context, however
 
@@ -160,3 +160,21 @@ iis_service    {HTTP/web04.corp.com, HTTP/web04, HTTP/web04.corp.com:80}
 
 resolve the name
 nslookup.exe web04.corp.com
+
+### Enumerating Object Permissions 21.3.4
+
+an object in AD may have a set of permissions applied to it with multiple Access Control Entries (ACE).1 These ACEs make up the Access Control List (ACL).2 Each ACE defines whether access to the specific object is allowed or denied.
+
+When a user tries to use a resource they send their access token to the target object. Target object then checks ACL (which is a list of permissions)
+
+List of interesting permissions to review
+GenericAll: Full permissions on object
+GenericWrite: Edit certain attributes on the object
+WriteOwner: Change ownership of the object
+WriteDACL: Edit ACE's applied to object (ACE's are Access Control Entries and make up the ACL)
+AllExtendedRights: Change password, reset password, etc.
+ForceChangePassword: Password change for object
+Self (Self-Membership): Add ourselves to for example a group
+
+PowerView -- enumerate ACEs with PowerView
+Get-ObjectAcl -Identity stephanie
