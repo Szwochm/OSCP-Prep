@@ -207,4 +207,21 @@ net group "Management Department" stephanie /del /domain
 
 ### Enumerating Domain Shares 21.3.5
 
+Note: the Find-DomainShare tool was acting funky for me. Had to run it a couple of times
 
+Find all domain shares
+Find-DomainShare
+
+Find all domain shares that we can access
+Find-DomainShare -CheckShareAccess
+
+look inside share -- note corp.com is a directory we just literally took \\<computername>\<name> from the last commands output
+
+ls \\dc1.corp.com\sysvol\corp.com\
+
+decrypt found AES-256 hash of Group Policy Preferences hash
+gpp-decrypt "+bsY0V3d4/KgX3VJdO/vyepPfAN1zMFTiQDApgR92JE"
+
+store found passwords for later, try to figure out password policy from found passwords
+
+Document every thing you find, but don't jump the gun
