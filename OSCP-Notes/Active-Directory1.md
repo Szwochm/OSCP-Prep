@@ -91,5 +91,15 @@ Get-NetGroup | select cn
 
 Get-NetGroup "Sales Department" | select member
 
+### More Powerview (21.3.1 and further)
+
+List every computer object
+Get-NetComputer
+
+List all computers by OS, DNS name
+Get-NetComputer | select operatingsystem,dnshostname
+
+Get a specific computers details
+Get-NetComputer | Where-Object { $_.cn -eq 'files04' }
 
 
