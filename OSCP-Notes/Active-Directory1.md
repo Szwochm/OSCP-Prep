@@ -69,4 +69,27 @@ Net-frame has alot of details so added a master file explaining the building of 
 
 ### AD Enum w/ PowerView
 
+Import-Module .\PowerView.ps1
+
+
+Get-NetDomain
+
+List all users in domain and all of their properties
+Get-NetUser
+
+List the cn property of every user in the domain
+Get-NetUser | select cn
+
+List all properties of fred
+Get-NetUser | Where-Object { $_.cn -eq 'fred' }
+
+List the CN (common name), last time password was set, and last login for every user. (A user that hasn't logged in since the a passwordp policy change could still have a weak password)
+Get-NetUser | select cn,pwdlastset,lastlogon
+
+List every group by its Common Name
+Get-NetGroup | select cn
+
+Get-NetGroup "Sales Department" | select member
+
+
 
