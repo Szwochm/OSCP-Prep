@@ -102,4 +102,43 @@ Get-NetComputer | select operatingsystem,dnshostname
 Get a specific computers details
 Get-NetComputer | Where-Object { $_.cn -eq 'files04' }
 
+### Getting an Overview - Permissions and Logged on Users
+
+When a user logs in to the domain, their credentials are cached in memory on the computer they logged in from
+
+For the exam we want Domain Admin privs but in real life you may want to secure some lateral accounts first so you don't get locked out
+
+(PowerView) -- where does this user have local admin access on the domain?
+Find-LocalAdminAccess
+
+Who's logged into the machines. NetSession uses Window's NetWkstaUserEnum and NetSessionEnum APIs
+Get-NetSession -ComputerName files04
+
+Who is logged into the machines show errors
+Get-NetSession -ComputerName files04 -Verbose
+
+Note: Not sure if the below block is helpful 
+The permissions required to enumerate sessions with NetSessionEnum are defined in the SrvsvcSessionInfo registry key, which is located in the HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\DefaultSecurity hive.
+
+Show permissions for registrykey
+(powershell)
+Get-Acl -Path HKLM:SYSTEM\CurrentControlSet\Services\LanmanServer\DefaultSecurity\ | fl
+
+if Get-NetSession doesn't work you can try using the below, find the oldest OS, run it on that client
+Get-NetComputer | select dnshostname,operatingsystem,operatingsystemversion
+
+
+#### Introducing PSLoggedOn
+PsLoggedOn will enumerate the registry keys under HKEY_USERS to retrieve the security identifiers (SID) of logged-in users and convert the SIDs to usernames. PsLoggedOn will also use the NetSessionEnum API to see who is logged on to the computer via resource shares.
+
+One limitation, however, is that PsLoggedOn relies on the Remote Registry service in order to scan the associated key. The Remote Registry service has not been enabled by default on Windows workstations since Windows 8, but system administrators may enable it for various administrative tasks, for backwards compatibility, or for installing monitoring/deployment tools, scripts, agents, etc.
+
+.\PsLoggedon.exe <hostname or \\cn>
+.\PsLoggedon.exe \\files04
+
+take note of who's logged on every machine
+
+
+
+
 
