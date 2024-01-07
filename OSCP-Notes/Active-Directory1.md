@@ -168,6 +168,7 @@ an object in AD may have a set of permissions applied to it with multiple Access
 When a user tries to use a resource they send their access token to the target object. Target object then checks ACL (which is a list of permissions)
 
 List of interesting permissions to review
+
 GenericAll: Full permissions on object
 GenericWrite: Edit certain attributes on the object
 WriteOwner: Change ownership of the object
@@ -178,3 +179,32 @@ Self (Self-Membership): Add ourselves to for example a group
 
 PowerView -- enumerate ACEs with PowerView
 Get-ObjectAcl -Identity stephanie
+
+PowerView -- convert SID to english where the SID below is an ObjectSID
+Convert-SidToName S-1-5-21-1987370270-658905905-1781884369-1104
+
+Same as above but this time we are applying it to a SecurityIdentifier 
+Convert-SidToName S-1-5-21-1987370270-658905905-1781884369-553
+
+which returns CORP\RAS and IAS Servers indicating RAS and IAS Servers group has ReadProperty access rights to our user. While this is a common configuration in AD and likely won't give us an attack vector, we have used the example to make sense of the information we have obtained.
+
+Reminder: The highest access permission we can have on an object is GenericAll.
+
+PowerView -- check if any user in Management Department has GenericAll Permissions
+Get-ObjectAcl -Identity "Management Department" | ? {$_.ActiveDirectoryRights -eq "GenericAll"} | select SecurityIdentifier,ActiveDirectoryRights
+
+Convert a bunch of SIDs to english
+"S-1-5-21-1987370270-658905905-1781884369-512","S-1-5-21-1987370270-658905905-1781884369-1104","S-1-5-32-548","S-1-5-18","S-1-5-21-1987370270-658905905-1781884369-519" | Convert-SidToName
+
+Using genericall permission, add your self to a group
+net group "Management Department" stephanie /add /domain
+
+verify it worked
+Get-NetGroup "Management Department" | select member
+
+remove ourselfs from group
+net group "Management Department" stephanie /del /domain
+
+### Enumerating Domain Shares 21.3.5
+
+
