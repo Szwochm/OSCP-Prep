@@ -1,6 +1,6 @@
 ## Active Directory Basics
 
-xfreerdp /u:stephanie /d:corp.com /v:192.168.233.70
+xfreerdp /u:stephanie /d:corp.com /v:192.168.233.75
 
 net user /domain
 
@@ -128,7 +128,7 @@ if Get-NetSession doesn't work you can try using the below, find the oldest OS, 
 Get-NetComputer | select dnshostname,operatingsystem,operatingsystemversion
 
 
-#### Introducing PSLoggedOn
+#### Introducing PSLoggedOn 21.3.2
 PsLoggedOn will enumerate the registry keys under HKEY_USERS to retrieve the security identifiers (SID) of logged-in users and convert the SIDs to usernames. PsLoggedOn will also use the NetSessionEnum API to see who is logged on to the computer via resource shares.
 
 One limitation, however, is that PsLoggedOn relies on the Remote Registry service in order to scan the associated key. The Remote Registry service has not been enabled by default on Windows workstations since Windows 8, but system administrators may enable it for various administrative tasks, for backwards compatibility, or for installing monitoring/deployment tools, scripts, agents, etc.
@@ -138,7 +138,25 @@ One limitation, however, is that PsLoggedOn relies on the Remote Registry servic
 
 take note of who's logged on every machine
 
+### Enumeration Through Service Principal Names (service accounts)
 
+In Windows, if a user launches an app, it runs in their context, however
 
+Services can use predefined accounts such as 
+LocalSystem, LocalService, and NetworkService
 
+Group managed service accounts were implemented in Windows Server 2012, anything before that uses basic service accounts
 
+Instead of doing an NMAP port scan, We can obtain the IP address and port number of applications running on servers integrated with AD by simply enumerating all SPNs in the domain. (SPNS map services to service accounts in AD)
+
+(Built-in) get SPN of an account, iis_service in this case. Can be any user
+setspn -L iis_service
+
+(Powerview) Enumerate every account, and get their related SPNS
+Get-NetUser -SPN | select samaccountname,serviceprincipalname
+
+which returns
+iis_service    {HTTP/web04.corp.com, HTTP/web04, HTTP/web04.corp.com:80}
+
+resolve the name
+nslookup.exe web04.corp.com
