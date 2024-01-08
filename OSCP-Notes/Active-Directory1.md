@@ -104,7 +104,8 @@ Get-NetComputer | Where-Object { $_.cn -eq 'files04' }
 
 ### Getting an Overview - Permissions and Logged on Users
 
-When a user logs in to the domain, their credentials are cached in memory on the computer they logged in from
+
+.
 
 For the exam we want Domain Admin privs but in real life you may want to secure some lateral accounts first so you don't get locked out
 
@@ -225,3 +226,35 @@ gpp-decrypt "+bsY0V3d4/KgX3VJdO/vyepPfAN1zMFTiQDApgR92JE"
 store found passwords for later, try to figure out password policy from found passwords
 
 Document every thing you find, but don't jump the gun
+
+
+### Active Directory - Automated Enumeration (BloodHound, sharphound)
+
+BloodHound = data presenter
+SharpHound = collect data using the manual methods above
+
+Import-Module .\Sharphound.ps1
+
+Info on how to use sharphound
+Get-Help Invoke-BloodHound
+
+Gather all data, sent to zip json file called corp audit on desktop
+Invoke-BloodHound -CollectionMethod All -OutputDirectory C:\Users\stephanie\Desktop\ -OutputPrefix "corp audit"
+
+Looping isn't covered in OSCP but helps find changes (as in it catches the changes, it won't tell you "HEY THIS IS A CHANGE" as far as I understand) during the scan
+
+### Analysing Data using BloodHound
+
+sudo neo4j start
+
+navigate to http:\\localhost:7474\
+
+log-in
+
+in kali run bloodhound
+
+login-in
+
+upload data aquired by sharphound
+
+
