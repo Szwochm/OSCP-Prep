@@ -257,4 +257,5 @@ login-in
 
 upload data aquired by sharphound
 
+If using Shortest Path from owned principals dont forget to mark the users and devices you have access to.
 
