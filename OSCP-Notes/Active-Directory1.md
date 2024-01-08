@@ -259,3 +259,8 @@ upload data aquired by sharphound
 
 If using Shortest Path from owned principals dont forget to mark the users and devices you have access to.
 
+
+### Capstone
+
+Change a user's password that you have generic write over
+net user someuser Password123! /domain
