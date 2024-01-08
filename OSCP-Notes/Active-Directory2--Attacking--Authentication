@@ -1,10 +1,48 @@
 Goals: Understanding Active Directory Authentication
        Performing Attacks on Active Directory Authentication
 
+## Explanation of NTLM and kerberos
 NTLM is used instead of Kerberos in one of the following situations
 1) Client auths to server by IP instead of hostname
 2) hostname is not registered in the AD's Dns server
 3) 3rd party apps
 
 fast-hashing algorithms are hashes that cannot be reveresed by can be cracked relatively quickly. Ntlm is one of these
+
+NTLM uses challenge and response
+Kerberos uses ticket system
+
+NTLM starts authentication in application server
+Kerberos starts authentication in Key Distribution Center (KDC). KDC runs on each DC
+
+### User login
+
+On log-in user sends Authentication Server Request (AS-req). As-req contains time stamp that is encrypted using a hash derived from the password of the user
+
+Recall that all user hashes are stored in ntds.dit file on every DC. Using that hash they try to decrypt the time stamp.
+
+Time stamps cannot be duplicates
+
+Dc replies with Authentication Server Reply (As-Rep) which sends session key and TGT (Ticket granting ticket)
+Session key is encrpyted with user hash so client can decrpypt
+TGT is encrypted by the ntlm hash of the krbtgt
+
+TGT is valid for 10 hours
+
+### Access domain resources
+
+Client makes a Ticket Granting Service REquest (TGS-REQ) which contains
+current user, timestamp encrypted with session, name of the resource, encrypted ticket granting ticket
+
+Server receieves TSG-REQ, and if the resource name is valid it:
+- decrypts TGT using secret key 
+- extracts session key to decrypt username and timestamp
+- KDC validates that tgt has valid time stamp
+- username from tgs req matches username from tgt
+- client ip needs to match tgt ip address
+
+Server then sends a TGS-REP containing
+the name of service of granted access, session key for use between client and service, a service ticket containing username and group memberships 
+
+## Cached AD Creds
 
