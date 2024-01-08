@@ -1,0 +1,10 @@
+Goals: Understanding Active Directory Authentication
+       Performing Attacks on Active Directory Authentication
+
+NTLM is used instead of Kerberos in one of the following situations
+1) Client auths to server by IP instead of hostname
+2) hostname is not registered in the AD's Dns server
+3) 3rd party apps
+
+fast-hashing algorithms are hashes that cannot be reveresed by can be cracked relatively quickly. Ntlm is one of these
+
