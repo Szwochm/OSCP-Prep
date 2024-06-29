@@ -1,1 +1,27 @@
+# 3. Intro to Cyber
+
+## 3.1 The Practice of Cybersecurity
+
+### 3.1.1 Challenges in Cyber Security
+
+Key topics
+
+reasoning under uncertainty -- We will never know every single detail. Using experience and our tools we have to use our best judgement to select the best path ahead. "Predictions based on incomplete data"
+
+The enemy is human -- Offsec says that our enemy (and allies) is human... I'm not sure I agree with that anymore.
+
+Cyber security poses dynamic challenges. To beat these challenges we will have to adapt our mindsets
+
+
+### 3.1.2 A word on Mindsets
+
+Bruce Schneier - The Security Mindset - https://www.schneier.com/blog/archives/2008/03/the_security_mi_1.html
+
+Excerpt from above link that explains it really well
+""Security requires a particular mindset. Security professionals—at least the good ones—see the world differently.
+They can’t walk into a store without noticing how they might shoplift. 
+They can’t use a computer without wondering about the security vulnerabilities. 
+They can’t vote without trying to figure out how to vote twice. They just can’t help it."
+
+OSCP - Try Harder Mindset - https://www.offsec.com/blog/what-it-means-to-try-harder/
 
