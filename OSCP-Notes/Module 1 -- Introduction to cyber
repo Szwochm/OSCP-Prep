@@ -24,4 +24,14 @@ They can’t use a computer without wondering about the security vulnerabilities
 They can’t vote without trying to figure out how to vote twice. They just can’t help it."
 
 OSCP - Try Harder Mindset - https://www.offsec.com/blog/what-it-means-to-try-harder/
+Step 1: Figure out why or how a particular approach is failing. This will lead to new approaches and new ideas.
+Step 2: Patience "Try again"
+Step 3: Creativity -- Not a stab in the dark, "Try differently"
+Step 3: Perceptivity -- "Try smarter"
 
+### 3.1.3 Emulating the minds of our Opponenets
+
+"How might an attacker gain access?"
+"What can they do with that access?" -" What are the worst possible outcomes from an attack?"
+
+## 3.2 Threats and Threat Actors
