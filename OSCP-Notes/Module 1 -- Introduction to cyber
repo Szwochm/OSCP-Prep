@@ -34,4 +34,23 @@ Step 3: Perceptivity -- "Try smarter"
 "How might an attacker gain access?"
 "What can they do with that access?" -" What are the worst possible outcomes from an attack?"
 
-## 3.2 Threats and Threat Actors
+## 3.2.2 Threats and Threat Actors
+This covers more of stuff you would see an in interview, things like the difference between a risk, threat and vulnerability
+
+risk: the probability that a negative event will occur, and the impact on something we value if such an event happens.
+threat: Someone or thing poses a risk
+vulnerability: Some flaw or weakness existing
+exploit: the usage of a vulnerability or something that takes advantage of a vulnerability
+attack surface: all the points of contact on our system or network that could be vulnerable to exploitation
+attack vector: specific vulnerability and exploitation combination that can further a threat actor's objectives.
+
+A way to interpret risks (this is commonly used in IT to triage service requests)
+
+Low-probability, low impact events
+Low-probability, high impact events
+High-probability, low impact events
+High-probability, high impact events
+
+They talk about Log4J briefly
+
+## 3.2.3
