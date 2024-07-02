@@ -34,7 +34,7 @@ Step 3: Perceptivity -- "Try smarter"
 "How might an attacker gain access?"
 "What can they do with that access?" -" What are the worst possible outcomes from an attack?"
 
-## 3.2
+## 3.2 Threat and Threat Actors
 
 ### 3.2.2 Threats and Threat Actors
 This covers more of stuff you would see an in interview, things like the difference between a risk, threat and vulnerability
@@ -63,4 +63,13 @@ Malicious groups
 Insider
 Nation States
 
-## 3.3
+## 3.3 The CIA Triad
+
+Talks about the CIA triad -- one interesting thing they mentioned is that each aspects of the triad may be a potential goal to attack. Never thought of it this way!
+
+The most important aspect of the triad depends on the overall goal of the company / person that is maintaining it...
+
+My example 1: A CIA spy's must importat aspect would be Confidentiality... Information that is garbled or unaccessible can be a problem, but for example a Nation state reading the contents is vastly more dire.
+My example 2: An emergency system / dispatch most important aspect would be Availability on the other hand... You don't want strangers reading whats happening at another area, but it being available is much more important
+
+
