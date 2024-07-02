@@ -72,4 +72,22 @@ The most important aspect of the triad depends on the overall goal of the compan
 My example 1: A CIA spy's must importat aspect would be Confidentiality... Information that is garbled or unaccessible can be a problem, but for example a Nation state reading the contents is vastly more dire.
 My example 2: An emergency system / dispatch most important aspect would be Availability on the other hand... You don't want strangers reading whats happening at another area, but it being available is much more important
 
+### 3.3.1 Confidentiality
+"A system is Confidential if the only people who can access it are the people explicitly permitted to do so."
+
+Two examples of attacks on confidentiality
+
+ Network eavesdropping (https://en.wikipedia.org/wiki/Network_eavesdropping
+  - Most dangerous for industries that rely on collection and storing data
+
+ Credential Stuffing (https://en.wikipedia.org/wiki/Credential_stuffing)
+  - Literally just re-using found credentials to try to get into other accounts. They use the mapping or pairing of user names and passwords. In otherwords, they don't brute force every username with every password, they keep the pairs together and just try them all
+  - 2% hit rate globally
+
+### 3.3.2 Integrity
+
+
+
+
+
 
