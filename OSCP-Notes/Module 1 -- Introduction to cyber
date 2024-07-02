@@ -34,7 +34,9 @@ Step 3: Perceptivity -- "Try smarter"
 "How might an attacker gain access?"
 "What can they do with that access?" -" What are the worst possible outcomes from an attack?"
 
-## 3.2.2 Threats and Threat Actors
+## 3.2
+
+### 3.2.2 Threats and Threat Actors
 This covers more of stuff you would see an in interview, things like the difference between a risk, threat and vulnerability
 
 risk: the probability that a negative event will occur, and the impact on something we value if such an event happens.
@@ -53,5 +55,12 @@ High-probability, high impact events
 
 They talk about Log4J briefly
 
-## 3.2.3 Threat Actor Classifications
+### 3.2.3 Threat Actor Classifications
+This section just defines and gives examples of the following... feel like the below is all I can add to my notes without violating copyrights
 
+Individuals
+Malicious groups
+Insider
+Nation States
+
+## 3.3
