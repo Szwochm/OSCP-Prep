@@ -85,8 +85,25 @@ Two examples of attacks on confidentiality
   - 2% hit rate globally
 
 ### 3.3.2 Integrity
+Integrity - Only the information and functionality that is intended to be stored, is stored
+  - Example of attack on integrity is Arbitrary code execution
 
+Whisper Gate
+  Microsoft (https://www.microsoft.com/en-us/security/blog/2022/01/15/destructive-malware-targeting-ukrainian-organizations/)
+  CrowdStrike (https://www.crowdstrike.com/blog/technical-analysis-of-whispergate-malware/)
+  - Virus pretends to be ransomware but actually just overwrites data at given offsets so recovery is impossible
+  - Overwrites the MBR
+  - Similar to NotPetya which also targeted Ukraine
 
+### 3.3.3 Availability
+"A system is considered Available if the people who are supposed to access it can do so"
+Examples - DDOS
+Talks about Via Sat
+
+### 3.3.4
+Lab questions
+
+## 3.4 Security Principles, Controls, and Strategies
 
 
 
