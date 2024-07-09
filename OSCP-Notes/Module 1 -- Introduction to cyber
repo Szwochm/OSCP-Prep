@@ -108,8 +108,9 @@ Lab questions, nothing further
  - Just in Time Access
  - Just Enough Access
  - Dynamic Access Control
+ - Microsegmentation
  - tokenization and encrpytion to protect data
- - Dynamic access control
+
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 
 Extra Reading
@@ -170,6 +171,37 @@ Principal in Identity and Access Management (IAM)
 
 https://venafi.com/blog/how-dynamic-authorization-enables-zero-trust-architecture/
 Dynamic Authorizaiton / Access Control
+
+Fundamentals of Zero Trust
+-Default Deny
+- Access by Policy only
+- For data, workloads, users, devices
+
+A dynamic authorization defines the relationship between identities – human identities and machine identities – and the digital assets to be accessed
+
+- To manage dynamic authorizations you need PBACs (Policy based access control(s))
+
+Key elements of an authorization policy
+
+- Identity -- Who / What is trying to access
+- Resource -- what is being accessed
+- Device -- how is it being access
+- Environmental conds -- Time, Date, Location
+- Business Policies associated with role of identity
+- compliance requirements
+
+ Zero Trust is not just about authenticating and verifying identities. It is also about authorizing these identities to access the resources they are entitled to.
+
+https://www.paloaltonetworks.com/cyberpedia/what-is-microsegmentation
+Microsegmentation
+
+A workload is a computational task, process or data transaction.
+
+Microsegmentation refers to an approach to security that involves dividing a network into segments and applying security controls to each segment based on the segment’s requirements.
+These granular secure zones isolate workloads, securing them individually with custom, workload-specific policies.
+
+
+
 
 
 
