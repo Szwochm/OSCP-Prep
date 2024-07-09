@@ -119,6 +119,17 @@ https://dwheeler.com/secure-programs/Secure-Programs-HOWTO/follow-good-principle
 - Psycholigocal Acceptability / Ease to use - basically if the security sucks (in an inconvenient way), users will find ways to bypass it
 
 https://cheatsheetseries.owasp.org/cheatsheets/Secure_Product_Design_Cheat_Sheet.html#security-principles
+Note: I will only cover the new principals unless this resource describes it in an novel way
+- Separation of duties (privilege) -- System of chceks and balances to ensure no single individual has control over all aspects of a transaction.
+- Defense in Depth -- multiple layers of security. If one wall fails, another will stand.
+- Zero trust -- slightly different perspective than least privilege. Least privilege = give users the least amount of power to do their job. Zero trust = everyone's a potential terrorist. Scan and monitor everything. Every single request must be authorized
+
+Security Focus areas
+1. Context -- how and why is this app used? What type of data? What is the risk?
+2. Components -- Take the code apart into its modules, libraries, apis... How can we secure these parts?
+3. Connections --  can't explain and I don't think I need to for my purposes.
+4. Code -- Input validation, error handling, Authentication & Authorization, Cryptography in transit / at rest, Least privilege, Secure memory management, don't hard code secrets, security testing, keeping up to date with current standards
+
 
 
 
