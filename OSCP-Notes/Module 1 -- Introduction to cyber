@@ -101,7 +101,7 @@ Examples - DDOS
 Talks about Via Sat
 
 ### 3.3.4
-Lab questions
+Lab questions, nothing further
 
 ## 3.4 Security Principles, Controls, and Strategies
 
@@ -109,6 +109,15 @@ Extra Reading
 3.4.1
 Security Principals
 https://dwheeler.com/secure-programs/Secure-Programs-HOWTO/follow-good-principles.html
+- Least Privilege
+- Simplicity / Kiss
+- Open Design (More eyes to find vulns, transparancy to the end-user)
+- Complete Mediation - Mechanisms to check every single access attempt, and in a way that these mechanisms cannot be bypassed.
+- Fail safe Defaults - Think about a Deny Deny rule on a firewall as the default.
+- Separation of privilege 
+- Least Common Mechanism - minimize amount and use of shared mechanisms. 
+- Psycholigocal Acceptability / Ease to use - basically if the security sucks (in an inconvenient way), users will find ways to bypass it
+
 https://cheatsheetseries.owasp.org/cheatsheets/Secure_Product_Design_Cheat_Sheet.html#security-principles
 
 
