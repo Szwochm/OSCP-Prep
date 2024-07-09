@@ -104,6 +104,13 @@ Talks about Via Sat
 Lab questions, nothing further
 
 ## 3.4 Security Principles, Controls, and Strategies
+5 Elements of Zero Trust
+ - Just in Time Access
+ - Just Enough Access
+ - Dynamic Access Control
+ - tokenization and encrpytion to protect data
+ - Dynamic access control
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 
 Extra Reading
 3.4.1
@@ -132,10 +139,38 @@ https://cheatsheetseries.owasp.org/cheatsheets/Secure_Product_Design_Cheat_Sheet
  4. Code -- Input validation, error handling, Authentication & Authorization, Cryptography in transit / at rest, Least privilege, Secure memory management, don't hard code secrets, security testing, keeping up to date with current standards
 
 https://en.wikipedia.org/wiki/Principle_of_least_privilege
+Principle of least privilege
 - applies to all accounts, services, apps not just users
 - there is an actual non security benefit -- apps that follow this are easier to deploy. As devs have to hand pick which resources to use, certain drivers, installations may not have to be made.
 - True least privilege is hard. Its hard to know when exactly a user will need a resource for exactly what thing, so generally a user is given a little more than they may need. Ex. a PC tech can remote into a user machine at any time. Following least privilege,
 the pc tech should only be able to do so at a specified time. (This is my example, may not be 100% accurate)
+
+https://en.wikipedia.org/wiki/Zero_trust_security_model
+Zero Trust Security Model
+ - also known as Perimeterless Security
+ - never trust, always verify
+ - proposed to be used in areas such as supply chains (of software)
+
+https://www.cyberark.com/what-is/just-in-time-access/
+Just in Time Access (JITA)
+ - Think of a security admin that can only install apps at 2pm on a certain day after requesting permission. They cannot install at 1pm the same day, or 2pm the next day. The power is only given at the exact time that they need it.
+
+Types of Just intime access
+Broker and remove access -  User's connect to targets via a broker. Shared privilege accounts
+Ephermal accounts - accounts created on the fly, and then deleted
+Temporary elevation - get sudo for a command for 15 minutes to install a software
+
+Example -- Asking a sys admin to give access to a network share. Admin gives access. You upload files. Admin takes share away.
+
+https://www.entitle.io/resources/glossary/just-enough-access
+Just Enough Access
+
+Principal in Identity and Access Management (IAM)
+ - helps mitigate insider threats
+
+https://venafi.com/blog/how-dynamic-authorization-enables-zero-trust-architecture/
+Dynamic Authorizaiton / Access Control
+
 
 
 
