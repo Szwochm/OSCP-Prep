@@ -109,26 +109,37 @@ Extra Reading
 3.4.1
 Security Principals
 https://dwheeler.com/secure-programs/Secure-Programs-HOWTO/follow-good-principles.html
-- Least Privilege
-- Simplicity / Kiss
-- Open Design (More eyes to find vulns, transparancy to the end-user)
-- Complete Mediation - Mechanisms to check every single access attempt, and in a way that these mechanisms cannot be bypassed.
-- Fail safe Defaults - Think about a Deny Deny rule on a firewall as the default.
-- Separation of privilege 
-- Least Common Mechanism - minimize amount and use of shared mechanisms. 
-- Psycholigocal Acceptability / Ease to use - basically if the security sucks (in an inconvenient way), users will find ways to bypass it
+List given by Saltzer [1974] and later Saltzer and Schroeder [1975]. Who are these nerds, and why does it matter what they think? These guys wrote the internet standards IEEE
+ - Least Privilege
+ - Simplicity / Kiss
+ - Open Design (More eyes to find vulns, transparancy to the end-user)
+ - Complete Mediation - Mechanisms to check every single access attempt, and in a way that these mechanisms cannot be bypassed.
+ - Fail safe Defaults - Think about a Deny Deny rule on a firewall as the default.
+ - Separation of privilege 
+ - Least Common Mechanism - minimize amount and use of shared mechanisms. 
+ - Psycholigocal Acceptability / Ease to use - basically if the security sucks (in an inconvenient way), users will find ways to bypass it
 
 https://cheatsheetseries.owasp.org/cheatsheets/Secure_Product_Design_Cheat_Sheet.html#security-principles
-Note: I will only cover the new principals unless this resource describes it in an novel way
-- Separation of duties (privilege) -- System of chceks and balances to ensure no single individual has control over all aspects of a transaction.
-- Defense in Depth -- multiple layers of security. If one wall fails, another will stand.
-- Zero trust -- slightly different perspective than least privilege. Least privilege = give users the least amount of power to do their job. Zero trust = everyone's a potential terrorist. Scan and monitor everything. Every single request must be authorized
+ Note: I will only cover the new principals unless this resource describes it in an novel way
+ - Separation of duties (privilege) -- System of chceks and balances to ensure no single individual has control over all aspects of a transaction.
+ - Defense in Depth -- multiple layers of security. If one wall fails, another will stand.
+ - Zero trust -- slightly different perspective than least privilege. Least privilege = give users the least amount of power to do their job. Zero trust = everyone's a potential terrorist. Scan and monitor everything. Every single request must be authorized
+ 
+ Security Focus areas
+ 1. Context -- how and why is this app used? What type of data? What is the risk?
+ 2. Components -- Take the code apart into its modules, libraries, apis... How can we secure these parts?
+ 3. Connections --  can't explain and I don't think I need to for my purposes.
+ 4. Code -- Input validation, error handling, Authentication & Authorization, Cryptography in transit / at rest, Least privilege, Secure memory management, don't hard code secrets, security testing, keeping up to date with current standards
 
-Security Focus areas
-1. Context -- how and why is this app used? What type of data? What is the risk?
-2. Components -- Take the code apart into its modules, libraries, apis... How can we secure these parts?
-3. Connections --  can't explain and I don't think I need to for my purposes.
-4. Code -- Input validation, error handling, Authentication & Authorization, Cryptography in transit / at rest, Least privilege, Secure memory management, don't hard code secrets, security testing, keeping up to date with current standards
+https://en.wikipedia.org/wiki/Principle_of_least_privilege
+- applies to all accounts, services, apps not just users
+- there is an actual non security benefit -- apps that follow this are easier to deploy. As devs have to hand pick which resources to use, certain drivers, installations may not have to be made.
+- True least privilege is hard. Its hard to know when exactly a user will need a resource for exactly what thing, so generally a user is given a little more than they may need. Ex. a PC tech can remote into a user machine at any time. Following least privilege,
+the pc tech should only be able to do so at a specified time. (This is my example, may not be 100% accurate)
+
+
+
+
 
 
 
