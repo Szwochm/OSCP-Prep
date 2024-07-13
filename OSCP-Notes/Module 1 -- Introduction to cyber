@@ -1,9 +1,9 @@
 Note: Starting with section 3.4.1, I have created an extra section for all the various links Offsec provides throughout the reading. Links will be under their relevant section as well as the Extra reading section
 # 3. Intro to Cyber
 
-## 3.1 The Practice of Cybersecurity
+## 3.1 The Practice of Cybersecurity [x]
 
-### 3.1.1 Challenges in Cyber Security
+### 3.1.1 Challenges in Cyber Security [x]
 
 Key topics
 
@@ -14,7 +14,7 @@ The enemy is human -- Offsec says that our enemy (and allies) is human... I'm no
 Cyber security poses dynamic challenges. To beat these challenges we will have to adapt our mindsets
 
 
-### 3.1.2 A word on Mindsets
+### 3.1.2 A word on Mindsets [x]
 
 Bruce Schneier - The Security Mindset - https://www.schneier.com/blog/archives/2008/03/the_security_mi_1.html
 
@@ -30,14 +30,14 @@ Step 2: Patience "Try again"
 Step 3: Creativity -- Not a stab in the dark, "Try differently"
 Step 3: Perceptivity -- "Try smarter"
 
-### 3.1.3 Emulating the minds of our Opponenets
+### 3.1.3 Emulating the minds of our Opponenets [x]
 
 "How might an attacker gain access?"
 "What can they do with that access?" -" What are the worst possible outcomes from an attack?"
 
-## 3.2 Threat and Threat Actors
+## 3.2 Threat and Threat Actors [x]
 
-### 3.2.2 Threats and Threat Actors
+### 3.2.2 Threats and Threat Actors [x]
 This covers more of stuff you would see an in interview, things like the difference between a risk, threat and vulnerability
 
 risk: the probability that a negative event will occur, and the impact on something we value if such an event happens.
@@ -56,7 +56,7 @@ High-probability, high impact events
 
 They talk about Log4J briefly
 
-### 3.2.3 Threat Actor Classifications
+### 3.2.3 Threat Actor Classifications [x]
 This section just defines and gives examples of the following... feel like the below is all I can add to my notes without violating copyrights
 
 Individuals
@@ -64,7 +64,7 @@ Malicious groups
 Insider
 Nation States
 
-## 3.3 The CIA Triad
+## 3.3 The CIA Triad [x]
 
 Talks about the CIA triad -- one interesting thing they mentioned is that each aspects of the triad may be a potential goal to attack. Never thought of it this way!
 
@@ -73,7 +73,7 @@ The most important aspect of the triad depends on the overall goal of the compan
 My example 1: A CIA spy's must importat aspect would be Confidentiality... Information that is garbled or unaccessible can be a problem, but for example a Nation state reading the contents is vastly more dire.
 My example 2: An emergency system / dispatch most important aspect would be Availability on the other hand... You don't want strangers reading whats happening at another area, but it being available is much more important
 
-### 3.3.1 Confidentiality
+### 3.3.1 Confidentiality [x]
 "A system is Confidential if the only people who can access it are the people explicitly permitted to do so."
 
 Two examples of attacks on confidentiality
@@ -85,30 +85,30 @@ Two examples of attacks on confidentiality
   - Literally just re-using found credentials to try to get into other accounts. They use the mapping or pairing of user names and passwords. In otherwords, they don't brute force every username with every password, they keep the pairs together and just try them all
   - 2% hit rate globally
 
-### 3.3.2 Integrity
+### 3.3.2 Integrity [x]
 Integrity - Only the information and functionality that is intended to be stored, is stored
   - Example of attack on integrity is Arbitrary code execution
 
-Whisper Gate
+Whisper Gate 
   Microsoft (https://www.microsoft.com/en-us/security/blog/2022/01/15/destructive-malware-targeting-ukrainian-organizations/)
   CrowdStrike (https://www.crowdstrike.com/blog/technical-analysis-of-whispergate-malware/)
   - Virus pretends to be ransomware but actually just overwrites data at given offsets so recovery is impossible
   - Overwrites the MBR
   - Similar to NotPetya which also targeted Ukraine
 
-### 3.3.3 Availability
+### 3.3.3 Availability [x]
 "A system is considered Available if the people who are supposed to access it can do so"
 Examples - DDOS
 Talks about Via Sat
 
-### 3.3.4
+### 3.3.4 [x]
 Lab questions, nothing further
 
-## 3.4.1 Security Principles
-5 Elements of Zero Trust
- - Just in Time Access
- - Just Enough Access
- - Dynamic Access Control
+## 3.4.1 Security Principles [x]
+5 Elements of Zero Trust 
+ - Just in Time Access (Example, think maintainance windows given to work on a quarantined system)
+ - Just Enough Access (Example, A PC tech can install some white listed programs but not every program)
+ - Dynamic Access Control (Examples: Users can only use network devices during office hours, user must have had a request prior to doing something, etc)
  - Microsegmentation
  - tokenization and encrpytion to protect data
 
