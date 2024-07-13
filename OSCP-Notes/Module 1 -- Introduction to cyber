@@ -1,3 +1,4 @@
+Note: Starting with section 3.4.1, I have created an extra section for all the various links Offsec provides throughout the reading. Links will be under their relevant section as well as the Extra reading section
 # 3. Intro to Cyber
 
 ## 3.1 The Practice of Cybersecurity
@@ -114,8 +115,13 @@ Lab questions, nothing further
 # 3.4.2
 There is a lot of balancing that needs to be done depending on the goal. Security controls can be expensive, and cause DOS if a security mechanism becomes unavailable.
 
+
 Security Controls https://csrc.nist.gov/glossary/term/security_control
 Kerberos https://web.mit.edu/kerberos/
+
+# 3.4.3 Shift-Left Security
+
+https://devopedia.org/shift-left
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 
