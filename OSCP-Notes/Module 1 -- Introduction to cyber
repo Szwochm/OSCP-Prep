@@ -229,6 +229,17 @@ Once authenticated via Kerberos, server and client communicate via encryption so
 #3.4.3 Shift Left Security 
 
 https://devopedia.org/shift-left
+Contextualized around the software development cycle. They try to get a working prototype working first and then worry bout the quality (via testing) later in a traditional waterfall approach.
+Shift Left just says, if you do all the testing in the beginning, you won't have to do it at the end as much because everything should be ironed out by release.
+Shift Left is also very general -- just means doing a task earlier in a process than regular
+Shift Left doesn't mean "shifting" the position of a task within a process flow. It also doesn't imply that no testing is done just before a release. It should be seen as "spreading" the task and its concerns to all stages of the process flow.
+Automation has to be implemented to reduce human error
+
+Getting Started with shifting left
+- Devs must implement unit tests
+- Testers need to learn how to code. Must use same tools as dev as well
+  - Can use TDD or BDD to have projects start with testability in mind
+  - Test can be written before development even starts
 
 
 
