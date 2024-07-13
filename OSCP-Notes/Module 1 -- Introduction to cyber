@@ -103,13 +103,19 @@ Talks about Via Sat
 ### 3.3.4
 Lab questions, nothing further
 
-## 3.4 Security Principles, Controls, and Strategies
+## 3.4.1 Security Principles
 5 Elements of Zero Trust
  - Just in Time Access
  - Just Enough Access
  - Dynamic Access Control
  - Microsegmentation
  - tokenization and encrpytion to protect data
+
+# 3.4.2
+There is a lot of balancing that needs to be done depending on the goal. Security controls can be expensive, and cause DOS if a security mechanism becomes unavailable.
+
+Security Controls https://csrc.nist.gov/glossary/term/security_control
+Kerberos https://web.mit.edu/kerberos/
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 
@@ -200,7 +206,18 @@ A workload is a computational task, process or data transaction.
 Microsegmentation refers to an approach to security that involves dividing a network into segments and applying security controls to each segment based on the segment’s requirements.
 These granular secure zones isolate workloads, securing them individually with custom, workload-specific policies.
 
+3.4.2
 
+Security Controls https://csrc.nist.gov/glossary/term/security_control
+This is just a dictionary page definition of the word security control with 15 refrences to NIST.
+
+Kerberos https://web.mit.edu/kerberos/
+A network authentication protocol
+Uses Secret Key Cryptography ( type of encryption where a single secret key is used for both encryption and decryption of a message -- This a symmetic protocol )
+There is a Free version available from MIT
+Talks about how Firewalls are good at stopping securing against outside threats, but not against inside. I am sure there are exceptions for Next Gen stuff...
+Kerberos allows secure authentication over an insecure network
+Once authenticated via Kerberos, server and client communicate via encryption so can further send data without exposing it to the insecure network (This sounds like it kind of does what a VPN does...)
 
 
 
