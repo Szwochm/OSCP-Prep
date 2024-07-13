@@ -124,6 +124,16 @@ Kerberos https://web.mit.edu/kerberos/
 Basically they just talk about the idea of building applications with security from the very start instead of trying to add it on after the fact.
 https://devopedia.org/shift-left
 
+# 3.4.4 Administrative Segmentation
+
+Basically in the situation that a privileged account becomes compromised in some way (Either the user becomes malicious or somehow the creds are leaked, etc) this helps reduce the damage
+"Seperation of Duties"
+Split controls between app teams, admins. Maybe even split controls between multiple admins using Shamir's Secret Sharing.
+
+https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing
+Imagine the movie scenes where you need 2-3 people with keys to turn the key at the same time to gain entrance to a secret bunker.
+No one person has root credentials
+
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 
 Extra Reading
@@ -242,7 +252,11 @@ Getting Started with shifting left
   - Test can be written before development even starts
 
 
-
+#3.4.4 Shamir's Secret Sharing (SSS)
+https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing
+- An Algorithm that mathematically splits a secret in x amounts of parts
+- Attackers need every share to gain access. Only 1 or two will not do (In SSS of 3 or more)
+- Having some of the shares does not make cracking the last shares any easier
 
 
 
