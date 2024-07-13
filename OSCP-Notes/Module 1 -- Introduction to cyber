@@ -121,6 +121,7 @@ Kerberos https://web.mit.edu/kerberos/
 
 # 3.4.3 Shift-Left Security
 
+Basically they just talk about the idea of building applications with security from the very start instead of trying to add it on after the fact.
 https://devopedia.org/shift-left
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -224,6 +225,10 @@ There is a Free version available from MIT
 Talks about how Firewalls are good at stopping securing against outside threats, but not against inside. I am sure there are exceptions for Next Gen stuff...
 Kerberos allows secure authentication over an insecure network
 Once authenticated via Kerberos, server and client communicate via encryption so can further send data without exposing it to the insecure network (This sounds like it kind of does what a VPN does...)
+
+#3.4.3 Shift Left Security 
+
+https://devopedia.org/shift-left
 
 
 
