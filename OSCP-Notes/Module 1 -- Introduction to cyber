@@ -134,9 +134,46 @@ https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing
 Imagine the movie scenes where you need 2-3 people with keys to turn the key at the same time to gain entrance to a secret bunker.
 No one person has root credentials
 
+# 3.4.5 Threat Modeling and Threat Intelligence
+
+Threat Modeling - Basically seeing how our network does with trending attacks.
+
+Threat Intelligence - Based on the data from Threat Modeling, what actions can be taken to reduce these risks / threats?
+  There is an adversary using x technique, that would work on the organization.
+  This adversary may actually target this organization next
+
+# 3.4.6 Table-Top Tactics
+
+Table top - A Discussion between engineers, security and investors about how an organization should react to situations
+  - One goal is educating all teams on the TTPS for various scenarios. (If everyone knows the plan, we can react much faster to an incident)
+
+# 3.4.7 Continous Patching and Supply Chain Validation
+
+Continuous supply chain validation happens by both the vendor and the consumer
+Can extend past software -- Does the router you bought have a backdoor installed?
+
+SBOM - Software Bill of Materials
+  - Used to track dependencies
+  - Helps evaluate supply chain tampering
+
+# 3.4.8 Encryption
+
+Doesn't solve every problem but adds one more layer of defense to security
+
+Not all encrypted data is decrypted
+  - Example of TLS. Decryption keys only exist in memory for a brief time beforeb being discarded
+
+
+
+
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 
-Extra Reading
+
 3.4.1
 Security Principals
 https://dwheeler.com/secure-programs/Secure-Programs-HOWTO/follow-good-principles.html
@@ -236,7 +273,7 @@ Talks about how Firewalls are good at stopping securing against outside threats,
 Kerberos allows secure authentication over an insecure network
 Once authenticated via Kerberos, server and client communicate via encryption so can further send data without exposing it to the insecure network (This sounds like it kind of does what a VPN does...)
 
-#3.4.3 Shift Left Security 
+3.4.3 Shift Left Security 
 
 https://devopedia.org/shift-left
 Contextualized around the software development cycle. They try to get a working prototype working first and then worry bout the quality (via testing) later in a traditional waterfall approach.
@@ -252,7 +289,7 @@ Getting Started with shifting left
   - Test can be written before development even starts
 
 
-#3.4.4 Shamir's Secret Sharing (SSS)
+3.4.4 Shamir's Secret Sharing (SSS)
 https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing
 - An Algorithm that mathematically splits a secret in x amounts of parts
 - Attackers need every share to gain access. Only 1 or two will not do (In SSS of 3 or more)
