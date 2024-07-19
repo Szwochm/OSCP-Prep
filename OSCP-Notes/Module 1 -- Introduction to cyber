@@ -161,7 +161,10 @@ SBOM - Software Bill of Materials
 Doesn't solve every problem but adds one more layer of defense to security
 
 Not all encrypted data is decrypted
-  - Example of TLS. Decryption keys only exist in memory for a brief time beforeb being discarded
+  - Example of TLS. Decryption keys only exist in memory for a brief time beforeb being discarded.
+
+# 3.4.9 Logging and Chaos Testing
+
 
 
 
