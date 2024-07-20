@@ -171,18 +171,36 @@ Often uses cloud and autoomation
 # 3.5.1 Laws and Regulations
 
 Hippa
-Enacted in 1996
-https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html
-HealthPlans (notes for hippa are all from the link not the course) (I should read more once my lab time expires)
-Not all health care data is covered by hippa
-  - Health plans with less than 50 people payed and maintained by employer
-  - Government program plans who primary PURPOSE is not providing or paying cost of health care
-  - Gov plans whose primary ACTIVITY is directly providing health care
-  - Certain insurances do not apply like automobile (What if you have an accident and have to go to the hospital), worker's compensation
+ Enacted in 1996
+Privacy Rules - sets limits on what information can be shared without consent
+   https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html
+   HealthPlans (notes for hippa are all from the link not the course) (I should read more once my lab time expires)
+    Not all health care data is covered by hippa
+      - Health plans with less than 50 people payed and maintained by employer
+      - Government program plans who primary PURPOSE is not providing or paying cost of health care
+      - Gov plans whose primary ACTIVITY is directly providing health care
+      - Certain insurances do not apply like automobile (What if you have an accident and have to go to the hospital), worker's compensation
+    
+    Health Care Providers
+      - Every provider is covered under hippa
+Security Rule - how electronic PHI must be protected
+https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html
 
-Health Care Providers
-  - Every provider is covered under hippa
+Three classes of safeguards
+  Administrative
+  Security Managment Process
+  Physical
 
+FERPA 1974 -- For Schools
+   - Protect the students. Failure to comply will lead to loss of Federal Funding
+
+  https://studentprivacy.ed.gov/faq/what-ferpa
+  https://www.cdc.gov/phlp/publications/topic/ferpa.html
+
+GLBA -- Financial instituions https://www.fdic.gov/resources/bankers/affordable-mortgage-lending-center/glba.html
+
+GDPR -- EU laws for data privacy and security
+https://gdpr.eu/what-is-gdpr/
 
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
