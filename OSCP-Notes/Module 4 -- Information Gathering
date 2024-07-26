@@ -1,0 +1,50 @@
+Critical Finds: https://osintframework.com/ -- Interesting mind map of how to perform OSINT with links to various tools
+
+Note: With this Module I have introduce High Level Questions (HLQ). These point out information in the course I see that would be necessary at a management level... Things that should be known by CEOs, Contractors, Sales reps attempting to sell a product...
+
+# 6. Information Gathering
+GOal: Learn how to methodically map such an attack surface using both passive and active means
+
+## 6.1 The Pen Test Lifecycle
+
+Information gathering has a role within every stage of a pentest
+
+HLQ: When should pentests be done? ---------- Routinely and after large shifts to IT architecture
+
+Stages of a pentest
+  Defining the Scope
+  Information Gathering
+  Vulnerability Detection
+  Initial Foothold
+  Privilege Escalation
+  Lateral Movement
+  Reporting/Analysis
+  Lessons Learned/Remediation
+
+HLQ: What does the scope of a pentest define: ---------- Which IP ranges, hosts, and applications should be test subjects during the engagement, as compared to out-of-scope items that should not be tested.
+
+When we begin information gathering we are initially looking for information on the following things
+A ssets
+P ersonnel
+I nfrastructure
+
+"information gathering (also known as enumeration) does not end after our initial reconnaissance."
+
+## 6.2 Passive Information Gathering
+
+Learning Objectives:
+Understand the two different Passive Information Gathering approaches
+(OSINT)
+Web Server and DNS passive information gathering
+
+https://osintframework.com/
+
+
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+Extra Reading   
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+
+https://osintframework.com/ -- Interesting mind map of how to perform OSINT, critical find
