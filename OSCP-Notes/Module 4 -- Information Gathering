@@ -41,6 +41,8 @@ https://osintframework.com/
 
 The ultimate goal of passive information gathering is to obtain information that clarifies or expands an attack surface
 https://cheatsheetseries.owasp.org/cheatsheets/Attack_Surface_Analysis_Cheat_Sheet.html
+
+https://www.megacorpone.com/ -- one of offsecs domains for PASSIVE Information Gathering
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -49,6 +51,8 @@ Extra Reading
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 
 6.2
+
+https://www.megacorpone.com/
 https://osintframework.com/ -- Interesting mind map of how to perform OSINT, critical find
 
 https://cheatsheetseries.owasp.org/cheatsheets/Attack_Surface_Analysis_Cheat_Sheet.html
@@ -73,6 +77,14 @@ https://cheatsheetseries.owasp.org/cheatsheets/Attack_Surface_Analysis_Cheat_She
       Email or other kinds of messages
       Runtime arguments
       ...Your points of entry/exit
+
+    Identify high risk code
+      Network-facing, especially internet-facing code
+      Web forms
+      Files from outside of the network
+      Backward compatible interfaces with other systems – old protocols, sometimes old code and libraries, hard to maintain and test multiple versions
+      Custom APIs – protocols etc – likely to have mistakes in design and implementation
+      Security code: anything to do with cryptography, authentication, authorization (access control) and session management
 
 There are tools for vuln scanning webapps (I don't think any of these are allowed on OSCP)
   - OWASP ZAP 
