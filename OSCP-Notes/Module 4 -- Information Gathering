@@ -92,3 +92,33 @@ There are tools for vuln scanning webapps (I don't think any of these are allowe
   - Skipfish
   - w3af
 
+6.2.1 Whois Enumeration
+
+  https://www.domaintools.com/support/what-is-whois-information-and-why-is-it-valuable/
+  
+  Whois is a widely used Internet record listing that identifies who owns a domain and how to get in contact with them.
+  Whois record changes can take a while (About 24 Hours)
+  Not all extensions are equal. dot US do not have the option to privatize their information. ICANN no longer posts details of .ca domains. (However companies must still publicize it)
+  
+   
+  
+  https://www.forbes.com/advisor/business/software/what-is-a-name-server/
+  
+  Name servers connect specific URLs with the correct internet protocol (IP) address of the site’s server. (It doesn't mention IPv4 or Ipv6 nor which one specifically)
+  Imagine that Name servers are the library, and DNS records are the catalog
+  Each webhost has a different process for updating DNS records
+  Name servers do not have to be related to the domain.
+  
+   
+  
+  Windows
+  
+  nslookup
+  set q = ns
+  <Enter a domain>
+  
+   
+  
+  for Linux/mac use dig
+
+ 
