@@ -39,7 +39,8 @@ Web Server and DNS passive information gathering
 
 https://osintframework.com/
 
-
+The ultimate goal of passive information gathering is to obtain information that clarifies or expands an attack surface
+https://cheatsheetseries.owasp.org/cheatsheets/Attack_Surface_Analysis_Cheat_Sheet.html
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -47,4 +48,35 @@ https://osintframework.com/
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 
+6.2
 https://osintframework.com/ -- Interesting mind map of how to perform OSINT, critical find
+
+https://cheatsheetseries.owasp.org/cheatsheets/Attack_Surface_Analysis_Cheat_Sheet.html
+  Attack Surface Analysis --  The point of Attack Surface Analysis is to understand the risk areas in an application, to make developers and security specialists aware of what parts of the application are open to attack, to find ways of minimizing this, and to notice when and how the Attack Surface changes and what this means from a risk perspective.
+  Attack Surface Analysis is usually done by security architects and pen testers
+     This helps you do the following:
+     Identify what needs to be reviewed or tested
+     Identify high risk areas that will need defense in depth implemented
+     Identify when you have changed the attack surface and need to do a threat assessment
+     Attack Surface for an app is basically all of paths for data / commands into and out of and app, valuable data (Secrets, PII, etc), and code that attempts to protect the former
+       Should be done for every user type but focus on how the webapp reacts to unauthenticated anonymous users and highly privileged admin users
+       Group types of attacks in buckets based on risk
+       Dont need to understand every endpoint. Just use the number of endpoints with their buckets to figure out how much of the budget has to go where
+
+    Attack Surface for Microservices and Cloud Native Applicatios (I think these are basically just web apps)
+      User interface (UI) forms and fields 
+      HTTP headers and cookies
+      APIs
+      Files
+      Databases
+      Other local storage
+      Email or other kinds of messages
+      Runtime arguments
+      ...Your points of entry/exit
+
+There are tools for vuln scanning webapps (I don't think any of these are allowed on OSCP)
+  - OWASP ZAP 
+  - Arachni
+  - Skipfish
+  - w3af
+
