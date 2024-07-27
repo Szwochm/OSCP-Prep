@@ -42,7 +42,21 @@ https://osintframework.com/
 The ultimate goal of passive information gathering is to obtain information that clarifies or expands an attack surface
 https://cheatsheetseries.owasp.org/cheatsheets/Attack_Surface_Analysis_Cheat_Sheet.html
 
+#6.2.1
+
 https://www.megacorpone.com/ -- one of offsecs domains for PASSIVE Information Gathering
+https://www.forbes.com/advisor/business/software/what-is-a-name-server/
+https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/
+
+Whois lookup of a hostname 
+whois megacorpone.com -h 192.168.50.251 
+(192.168.60.251 is Offsecs WHOIS server... Generally speaking companies WILL NOT have their own WHOIS server This is not a name server. Name servers resolve IPS and Hostnames. WhoIS servers provide information on the registration of domains)
+
+Whois lookup of an Ip (AKA reverse lookup)
+whois 38.100.193.70 -h 192.168.50.251
+
+Using this command, they located the IT Admin's Name, and 3 name servers (NS1.MEGACORPONE.COM)
+
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -94,7 +108,7 @@ There are tools for vuln scanning webapps (I don't think any of these are allowe
 
 6.2.1 Whois Enumeration
 
-  https://www.domaintools.com/support/what-is-whois-information-and-why-is-it-valuable/
+ https://www.domaintools.com/support/what-is-whois-information-and-why-is-it-valuable/
   
   Whois is a widely used Internet record listing that identifies who owns a domain and how to get in contact with them.
   Whois record changes can take a while (About 24 Hours)
@@ -102,7 +116,7 @@ There are tools for vuln scanning webapps (I don't think any of these are allowe
   
    
   
-  https://www.forbes.com/advisor/business/software/what-is-a-name-server/
+https://www.forbes.com/advisor/business/software/what-is-a-name-server/
   
   Name servers connect specific URLs with the correct internet protocol (IP) address of the site’s server. (It doesn't mention IPv4 or Ipv6 nor which one specifically)
   Imagine that Name servers are the library, and DNS records are the catalog
@@ -121,4 +135,4 @@ There are tools for vuln scanning webapps (I don't think any of these are allowe
   
   for Linux/mac use dig
 
- 
+ https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/
