@@ -1,0 +1,142 @@
+4.4.1 What is Executable Permission
+
+ 
+
+https://www.studytonight.com/linux-guide/understanding-file-permissions-in-linux-unix
+
+A permission of 755 is just the 3 groups of users permissions put into one
+
+ 
+
+7 = 111 in binary
+
+5 = 101 (1 + 4)
+
+ 
+
+So by this logic there are 7 potential values
+
+ 
+
+000, 001, 010, 100, 101, 110, 111
+
+---  --r  -w-  r--  r-x  rw-  rwx
+
+ 
+
+https://www.geeksforgeeks.org/touch-command-in-linux-with-examples/#
+
+ 
+
+Touch can modify timestamps...
+
+ 
+
+Using `touch file1 file2 file3` creates 3 files with the same timestamp.
+
+ 
+
+touch -a <file> changes a file's access time. Note: The time shown in ll is the Modify date. There are 3 time stamps... Access Modify, Change
+
+-a ccess
+
+ 
+
+touch -c <file> only touches (updates timestamps) on files that already exists. Will not create a file.  (this makes sense, how can you change a file that doesn't exist?)
+
+-c hange
+
+ 
+
+touch -c-d <file> update access and modification time
+
+ 
+
+touch -m <file> update mod time
+
+-m odification
+
+ 
+
+touch -d "dd Mon yyyy" <file>
+
+-d ate
+
+ 
+
+touch -r <source> <dest> copies timestamp from source file to dest file
+
+ 
+
+Why would any of this matter?
+
+ 
+
+Who can change the file permissions of a folder on Linux -- Answer Superuser or file owner
+
+Follow up Question: can any super user do it or only super users with chmod enabled... I imagine only if you are given chmod in the sudoers file...
+
+ 
+
+ 
+
+Very interesting concept presented...
+
+We need the tool of chmod but cannot use it... we can simply make a copy of a file we do have access to (ls), replace its contents with chmod, and now we have a working chmod...
+
+ 
+
+4.4.4 Analyzing this Approach
+
+none
+
+ 
+
+4.5 Tactice and Common Methods
+
+Flash Cards
+
+Spaced Repitition
+
+Feynman Technique
+
+SQ3r Methods
+
+Cornell Notes
+
+ 
+
+4.6.1
+
+ 
+
+"Consider, on the other hand, that same learner with a Not Yet Mindset who thinks, for example, "I can't do the exercise yet", or "I can't understand the concepts yet.""
+
+ 
+
+4.6.2 Knowing when you're ready
+
+67 Pass rate = 41-50 pwk machines compromised
+
+74 Pass rate = 51-60
+
+85 Pass rate = 61-70 machines
+
+ 
+
+4.6.3
+
+none applicable to myself
+
+ 
+
+4.7.1
+
+talks about why you need a plan for oscp
+
+ 
+
+4.7.2 use time allotment strategies
+
+- multiple short sessions, not long sessions
+
