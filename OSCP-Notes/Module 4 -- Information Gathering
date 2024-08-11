@@ -121,9 +121,7 @@ https://www.forbes.com/advisor/business/software/what-is-a-name-server/
   Name servers connect specific URLs with the correct internet protocol (IP) address of the site’s server. (It doesn't mention IPv4 or Ipv6 nor which one specifically)
   Imagine that Name servers are the library, and DNS records are the catalog
   Each webhost has a different process for updating DNS records
-  Name servers do not have to be related to the domain.
-  
-   
+  Name servers do not have to be related to the domain
   
   Windows
   
@@ -131,8 +129,71 @@ https://www.forbes.com/advisor/business/software/what-is-a-name-server/
   set q = ns
   <Enter a domain>
   
-   
-  
   for Linux/mac use dig
 
  https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/
+
+### 6.2.2
+intitle:"index of" "parent directory"
+
+This takes you to a basically a file explorer of a page aka Directory Listing, (If it exists and you have permissions) -- CWE-548: Exposure of Information Through Directory Listing
+
+Content-Security-Policy-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+-- helps detect and mitigate web app attacks
+
+  browsers that do not support csp function as usual defaulting to same-origin policy
+
+  enabled by enabling Content-Security-Policy header on webserver (previously known as x-content-security-policy)
+
+
+  can also be enabled using
+
+ LEFT BRACKET meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; img-src https://*; child-src 'none';" / RIGHT BRACKET
+
+CSP - https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+
+	One main objective of CSP is to mitigate and REPORT xss attacks (how does it report the attacks?)
+
+	XSS attacks exploit the browser's trust in the content received from the server. -- This explanation of XSS is the clearest I've read so far
+
+	CSP reduces or eliminate the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts.
+	A CSP compatible browser will then only execute scripts loaded in source files received from those allowed domains.
+
+	CSP can specify which protocols are allowed -- example only use HTTPs. Combine this with Secure attribute on cookies. Force redirects from http to https
+
+	Strict-Transport-Security header -- sites force browsers to only connect over encrypted channel
+
+	A policy needs to include a default-src or script-src directive to prevent inline scripts from running, as well as blocking the use of eval()
+
+	default-src or style-src helps protect <style> element or style attribute from inline styles
+
+X-Frame Options -- https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+
+	Whether browsers can render Frame, Iframe, embed or object
+
+	CSP has frame-ancestors directive which obsoletes xframes
+
+	Xframe inside meta tag does not work
+
+Server Hardening -- https://csrc.nist.gov/publications/detail/sp/800-123/final
+
+RC4 - https://msrc.microsoft.com/blog/2013/11/security-advisory-2868725-recommendation-to-disable-rc4/
+
+## 6.3. Active Information Gathering
+
+in some cases during a penetration test, we won't have the luxury of running our favorite Kali Linux tool
+
+https://lolbas-project.github.io/ -- you can use lolbas for information gathering, not just exploiting
+
+https://www.cloudflare.com/learning/dns/what-is-dns/
+
+There are 4 Dns servers involved in loading a webpage
+- Recursor
+- root nameserver -- one of the big 13
+- tld nameserver -- .com, .org, .net
+- authoratative nameserver -- gives the actual answer
+
+Recursors recieve queries from client machines. This can be via web browser. May make multiple requests to get an answer
+Root nameserver -- There are 13 ips associated with root servers
