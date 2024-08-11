@@ -111,7 +111,8 @@ mail
 
 
 Bash oneliner
-for ip in $(cat list.txt); do host $ip.megacorpone.com; done
+Command: for ip in $(cat list.txt); do host $ip.megacorpone.com; done
+basically ip is like in python how you can iterate through a list of anything... every line is an $ip. ip is just the name of the "i" variable
 
 https://github.com/danielmiessler/SecLists -- wordlists
 sudo apt install seclists -- get said wordlists (1.9 gigs as of 8-11)
