@@ -1,8 +1,8 @@
-Critical Finds: https://osintframework.com/ -- Interesting mind map of how to perform OSINT with links to various tools
+[x] Critical Finds: https://osintframework.com/ -- Interesting mind map of how to perform OSINT with links to various tools
 
 Note: With this Module I have introduce High Level Questions (HLQ). These point out information in the course I see that would be necessary at a management level... Things that should be known by CEOs, Contractors, Sales reps attempting to sell a product...
 
-# 6. Information Gathering
+[x] # 6. Information Gathering
 GOal: Learn how to methodically map such an attack surface using both passive and active means
 
 ## 6.1 The Pen Test Lifecycle
@@ -30,7 +30,7 @@ I nfrastructure
 
 "information gathering (also known as enumeration) does not end after our initial reconnaissance."
 
-## 6.2 Passive Information Gathering
+ [x] ## 6.2 Passive Information Gathering
 
 Learning Objectives:
 Understand the two different Passive Information Gathering approaches
@@ -57,6 +57,32 @@ whois 38.100.193.70 -h 192.168.50.251
 
 Using this command, they located the IT Admin's Name, and 3 name servers (NS1.MEGACORPONE.COM)
 
+### 6.2.2
+intitle:"index of" "parent directory"
+
+This takes you to a basically a file explorer of a page aka Directory Listing, (If it exists and you have permissions) -- CWE-548: Exposure of Information Through Directory Listing
+
+Content-Security-Policy-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+-- helps detect and mitigate web app attacks
+
+  browsers that do not support csp function as usual defaulting to same-origin policy
+
+  enabled by enabling Content-Security-Policy header on webserver (previously known as x-content-security-policy)
+
+
+  can also be enabled using
+
+ LEFT BRACKET meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; img-src https://*; child-src 'none';" / RIGHT BRACKET
+
+## 6.3. Active Information Gathering
+
+in some cases during a penetration test, we won't have the luxury of running our favorite Kali Linux tool
+
+https://lolbas-project.github.io/ -- you can use lolbas for information gathering, not just exploiting
+
+
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -64,7 +90,7 @@ Using this command, they located the IT Admin's Name, and 3 name servers (NS1.ME
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 
-6.2
+[x] 6.2
 
 https://www.megacorpone.com/
 https://osintframework.com/ -- Interesting mind map of how to perform OSINT, critical find
@@ -133,25 +159,7 @@ https://www.forbes.com/advisor/business/software/what-is-a-name-server/
 
  https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/
 
-### 6.2.2
-intitle:"index of" "parent directory"
-
-This takes you to a basically a file explorer of a page aka Directory Listing, (If it exists and you have permissions) -- CWE-548: Exposure of Information Through Directory Listing
-
-Content-Security-Policy-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
--- helps detect and mitigate web app attacks
-
-  browsers that do not support csp function as usual defaulting to same-origin policy
-
-  enabled by enabling Content-Security-Policy header on webserver (previously known as x-content-security-policy)
-
-
-  can also be enabled using
-
- LEFT BRACKET meta
-  http-equiv="Content-Security-Policy"
-  content="default-src 'self'; img-src https://*; child-src 'none';" / RIGHT BRACKET
-
+6.2.2
 CSP - https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 
 	One main objective of CSP is to mitigate and REPORT xss attacks (how does it report the attacks?)
@@ -181,11 +189,7 @@ Server Hardening -- https://csrc.nist.gov/publications/detail/sp/800-123/final
 
 RC4 - https://msrc.microsoft.com/blog/2013/11/security-advisory-2868725-recommendation-to-disable-rc4/
 
-## 6.3. Active Information Gathering
-
-in some cases during a penetration test, we won't have the luxury of running our favorite Kali Linux tool
-
-https://lolbas-project.github.io/ -- you can use lolbas for information gathering, not just exploiting
+6.3 Active Information Gathering
 
 https://www.cloudflare.com/learning/dns/what-is-dns/
 
