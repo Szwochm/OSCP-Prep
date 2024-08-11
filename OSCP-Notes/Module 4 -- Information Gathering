@@ -82,6 +82,39 @@ in some cases during a penetration test, we won't have the luxury of running our
 
 https://lolbas-project.github.io/ -- you can use lolbas for information gathering, not just exploiting
 
+### 6.3.1 DNS Enumeration
+
+# 6.3.1
+
+Command: host www.megacorpone.com
+Gets ip address of a hostname
+
+Command: host -t mx megacorpone.com
+-t specifies to view mx records instead of default of A record(s)\
+
+Result:
+megacorpone.com mail is handled by 10 fb.mail.gandi.net.
+megacorpone.com mail is handled by 20 spool.mail.gandi.net.
+megacorpone.com mail is handled by 50 mail.megacorpone.com.
+megacorpone.com mail is handled by 60 mail2.megacorpone.com.
+
+Lowest number = first to forward mail
+
+Automating host command
+
+Step 1. Create a list
+
+admin
+shop
+login
+mail
+
+
+Bash oneliner
+for ip in $(cat list.txt); do host $ip.megacorpone.com; done
+
+https://github.com/danielmiessler/SecLists -- wordlists
+sudo apt install seclists -- get said wordlists (1.9 gigs as of 8-11)
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
