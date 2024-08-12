@@ -146,7 +146,7 @@ Command: dnsenum megacorpone.com
 
 Important concept: The results of the manual, dnsrecon and dnsenum provided 3 different sets of results. (Similar but different) They are trying to show that you should use multiple tools to get information, not just one.
 Lolbas connecting to a provided Windows machine
-xfreerdp /u:student /p:lab /v:192.x.x.x
+Command: xfreerdp /u:student /p:lab /v:192.x.x.x
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
