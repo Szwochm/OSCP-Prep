@@ -117,6 +117,37 @@ basically ip is like in python how you can iterate through a list of anything...
 https://github.com/danielmiessler/SecLists -- wordlists
 sudo apt install seclists -- get said wordlists (1.9 gigs as of 8-11)
 
+Alot to unpack for the next command
+Command: for ip in $(seq 200 254); do host 51.222.169.$ip; done | grep -v "not found"
+
+Explanation: 
+for i in 200, 201 ... 254
+host 51.222.169.i
+Pipe to grep -v (remove results that match regex of "not found"
+
+The big picture:
+They previously used a word list to try to guess some potential hostnames. Upon finding 2-3 entries that were alive, they discovered a pattern in the IP scheme. Using that pattern they tried doing reverse looksups and seeing what came back.
+
+
+Tool: DNSRecon
+https://github.com/darkoperator/dnsrecon
+
+Command: dnsrecon -d megacorpone.com -t std
+-d: Specify domain
+-t std: type of enumeration (STanDard
+
+Using a list we created we can do the following...
+dnsrecon -d megacorpone.com -D ~/list.txt -t brt
+-D: specify input file
+-t brt: Brute force
+
+Tool: DNSEnum
+Command: dnsenum megacorpone.com
+
+Important concept: The results of the manual, dnsrecon and dnsenum provided 3 different sets of results. (Similar but different) They are trying to show that you should use multiple tools to get information, not just one.
+Lolbas connecting to a provided Windows machine
+xfreerdp /u:student /p:lab /v:192.x.x.x
+
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
