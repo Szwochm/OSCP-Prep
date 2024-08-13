@@ -159,6 +159,17 @@ host -t mx www.megacorpone.com Does not work....
 
 I also learned that labs can be broken on the first start. nothing worked until I restarted vpn and lab.
 
+#### 6.3.2 TCP/UDP Port Scanning Theory
+
+nc -nvv -w 1 -z 192.168.50.152 3388-3390
+-n: No Dns lookups
+-vv: Increased verbosity (-v is regular)
+-w: Time out in seconds
+-z Zero i/o mode, sends no data (used for scanning)
+
+talks about the 3 way hand shake and the flags used for scanning
+
+udp:
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -166,6 +177,9 @@ I also learned that labs can be broken on the first start. nothing worked until 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+6.3.2 TCP/UDP Port Scanning Theory
+https://www.barracuda.com/support/glossary/intrusion-detection-system
+http://support.microsoft.com/kb/172983
 
 [x] 6.2
 
