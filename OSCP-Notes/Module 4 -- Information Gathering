@@ -177,8 +177,43 @@ Lab notes: I noticed that with the syntax of the code above, netcat scans from h
 
 
 ### 6.3.3 Port Scanning with Nmap
+The reason why we need sudo for Nmap, is because it uses "raw sockets". No raw sockets = only able to use packets that follow standards.
 
+preparing iptables to see size of traffic generated from scans
+sudo iptables -I INPUT 1 -s 192.168.50.149 -j ACCEPT
+-I: insert a new rule into a given chain. What the fuck is a chain? Input and Outbound are both chains. Chains of rules? (there is also a forward chain)
+-s: source ip address
+-j: in this case accepts traffic. In a more general case this can probably be DENY or Accept
+sudo iptables -I OUTPUT 1 -d 192.168.50.149 -j ACCEPT
 
+sudo iptables -Z
+-Z: zero packet and byte counters in all chains.
+
+Generate traffic 
+nmap 192.168.50.149
+
+See Ip Table Statistics
+sudo iptables -vn -L
+-v: Verbosity
+-n: numeric output
+-L: List rules present in all chains
+
+Zero out counters again
+sudo iptables -Z
+
+Bigger traffic scan
+nmap -p 1-65535 192.168.50.149
+
+Results:
+72KB traffic for normal scan
+4MB traffic for full port scan
+1Gig traffic to scan a 254 host network
+
+Tip: Nmap is stealthier and generates less traffic than MASSCAN and RustScan which are faster
+
+Stealth Scan - Aka a Syn scan. Send a syn packet. Do not complete tcp handshake (not really stealthy anymore by todays standards)
+
+TCP connect scanning = do the whole handshake. No admin = no raw sockets = forced to use regular tcp connect scans
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -189,6 +224,7 @@ Extra Reading
 
 ### 6.3.3 Port Scanning with Nmap
 http://nmap.org/
+https://networkprogrammingnotes.blogspot.com/p/berkeley-sockets.html
 http://man7.org/linux/man-pages/man7/raw.7.html
 http://netfilter.org/projects/iptables/index.html
 https://tools.kali.org/information-gathering/masscan
