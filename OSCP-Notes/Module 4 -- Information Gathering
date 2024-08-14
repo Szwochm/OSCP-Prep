@@ -213,8 +213,26 @@ Tip: Nmap is stealthier and generates less traffic than MASSCAN and RustScan whi
 
 Stealth Scan - Aka a Syn scan. Send a syn packet. Do not complete tcp handshake (not really stealthy anymore by todays standards)
 
-TCP connect scanning = do the whole handshake. No admin = no raw sockets = forced to use regular tcp connect scans
+-sT:TCP connect scanning = do the whole handshake. No admin = no raw sockets = forced to use regular tcp connect scans
+Uses Berkeley Sockets API to create packets.
 
+sudo nmap -sU -sS 192.168.50.149: Do both tcp and udp scan
+
+nmap -sn 192.168.50.1-253
+-sn: host discovery. Also sends tcp packet to 443 and 80. Finally sends a ping
+
+scan and sent to txt file for later grepping
+nmap -v -sn 192.168.50.1-253 -oG ping-sweep.txt
+-oG: output grepable
+-v: verbosity
+
+grep out ip addresses
+grep Up ping-sweep.txt | cut -d " " -f 2
+
+nmap -sT -A --top-ports=20 192.168.50.1-253 -oG top-port-sweep.txt
+-sT: connect Scan
+-A: All... OS version Detection, Script scanning, traceroute
+--top-ports=20: use 20 most common ports (these are in /usr/share/nmap/nmap-services)
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
