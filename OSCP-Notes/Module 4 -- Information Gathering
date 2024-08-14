@@ -159,7 +159,7 @@ host -t mx www.megacorpone.com Does not work....
 
 I also learned that labs can be broken on the first start. nothing worked until I restarted vpn and lab.
 
-#### 6.3.2 TCP/UDP Port Scanning Theory
+### 6.3.2 TCP/UDP Port Scanning Theory
 
 nc -nvv -w 1 -z 192.168.50.152 3388-3390
 -n: No Dns lookups
@@ -171,12 +171,37 @@ talks about the 3 way hand shake and the flags used for scanning
 
 udp:
 
+nc -nv -u -z -w 1 192.168.50.149 120-123
+
+Lab notes: I noticed that with the syntax of the code above, netcat scans from highest to lowest...
+
+
+### 6.3.3 Port Scanning with Nmap
+
+
+
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+
+### 6.3.3 Port Scanning with Nmap
+http://nmap.org/
+http://man7.org/linux/man-pages/man7/raw.7.html
+http://netfilter.org/projects/iptables/index.html
+https://tools.kali.org/information-gathering/masscan
+https://rustscan.github.io/RustScan/
+https://nmap.org/book/scan-methods-connect-scan.html
+https://networkprogrammingnotes.blogspot.com/p/berkeley-sockets.html
+https://nmap.org/book/scan-methods-udp-scan.html
+https://nmap.org/book/nmap-services.html
+https://nmap.org/book/man-host-discovery.html
+http://nmap.org/book/nse.html
+https://nmap.org/book/osdetect.html
+https://docs.microsoft.com/en-us/powershell/module/nettcpip/test-netconnection?view=windowsserver2022-ps
+
 6.3.2 TCP/UDP Port Scanning Theory
 https://www.barracuda.com/support/glossary/intrusion-detection-system
 http://support.microsoft.com/kb/172983
