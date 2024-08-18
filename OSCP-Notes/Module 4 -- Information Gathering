@@ -239,22 +239,151 @@ nmap -sT -A --top-ports=20 192.168.50.1-253 -oG top-port-sweep.txt
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+6.3.4 SMB Enumeration
 
-### 6.3.3 Port Scanning with Nmap
-http://nmap.org/
+https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831795(v=ws.11)
+	This link talks about SMB 3.0 specifically
+
+	The Server Message Block (SMB) protocol is a network file sharing protocol.
+
+	Allows applications on a computer to read and write to files and to request services from server programs in a computer network
+	! MSQ SQL databases can be stored SMB Shares
+	! File shares can be managed by an admin via powershell
+	! Encryption does not always encrypt entire server... indivudual shares can be encrypted whiles others are not...
+
+http://markgamache.blogspot.ca/2013/01/ntlm-challenge-response-is-100-broken.html
+	This is an article from 2013. Unsure of how relevant it is even though it says it is still relevant
+	4 ways NTLM authenticates. LM, NTLM, NTLM with Session Security, NLTMv2. Its all easy to exploit except for v2
+	There are registry options to decide which handshake is used (http://support.microsoft.com/kb/2793313, http://technet.microsoft.com/security/advisory/973811)
+
+	https://www.w3schools.com/browsers/browsers_display.asp -- Statistics for what OS, screen rez, browser Versions, etc are being used.
+	I can see this being very useful when creating an application.
+
+	Dove into MD4 a little bit -- Hashes can be cracked in 2^(n/2) bits. 8 character password is 64 bits = 2^32 or 4 million hash cycles to crack
+
+	How ntlm2 is calculated...
+	Password gets run through Md4 which spits out a 16 byte value.
+	7 null bytes are appended, hash is now 21 bytes.
+	Cut this hash into 3 parts. run each of these into 3 des.
+	each des key encrypts the type 2 challenge giving 3 eight byte ciphertext values.
+	Combine the 3 ciphertexts.
+
+	Notice that bytes 17-21 are Null. So the last Des key is actually only 2 bytes long. Much easier to crack than 7 bytes
+
+	HKLM\SYSTEM\CurrentControlSet\Control\Lsa\LmCompatibilityLevel decides which handshake to use. 3 or greater should be the minimum. 5 is best. (no ntlm, only v2)
+
+	Something else that I learned while diving into MD4... The attacks used on the algorithm were reported 10-15 years prior and no one implemented mitigations...
+
+	Many browsers use NTLM authentication in HTTP headers when a trusted site requests it. (how is "trusted determined? same domain? Certs? I have seen this term in AD documentation)
+
+	ntlm2 and ntlmv2 are not the same. Ntlm2 uses des, ntlmv2 uses hmac
+
+https://www.techtarget.com/searchnetworking/definition/NetBIOS
+	Netbios: network service that enables applications on different computers to communicate with each other across a local area network (LAN)
+
+	Has 2 communication modes:
+	Session mode aka connection mode
+	Datagram mode aka connectionless mode. can also broadcast to every computer on lan.
+
+	Dns Vs NetBios (NBNS or Net Bios Name Server)
+	Both NetBIOS and the domain name system (DNS) use naming processes. (aka ip into something readable)
+	DNS uses a hierarchical naming structure while the NetBIOS structure is flat.
+
+https://www.pcmag.com/encyclopedia/term/netbios-over-tcpip
+	Net bios names are up to 15 characters
+
+6.3.4 Port Scanning with Nmap
+http://nmap.org/ -- just a link to nmap site
+
 https://networkprogrammingnotes.blogspot.com/p/berkeley-sockets.html
+
+	API for internet sockets and unix domnain sockets used in IPC
+	blocking sockets do not return control until data has been sent or received
+	alot of information on how to programatically create a connection... maybe be useful to create learning apps but not immediately helpful.
+	Something to keep note of when reviewing POCS,  maybe some of them will use this API...
+
+ 
 http://man7.org/linux/man-pages/man7/raw.7.html
+
+	Man page for raw sockets. hard read.
+
 http://netfilter.org/projects/iptables/index.html
+
+               - Program to configure packet filtering ruleset
+               - NAT is also configured from packet filter ruleset
+               - Linux 2.4 and later
+
+ 
+
 https://tools.kali.org/information-gathering/masscan
+	how to use massscan
+
+ 
+
 https://rustscan.github.io/RustScan/
+	Scanner faster than NMAP that allows scripting via python, lua, etc
+
+ 
+
 https://nmap.org/book/scan-methods-connect-scan.html
-https://networkprogrammingnotes.blogspot.com/p/berkeley-sockets.html
-https://nmap.org/book/scan-methods-udp-scan.html
+	TCP scan and FTP bounce scan are the only scans usuable without root / admin
+
+ 
+
+	Attacker -> Sent Syn
+	Target -> Respond Syn Ack
+	Attacker -> Send ACK
+	Host -> Sends banner
+	Attacker -> RST
+
+ 
+
+	Stealth Scan is
+	Attacker -> Syn |----First 2 are same as full connect
+	Host -> Syn ACK |
+	Attacker -> RST
+
+ 
+
 https://nmap.org/book/nmap-services.html
-https://nmap.org/book/man-host-discovery.html
+
+	Explains how nmap determines "common" ports
+
+
 http://nmap.org/book/nse.html
+	An entire tutorial on how to use, and create nmaps scripts
+	NSE is a general scripting language
+
 https://nmap.org/book/osdetect.html
+	A wealth of documentation on the various versioning information nmap provides and how it does so.
+	Mentions that you should use both -sV (port versioning) and -O (os versioning). Things such as proxy firewalls can throw off
+	--osscan-limit: This option lets NMAP only do versioning on hosts that have one open and one closed port. This can save time.
+	Guesses are much better when there is one open and one closed port.
+	--osscan-limit: How many passes should nmap do for Os detection? 5 for "good targets" and 2 for unclear / more guess targets is the default
+	Some servers spoof their OS
+	Too much information to process but a good start if I ever decide to make a network scanner
+
+
 https://docs.microsoft.com/en-us/powershell/module/nettcpip/test-netconnection?view=windowsserver2022-ps
+	Documentation on how to Test a network connection
+
+
+https://www.barracuda.com/support/glossary/intrusion-detection-system
+	Talks about IDS and also how people try to evade it
+
+http://support.microsoft.com/kb/172983
+	TCP 3 way handshake
+	This got me thinking about how IPC works and what a pipe is... Unamed pipe just uses Standard input or output to talk to a program. 
+	Need 2 pipes for bi-rectional transmission
+	Named pipes are essentially treated like files
+	There are other ways like a message queue. Basically the operating system handles a queue and the 2 parties interact send messages to the queue, never directly to each other.
+	They can also do this via shared memory which seems funky and unreliable. Maybe for lower level processes
+
+	Reminder that the ACK number is the sequence number received + 1 and send back. Kind of like a rolling counter between parties
+	Acks are essential in identifying the specific connection they have established
+
+	RFC 793
+
 
 6.3.2 TCP/UDP Port Scanning Theory
 https://www.barracuda.com/support/glossary/intrusion-detection-system
