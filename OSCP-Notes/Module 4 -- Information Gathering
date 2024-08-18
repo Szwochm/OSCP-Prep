@@ -233,6 +233,44 @@ nmap -sT -A --top-ports=20 192.168.50.1-253 -oG top-port-sweep.txt
 -sT: connect Scan
 -A: All... OS version Detection, Script scanning, traceroute
 --top-ports=20: use 20 most common ports (these are in /usr/share/nmap/nmap-services)
+
+cats out every port -- you can also use head -n 50 to cat out the fist 15ish ports
+cat /usr/share/nmap/nmap-services
+
+sudo nmap -O 192.168.50.14 --osscan-guess
+-O: os versioning
+-osscan-guess: Prints out the percentages for likely OS
+
+nmap -sT -A 192.168.50.14
+-sT: TCP connect scan (i,e not stealth)
+-A: All (scripts, versioning os, versioning services, etc)
+
+nmap -sV 192.168.50.14
+-sV: service versioning
+
+Nmap can be tricked by system admins that put out fake banners...
+
+nmap --script http-headers 192.168.50.6
+--script: designate a specific script or set of scripts to use
+
+Get info on script you are running
+nmap --script-help http-headers
+
+If the internet ever goes down we can view nmap script nse contents to see how it is working
+
+Powershell port scan (1port)
+Test-NetConnection -Port 445 192.168.50.151
+
+Powershell script to scan first 1024 ports. $_ is the nameo f the variable. 1..1024 creates a for loop.
+This is using a Net.Sockets.TcpClient object 
+1..1024 | % {echo ((New-Object Net.Sockets.TcpClient).Connect("192.168.50.151", $_)) "TCP port $_ is open"} 2>$null
+
+Here is an example I made to help me understand the syntax in the future if I have to create something new
+ 1..1024 | % {echo $_} 2>$null
+
+
+
+
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
