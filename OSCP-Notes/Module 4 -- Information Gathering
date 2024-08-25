@@ -291,6 +291,9 @@ lists domains, resources, and computers belonging to a given host
 net view \\dc01 /all
 /all: needed to list administrative shares!
 
+Created this one-liner to enum4linux a bunch of machines as lab wanted me to do this for 10 machines
+for ip in $(cat smbhosts.txt); do enum4linux $ip; done
+
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
