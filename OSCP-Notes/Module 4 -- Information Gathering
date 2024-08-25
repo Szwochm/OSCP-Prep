@@ -268,7 +268,27 @@ This is using a Net.Sockets.TcpClient object
 Here is an example I made to help me understand the syntax in the future if I have to create something new
  1..1024 | % {echo $_} 2>$null
 
+### 6.3.4 SMB Enumeration
 
+SMB and NetBios are not the same protocol
+
+Modern SMB can work without netbios... Netbios over TCP (NBT) is needed for backwards compatibility.
+
+nmap -v -p 139,445 -oG smb.txt 192.168.50.1-254
+cat smb.txt
+
+
+sudo nbtscan -r 192.168.50.0/24
+-r: originating udp port 137
+
+list contents of nmap's smb scripts folder
+ls -1 /usr/share/nmap/scripts/smb*
+
+nmap -v -p 139,445 --script smb-os-discovery 192.168.50.152
+smb-os-discovery: - nmap script that only works if smbv1 is enabled.
+
+lists domains, resources, and computers belonging to a given host
+net view \\dc01 /all
 
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
