@@ -294,6 +294,79 @@ net view \\dc01 /all
 Created this one-liner to enum4linux a bunch of machines as lab wanted me to do this for 10 machines
 for ip in $(cat smbhosts.txt); do enum4linux $ip; done
 
+### 6.3.5
+
+SMTP check user using netcat
+nc -nv 192.168.50.8 25
+VRFY root
+
+SMTP check user using python
+Get script from https://github.com/Szwochm/OSCP-Prep/blob/main/Scripts/smtpVRFY.py
+
+python3 smtp.py root 192.168.50.8
+python3 smtp.py johndoe 192.168.50.8
+
+Use Test Connection to see if port is up
+Test-NetConnection -Port 25 192.168.50.8
+
+Install Telnet (needs admin, you can also just move a binary onto your machine)
+dism /online /Enable-Feature /FeatureName:TelnetClient
+
+Use telnet to enumerate
+telnet 192.168.50.8 25
+VRFY root
+
+### 6.3.6 SNMP Enumeration
+
+SNMP has a database called Management Information Base which is usually related to network managment
+This Database has a tree structure. Leafs correspond to specific variable values that are usable by external users
+
+Scan for SNMP
+sudo nmap -sU --open -p 161 192.168.50.1-254 -oG open-snmp.txt
+
+Script to brute force a list of ips with 3 common community strings
+
+Create Community string dictionary
+echo public > community
+echo private >> community
+echo manager >> community
+
+Bash Script to brute force those community strings against a block of ips
+for ip in $(seq 1 254); do echo 192.168.50.$ip; done > ips
+
+using a tool to do it instead
+onesixtyone -c community -i ips
+
+snmpwalk -c public -v1 -t 10 192.168.50.151
+-c: specify community string
+-v specify SNMP version number
+-t: Timout of 10 seconds
+
+Somethings we can try to query....
+
+1.3.6.1.2.1.25.1.6.0	System Processes
+1.3.6.1.2.1.25.4.2.1.2	Running Programs
+1.3.6.1.2.1.25.4.2.1.4	Processes Path
+1.3.6.1.2.1.25.2.3.1.4	Storage Units
+1.3.6.1.2.1.25.6.3.1.2	Software Name
+1.3.6.1.4.1.77.1.2.25	User Accounts
+1.3.6.1.2.1.6.13.1.3	TCP Local Ports
+
+Example... Query user accounts 
+snmpwalk -c public -v1 192.168.50.151 1.3.6.1.4.1.77.1.2.25
+
+Query all running processes
+snmpwalk -c public -v1 192.168.50.151 1.3.6.1.2.1.25.4.2.1.2
+- look for vulnerable apps, antivirus, other leverable information
+
+Query all installed software
+snmpwalk -c public -v1 192.168.50.151 1.3.6.1.2.1.25.6.3.1.2
+- use with running processes  to cross reference and confirm versions of services running
+
+
+
+
+
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -301,6 +374,14 @@ for ip in $(cat smbhosts.txt); do enum4linux $ip; done
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+6.3.6 SNMP Enumeration
+
+https://www.ibm.com/support/knowledgecenter/ssw_aix_71/commprogramming/mib.html
+
+http://www.phreedom.org/software/onesixtyone/
+
+6.3.5 SMTP Enumeration
+
 6.3.4 SMB Enumeration
 
 https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831795(v=ws.11)
