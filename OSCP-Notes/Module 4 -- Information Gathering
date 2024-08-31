@@ -363,18 +363,6 @@ Query all installed software
 snmpwalk -c public -v1 192.168.50.151 1.3.6.1.2.1.25.6.3.1.2
 - use with running processes  to cross reference and confirm versions of services running
 
-# 7. Vulnerability Scanning
-The point of a vulnerability scanner is to establish a baseline before performing a thorough manual test
-
-## 7.1. Vulnerability Scanning Theory
-
-### 7.1.1. How Vulnerability Scanners Work
-
-
-
-
-
-
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -383,59 +371,6 @@ The point of a vulnerability scanner is to establish a baseline before performin
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 
-7. Vulnerability Scanning
-
-https://en.wikipedia.org/wiki/Vulnerability_scanner
-No notes
-
-https://www.tenable.com/products/nessus
-no notes
-
-https://nmap.org/
-no notes
-
-7.1.1. How Vulnerability Scanners Work
-
-https://capec.mitre.org/data/definitions/292.html
-	breaks down the various phases of a cyber attack. For this specific link it talks about host discovery.
-
-https://nvd.nist.gov/
-	Metrics, information, and other stuff about vulnerabilities. I specifically like the 20 most recently scored vulnerabilities and can use this to see what's "hot".
-
-
-
-https://cve.mitre.org/cve/search_cve_list.html
-	place to search for vulnerabilities
-
-https://cve.mitre.org/
-	no notes
-
-https://nvd.nist.gov/vuln-metrics/cvss
-	CVSS is not a measure of risk
- 
-https://www.first.org/cvss/v2/guide
-	CVSS uses 3 metric groups
-	Base - characteristics that are constant over time and user environments
-	Time - characteristics that change over time
-	Environmental - characteristics that are unique to a specific user environment
-
-https://www.first.org/cvss/user-guide
-	no notes
-https://www.nist.gov/
-	nist has publications for a variety of things, not just cyber security
-
-https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
- 	no notes
-https://www.cgisecurity.com/questions/falsepositive.shtml 
-	no notes
-
-https://access.redhat.com/security/updates/backporting
-	applying security fixes of new versions to old versions
-	because of back porting --  just looking at the version number of a package will not tell them if they are vulnerable or not
-	 
-
-https://www.cgisecurity.com/questions/falsenegatives.html
-	no notes
 
 6.3.6 SNMP Enumeration
 
