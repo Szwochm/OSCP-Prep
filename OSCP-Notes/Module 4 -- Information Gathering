@@ -77,6 +77,8 @@ Content-Security-Policy-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
   http-equiv="Content-Security-Policy"
   content="default-src 'self'; img-src https://*; child-src 'none';" />
 
+### 6.2.4
+
 ## 6.3. Active Information Gathering
 
 in some cases during a penetration test, we won't have the luxury of running our favorite Kali Linux tool
