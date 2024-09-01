@@ -57,6 +57,8 @@ whois 38.100.193.70 -h 192.168.50.251
 
 Using this command, they located the IT Admin's Name, and 3 name servers (NS1.MEGACORPONE.COM)
 
+I learned that if you have a whois server on the LAN (Which isn't likely) and do a look up, it will still default to the internet. It will not use the LAN whois server
+
 ### 6.2.2
 intitle:"index of" "parent directory"
 
@@ -70,11 +72,10 @@ Content-Security-Policy-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
   enabled by enabling Content-Security-Policy header on webserver (previously known as x-content-security-policy)
 
 
-  can also be enabled using
-
- LEFT BRACKET meta
+  can also be enabled using the following code below
+<meta
   http-equiv="Content-Security-Policy"
-  content="default-src 'self'; img-src https://*; child-src 'none';" / RIGHT BRACKET
+  content="default-src 'self'; img-src https://*; child-src 'none';" />
 
 ## 6.3. Active Information Gathering
 
