@@ -1,1 +1,78 @@
+# 8. Introduction to Web Application Attacks
+This is just an intro to various tools, it really has not taught me anything in this section. Here are some commands to save time
+
+sudo nmap -p80  -sV 192.168.50.20
+sudo nmap -p80 --script=http-enum 192.168.50.20
+gobuster dir -u 192.168.50.20 -w /usr/share/wordlists/dirb/common.txt -t 5
+
+## 8.1. Web Application Assessment Methodology
+
+## 8.2. Web Application Assessment Tools
+
+### 8.2.1. Fingerprinting Web Servers with Nmap
+
+sudo nmap -p80  -sV 192.168.50.20
+
+Initial fingerprinting of webserver
+sudo nmap -p80 --script=http-enum 192.168.50.20
+
+### 8.2.2. Technology Stack Identification with Wappalyzer
+https://www.wappalyzer.com/
+
+### 8.2.3. Directory Brute Force with Gobuster
+
+gobuster dir -u 192.168.50.20 -w /usr/share/wordlists/dirb/common.txt -t 5
+-u: Target ip
+-w: Wordlist
+-t: num threads
+
+### 8.2.4 Security Testing with Burp Suite
+
+## 8.3 Web Application Enumeration
+
+### 8.3.1. Debugging Page Content
+Java based web applications might use .jsp, .do or .html
+
+### 8.3.2. Inspecting HTTP Response Headers and Sitemaps
+Http headers that start with X- generally mean non standard. X- headers are depreciated
+
+### 8.3.3. Enumerating and Abusing APIs
+
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+Extra Reading   
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+
+8.3.2. Inspecting HTTP Response Headers and Sitemaps
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For
+https://www.rfc-editor.org/rfc/rfc6648
+https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-headers-behavior
+https://www.sitemaps.org/
+
+8.3.1 Debugging Page Content
+https://en.wikipedia.org/wiki/Web_framework#URL_mapping
+https://jquery.com/
+https://en.wikipedia.org/wiki/Minification_(programming)
+
+
+
+8.2.4 Security Testing with Burp Suite
+https://portswigger.net/burp
+https://www.java.com/en/download/help/whatis_java.html
+https://en.wikipedia.org/wiki/Captive_portal
+https://portswigger.net/burp/documentation/desktop/tools/intruder/using
+
+
+8.2.3. Directory Brute Force with Gobuster
+https://www.kali.org/tools/gobuster/
+
+8.2.2 Technology stack id with Wappalyzer
+https://www.wappalyzer.com/
+
+8.1. Web Application Assessment Methodology
+https://owasp.org/www-project-top-ten/
+
 
