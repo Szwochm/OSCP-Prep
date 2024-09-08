@@ -110,6 +110,13 @@ they converted get request to post request
 
 Then they created an admin account to change the actual admin's password
 
+Lab notes: Gobusters progress does not always end at 100%. With the 2 patterns, it endded at 300%. I imagine its for the following:
+/:              100% +
+/{GOBUSTER}/v1: 100% + 
+/{GOBUSTER}/v2: 100%
+                = 300%.
+
+I stopped the scan early after 200% and did not find 2 of the API points
 
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
