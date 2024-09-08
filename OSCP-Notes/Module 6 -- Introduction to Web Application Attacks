@@ -116,8 +116,16 @@ Lab notes: Gobusters progress does not always end at 100%. With the 2 patterns, 
 /{GOBUSTER}/v2: 100%
                 = 300%.
 
-I stopped the scan early after 200% and did not find 2 of the API points
+I stopped the scan early after 200% and did not find 2 of the API points. Also it does not appear to be sequential order as /users/v1 was one of the last things found
 
+The labs had me look at the following locations to get flags
+URL
+Source Code of various pages
+APIs / fuzzing
+source code of css and java script
+executing javascript
+
+I wonder what can be gained from inspecting CSS...
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
