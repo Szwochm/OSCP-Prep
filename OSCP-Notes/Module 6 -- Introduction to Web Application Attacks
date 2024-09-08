@@ -134,8 +134,24 @@ I wonder what can be gained from inspecting CSS...
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 8.3.3 Enumerating and Abusing APIs
- https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON
- https://en.wikipedia.org/wiki/JSON_Web_Token 
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON
+JSON supports strings, numbers, arrays, booleans, and other object literals.
+Only properties, no methods. (you can't put a function inside JSON)
+
+https://en.wikipedia.org/wiki/JSON_Web_Token
+Tokens are signed with private secret(symmetric) or public/private keys(asymmetric). This was a really dumb way to say that they are signed with either symmetric or asymmetric keys.
+The algorithm used to sign the token is specified within the token
+Token is signature is done using Base64URL.. This made me wonder on what prevents a JWT from just being stolen... I believe it is TLS/SSL....
+
+This led me down a rabbit hole of SSL... Learned the following things
+Your machine can verify if a cert is legit by using a certificate authority. These can be self-signed or come installed on the machine.
+Bad certificates can lead to MITM attacks... think burpsuite... 
+The reason why burpsuite can intercept traffic in plain english and not garbled nonsense is because you install a burpsuite certificate authority certificate. This lets you decrypt all the traffic on route to the website.
+If a tester is able to put a rogue certificate authority on a machine, they will be able de-crypt any traffic passing over the internet...
+"Burp generates its own TLS certificate for each host, signed by its own Certificate Authority (CA). This CA certificate is generated the first time you launch Burp, and stored locally.
+Burp will then use this CA certificate to create and sign a TLS certificate for each host that you visit, allowing you to browse HTTPS URLs as normal."
+
+
 
 
 8.3.2. Inspecting HTTP Response Headers and Sitemaps
@@ -167,5 +183,3 @@ https://www.wappalyzer.com/
 
 8.1. Web Application Assessment Methodology
 https://owasp.org/www-project-top-ten/
-
-
