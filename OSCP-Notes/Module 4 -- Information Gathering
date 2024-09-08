@@ -5,7 +5,7 @@ Note: With this Module I have introduce High Level Questions (HLQ). These point 
 [x] # 6. Information Gathering
 GOal: Learn how to methodically map such an attack surface using both passive and active means
 
-## 6.1 The Pen Test Lifecycle
+[x] ## 6.1 The Pen Test Lifecycle
 
 Information gathering has a role within every stage of a pentest
 
@@ -42,7 +42,7 @@ https://osintframework.com/
 The ultimate goal of passive information gathering is to obtain information that clarifies or expands an attack surface
 https://cheatsheetseries.owasp.org/cheatsheets/Attack_Surface_Analysis_Cheat_Sheet.html
 
-#6.2.1
+[x] #6.2.1
 
 https://www.megacorpone.com/ -- one of offsecs domains for PASSIVE Information Gathering
 https://www.forbes.com/advisor/business/software/what-is-a-name-server/
@@ -59,7 +59,7 @@ Using this command, they located the IT Admin's Name, and 3 name servers (NS1.ME
 
 I learned that if you have a whois server on the LAN (Which isn't likely) and do a look up, it will still default to the internet. It will not use the LAN whois server
 
-### 6.2.2
+[x] ### 6.2.2
 intitle:"index of" "parent directory"
 
 This takes you to a basically a file explorer of a page aka Directory Listing, (If it exists and you have permissions) -- CWE-548: Exposure of Information Through Directory Listing
@@ -77,17 +77,17 @@ Content-Security-Policy-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
   http-equiv="Content-Security-Policy"
   content="default-src 'self'; img-src https://*; child-src 'none';" />
 
-### 6.2.4
+[x] ### 6.2.4
 
-## 6.3. Active Information Gathering
+[x] ## 6.3. Active Information Gathering
 
 in some cases during a penetration test, we won't have the luxury of running our favorite Kali Linux tool
 
 https://lolbas-project.github.io/ -- you can use lolbas for information gathering, not just exploiting
 
-### 6.3.1 DNS Enumeration
+[x] ### 6.3.1 DNS Enumeration
 
-# 6.3.1
+[x] # 6.3.1
 
 Command: host www.megacorpone.com
 Gets ip address of a hostname
@@ -112,7 +112,6 @@ shop
 login
 mail
 
-
 Bash oneliner
 Command: for ip in $(cat list.txt); do host $ip.megacorpone.com; done
 basically ip is like in python how you can iterate through a list of anything... every line is an $ip. ip is just the name of the "i" variable
@@ -124,9 +123,9 @@ Alot to unpack for the next command
 Command: for ip in $(seq 200 254); do host 51.222.169.$ip; done | grep -v "not found"
 
 Explanation: 
-for i in 200, 201 ... 254
+for i = 200, iterate to 254
 host 51.222.169.i
-Pipe to grep -v (remove results that match regex of "not found"
+Pipe to grep -v (remove results that match regex of "not found")
 
 The big picture:
 They previously used a word list to try to guess some potential hostnames. Upon finding 2-3 entries that were alive, they discovered a pattern in the IP scheme. Using that pattern they tried doing reverse looksups and seeing what came back.
@@ -237,7 +236,7 @@ nmap -sT -A --top-ports=20 192.168.50.1-253 -oG top-port-sweep.txt
 -A: All... OS version Detection, Script scanning, traceroute
 --top-ports=20: use 20 most common ports (these are in /usr/share/nmap/nmap-services)
 
-cats out every port -- you can also use head -n 50 to cat out the fist 15ish ports
+cats out every port -- you can also use head -n 50 to cat out the first 15ish ports (about 35 lines of text before the first port)
 cat /usr/share/nmap/nmap-services
 
 sudo nmap -O 192.168.50.14 --osscan-guess
@@ -259,19 +258,17 @@ nmap --script http-headers 192.168.50.6
 Get info on script you are running
 nmap --script-help http-headers
 
-If the internet ever goes down we can view nmap script nse contents to see how it is working
-
 Powershell port scan (1port)
 Test-NetConnection -Port 445 192.168.50.151
 
-Powershell script to scan first 1024 ports. $_ is the nameo f the variable. 1..1024 creates a for loop.
+Powershell script to scan first 1024 ports. $_ is the name of the variable. 1..1024 creates a for loop.
 This is using a Net.Sockets.TcpClient object 
 1..1024 | % {echo ((New-Object Net.Sockets.TcpClient).Connect("192.168.50.151", $_)) "TCP port $_ is open"} 2>$null
 
 Here is an example I made to help me understand the syntax in the future if I have to create something new
  1..1024 | % {echo $_} 2>$null
 
-### 6.3.4 SMB Enumeration
+[x] ### 6.3.4 SMB Enumeration
 
 SMB and NetBios are not the same protocol
 
@@ -297,7 +294,7 @@ net view \\dc01 /all
 Created this one-liner to enum4linux a bunch of machines as lab wanted me to do this for 10 machines
 for ip in $(cat smbhosts.txt); do enum4linux $ip; done
 
-### 6.3.5
+[x] ### 6.3.5
 
 SMTP check user using netcat
 nc -nv 192.168.50.8 25
@@ -319,7 +316,7 @@ Use telnet to enumerate
 telnet 192.168.50.8 25
 VRFY root
 
-### 6.3.6 SNMP Enumeration
+[x] ### 6.3.6 SNMP Enumeration
 
 SNMP has a database called Management Information Base which is usually related to network managment
 This Database has a tree structure. Leafs correspond to specific variable values that are usable by external users
@@ -375,15 +372,15 @@ Extra Reading
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 
 
-6.3.6 SNMP Enumeration
+[x] 6.3.6 SNMP Enumeration
 
 https://www.ibm.com/support/knowledgecenter/ssw_aix_71/commprogramming/mib.html
 
 http://www.phreedom.org/software/onesixtyone/
 
-6.3.5 SMTP Enumeration
+[x] 6.3.5 SMTP Enumeration
 
-6.3.4 SMB Enumeration
+[x] 6.3.4 SMB Enumeration
 
 https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831795(v=ws.11)
 	This link talks about SMB 3.0 specifically
@@ -436,7 +433,7 @@ https://www.techtarget.com/searchnetworking/definition/NetBIOS
 https://www.pcmag.com/encyclopedia/term/netbios-over-tcpip
 	Net bios names are up to 15 characters
 
-6.3.4 Port Scanning with Nmap
+[x] 6.3.4 Port Scanning with Nmap
 http://nmap.org/ -- just a link to nmap site
 
 https://networkprogrammingnotes.blogspot.com/p/berkeley-sockets.html
@@ -448,31 +445,21 @@ https://networkprogrammingnotes.blogspot.com/p/berkeley-sockets.html
 
  
 http://man7.org/linux/man-pages/man7/raw.7.html
-
 	Man page for raw sockets. hard read.
 
 http://netfilter.org/projects/iptables/index.html
-
                - Program to configure packet filtering ruleset
                - NAT is also configured from packet filter ruleset
                - Linux 2.4 and later
 
- 
-
 https://tools.kali.org/information-gathering/masscan
 	how to use massscan
-
- 
 
 https://rustscan.github.io/RustScan/
 	Scanner faster than NMAP that allows scripting via python, lua, etc
 
- 
-
 https://nmap.org/book/scan-methods-connect-scan.html
 	TCP scan and FTP bounce scan are the only scans usuable without root / admin
-
- 
 
 	Attacker -> Sent Syn
 	Target -> Respond Syn Ack
@@ -480,17 +467,12 @@ https://nmap.org/book/scan-methods-connect-scan.html
 	Host -> Sends banner
 	Attacker -> RST
 
- 
-
 	Stealth Scan is
 	Attacker -> Syn |----First 2 are same as full connect
 	Host -> Syn ACK |
 	Attacker -> RST
 
- 
-
 https://nmap.org/book/nmap-services.html
-
 	Explains how nmap determines "common" ports
 
 
@@ -503,21 +485,19 @@ https://nmap.org/book/osdetect.html
 	Mentions that you should use both -sV (port versioning) and -O (os versioning). Things such as proxy firewalls can throw off
 	--osscan-limit: This option lets NMAP only do versioning on hosts that have one open and one closed port. This can save time.
 	Guesses are much better when there is one open and one closed port.
-	--osscan-limit: How many passes should nmap do for Os detection? 5 for "good targets" and 2 for unclear / more guess targets is the default
+	--max-os-tries: How many passes should nmap do for Os detection? 5 for "good targets" and 2 for unclear / more guess targets is the default
 	Some servers spoof their OS
 	Too much information to process but a good start if I ever decide to make a network scanner
 
-
 https://docs.microsoft.com/en-us/powershell/module/nettcpip/test-netconnection?view=windowsserver2022-ps
 	Documentation on how to Test a network connection
-
 
 https://www.barracuda.com/support/glossary/intrusion-detection-system
 	Talks about IDS and also how people try to evade it
 
 http://support.microsoft.com/kb/172983
 	TCP 3 way handshake
-	This got me thinking about how IPC works and what a pipe is... Unamed pipe just uses Standard input or output to talk to a program. 
+	This got me thinking about how IPC works and what a pipe is... Unnamed pipe just uses Standard input or output to talk to a program. 
 	Need 2 pipes for bi-rectional transmission
 	Named pipes are essentially treated like files
 	There are other ways like a message queue. Basically the operating system handles a queue and the 2 parties interact send messages to the queue, never directly to each other.
@@ -529,14 +509,14 @@ http://support.microsoft.com/kb/172983
 	RFC 793
 
 
-6.3.2 TCP/UDP Port Scanning Theory
+[x] 6.3.2 TCP/UDP Port Scanning Theory
 https://www.barracuda.com/support/glossary/intrusion-detection-system
 http://support.microsoft.com/kb/172983
 
 [x] 6.2
 
 https://www.megacorpone.com/
-https://osintframework.com/ -- Interesting mind map of how to perform OSINT, critical find
+https://osintframework.com/ -- Interesting mind map of how to perform OSINT with links to tools for each area/domain of attack, critical find
 
 https://cheatsheetseries.owasp.org/cheatsheets/Attack_Surface_Analysis_Cheat_Sheet.html
   Attack Surface Analysis --  The point of Attack Surface Analysis is to understand the risk areas in an application, to make developers and security specialists aware of what parts of the application are open to attack, to find ways of minimizing this, and to notice when and how the Attack Surface changes and what this means from a risk perspective.
@@ -545,12 +525,12 @@ https://cheatsheetseries.owasp.org/cheatsheets/Attack_Surface_Analysis_Cheat_She
      Identify what needs to be reviewed or tested
      Identify high risk areas that will need defense in depth implemented
      Identify when you have changed the attack surface and need to do a threat assessment
-     Attack Surface for an app is basically all of paths for data / commands into and out of and app, valuable data (Secrets, PII, etc), and code that attempts to protect the former
-       Should be done for every user type but focus on how the webapp reacts to unauthenticated anonymous users and highly privileged admin users
-       Group types of attacks in buckets based on risk
-       Dont need to understand every endpoint. Just use the number of endpoints with their buckets to figure out how much of the budget has to go where
+  Attack Surface for an app is basically all of paths for data / commands into and out of and app, valuable data (Secrets, PII, etc), and code that attempts to protect the former'
+	Should be done for every user type but focus on how the webapp reacts to unauthenticated anonymous users and highly privileged admin users
+        Group types of attacks in buckets based on risk
+        Dont need to understand every endpoint. Just use the number of endpoints with their buckets to figure out how much of the budget has to go where
 
-    Attack Surface for Microservices and Cloud Native Applicatios (I think these are basically just web apps)
+    Attack Surface for Microservices and Cloud Native Applications (I think these are basically just web apps)
       User interface (UI) forms and fields 
       HTTP headers and cookies
       APIs
@@ -559,7 +539,7 @@ https://cheatsheetseries.owasp.org/cheatsheets/Attack_Surface_Analysis_Cheat_She
       Other local storage
       Email or other kinds of messages
       Runtime arguments
-      ...Your points of entry/exit
+      ...Your points of entry/exit (anything you can interact with)
 
     Identify high risk code
       Network-facing, especially internet-facing code
@@ -575,25 +555,20 @@ There are tools for vuln scanning webapps (I don't think any of these are allowe
   - Skipfish
   - w3af
 
-6.2.1 Whois Enumeration
+[x] 6.2.1 Whois Enumeration
 
  https://www.domaintools.com/support/what-is-whois-information-and-why-is-it-valuable/
-  
   Whois is a widely used Internet record listing that identifies who owns a domain and how to get in contact with them.
   Whois record changes can take a while (About 24 Hours)
-  Not all extensions are equal. dot US do not have the option to privatize their information. ICANN no longer posts details of .ca domains. (However companies must still publicize it)
-  
-   
-  
+  Not all extensions are equal. dot US domains do not have the option to privatize their information. ICANN no longer posts details of .ca domains. (However companies must still publicize it)
+
 https://www.forbes.com/advisor/business/software/what-is-a-name-server/
-  
   Name servers connect specific URLs with the correct internet protocol (IP) address of the site’s server. (It doesn't mention IPv4 or Ipv6 nor which one specifically)
   Imagine that Name servers are the library, and DNS records are the catalog
   Each webhost has a different process for updating DNS records
   Name servers do not have to be related to the domain
   
-  Windows
-  
+  Windows 
   nslookup
   set q = ns
   <Enter a domain>
@@ -601,8 +576,7 @@ https://www.forbes.com/advisor/business/software/what-is-a-name-server/
   for Linux/mac use dig
 
  https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/
-
-6.2.2
+[x] 6.2.2
 CSP - https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 
 	One main objective of CSP is to mitigate and REPORT xss attacks (how does it report the attacks?)
@@ -623,27 +597,24 @@ CSP - https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 X-Frame Options -- https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
 
 	Whether browsers can render Frame, Iframe, embed or object
-
 	CSP has frame-ancestors directive which obsoletes xframes
-
 	Xframe inside meta tag does not work
 
 Server Hardening -- https://csrc.nist.gov/publications/detail/sp/800-123/final
 
 RC4 - https://msrc.microsoft.com/blog/2013/11/security-advisory-2868725-recommendation-to-disable-rc4/
 
-6.3 Active Information Gathering
+[x] 6.3 Active Information Gathering
 
 https://www.cloudflare.com/learning/dns/what-is-dns/
+	There are 4 Dns servers involved in loading a webpage
+	- Recursor
+	- root nameserver -- one of the big 13
+	- tld nameserver -- .com, .org, .net
+	- authoratative nameserver -- gives the actual answer
 
-There are 4 Dns servers involved in loading a webpage
-- Recursor
-- root nameserver -- one of the big 13
-- tld nameserver -- .com, .org, .net
-- authoratative nameserver -- gives the actual answer
-
-Recursors recieve queries from client machines. This can be via web browser. May make multiple requests to get an answer
-Root nameserver -- There are 13 ips associated with root servers
+	Recursors recieve queries from client machines. This can be via web browser. May make multiple requests to get an answer
+	Root nameserver -- There are 13 ips associated with root servers
 
 6.3.1
 
