@@ -126,8 +126,36 @@ Also Gobuster would act weird if I did not put the correct path to the Api... it
 I'm not entirely sure of whether I should use this as an indicator that maybe I am putting in the command wrong, or if this was just a one-time thing because there are flags to avoid certain lengths...
 
 ### 8.4.1 Stored vs Reflected XSS Theory
+Reflected attacks only attack a person submitting a request or visiting a link
+DOM attacks can be either reflected or stored
+- the key is that DOM-based XSS attacks occur when a browser parses the page's content and inserted JavaScript is executed.
+No matter how the XSS payload is delivered and executed, the injected scripts run under the context of the user visiting the affected page. This means that the user's browser, not the web application, executes the XSS payload. (not sure if this is applying only to DOM or Stored attacks as well)
 
+### 8.4.2. JavaScript Refresher
+Browsers process Server HTTP responses to create a DOM tree and render it
+Dom is the aggregate of forms, inputs, images, on the web page
+Java script can access and change DOM
+With access to the DOM, we can redirect login forms, extract passwords, and steal session cookies.
 
+Javascript example:
+function multiplyValues(x,y) {
+  return x * y;
+}
+ 
+let a = multiplyValues(3, 5)
+console.log(a)
+
+Test javascript code:
+go toabout:blank on firefox
+then use Web Console (either from menue or Ctrl + Shift + K)
+
+### 8.4.3. Identifying XSS Vulnerabilities
+Most common special characters
+< > ' " { } ;
+
+The two most common web app encodings are HTML Encodings and URL encodings
+
+When searching for XSS, if the input is being injected into an HTML element, we will need script tags to run javascript. If its going straight to the tag, may just need quotes and semi-colons
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -135,6 +163,15 @@ I'm not entirely sure of whether I should use this as an indicator that maybe I 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+### 8.4.3. Identifying XSS Vulnerabilities
+https://en.wikipedia.org/wiki/HTML_element
+https://en.wikipedia.org/wiki/Character_encodings_in_HTML#HTML_character_references
+https://en.wikipedia.org/wiki/Percent-encoding
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+
+8.4.2 JavaScript Refresher
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
 
 8.4.1 Stored vs Reflected XSS Theory
 https://en.wikipedia.org/wiki/Cross-site_scripting#Persistent_(or_stored)
