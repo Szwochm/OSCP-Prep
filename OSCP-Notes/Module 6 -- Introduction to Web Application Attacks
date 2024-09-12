@@ -242,12 +242,10 @@ https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduct
 https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON
   JSON supports strings, numbers, arrays, booleans, and other object literals.
   Only properties, no methods. (you can't put a function inside JSON)
-
 https://en.wikipedia.org/wiki/JSON_Web_Token
   Tokens are signed with private secret(symmetric) or public/private keys(asymmetric). This was a really dumb way to say that they are signed with either symmetric or asymmetric keys.
   The algorithm used to sign the token is specified within the token
   Token is signature is done using Base64URL.. This made me wonder on what prevents a JWT from just being stolen... I believe it is TLS/SSL....
-
   This led me down a rabbit hole of SSL... Learned the following things
   Your machine can verify if a cert is legit by using a certificate authority. These can be self-signed or come installed on the machine.
   Bad certificates can lead to MITM attacks... think burpsuite... 
@@ -256,35 +254,47 @@ https://en.wikipedia.org/wiki/JSON_Web_Token
   "Burp generates its own TLS certificate for each host, signed by its own Certificate Authority (CA). This CA certificate is generated the first time you launch Burp, and stored locally.
   Burp will then use this CA certificate to create and sign a TLS certificate for each host that you visit, allowing you to browse HTTPS URLs as normal."
 
-
-
-
 8.3.2. Inspecting HTTP Response Headers and Sitemaps
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+	Headers are not case sensitive
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For
 https://www.rfc-editor.org/rfc/rfc6648
+	RFC that depreciates the use of X- Prefixes to headers to denote that they are non standard. Shows the new one.
 https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-headers-behavior
+	Many of the interesting headers are removed by Amazon before the request is forwarded. I will need to review 8.3.2 for context to get a better understanding of the implications, or consequences of this.
 https://www.sitemaps.org/
+	no notes
 
 8.3.1 Debugging Page Content
 https://en.wikipedia.org/wiki/Web_framework#URL_mapping
+	making urls user friendly 
 https://jquery.com/
+	JavaScript Library
+	document traversal, events, Ajax, etc provided via API
 https://en.wikipedia.org/wiki/Minification_(programming)
-
-
+	Minification reduces size of source code making transmission more efficient
+	not like data compression, which needs to be decompressed to read it
+	has different goals than obsfucation
 
 8.2.4 Security Testing with Burp Suite
 https://portswigger.net/burp
+	no notes
 https://www.java.com/en/download/help/whatis_java.html
+	no notes
 https://en.wikipedia.org/wiki/Captive_portal
-https://portswigger.net/burp/documentation/desktop/tools/intruder/using
-
+	use response code to indicate that there is a portal
+	no every platform can use one
+	there are ways to bypass portals
+	https://portswigger.net/burp/documentation/desktop/tools/intruder/using
 
 8.2.3. Directory Brute Force with Gobuster
 https://www.kali.org/tools/gobuster/
+  tool
 
 8.2.2 Technology stack id with Wappalyzer
 https://www.wappalyzer.com/
+  tool / browser extension
 
 8.1. Web Application Assessment Methodology
 https://owasp.org/www-project-top-ten/
+  Bunch of information on top 10 web application vulnerabilities (by year), seems kind of hard to disgust the info presented by just reading it.
