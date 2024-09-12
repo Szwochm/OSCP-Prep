@@ -1,0 +1,49 @@
+# 9. Common Web Application Attacks
+no notes
+
+## 9.1. Directory Traversal
+
+### 9.1.1. Absolute vs Relative Paths
+Directory Traversal can be done using either Absolute OR Relative paths depending on the vulnerability
+
+### 9.1.2. Identifying and Exploiting Directory Traversals
+
+Linux webroot is often times /var/www/html/
+
+PHP uses $_GET2 to manage variables via a GET request
+
+Directory traversal vulnerabilities are mostly used for gathering information. As mentioned before, if we can access certain files containing sensitive information, like passwords or keys, it may lead to system access.
+
+SSH keys are usually located in the home directory of a user in the .ssh folder -- example of directory traversal to get SSH keys
+http://mountaindesserts.com/meteor/index.php?page=../../../../../../../../../home/offsec/.ssh/id_rsa
+
+Avoid using browser to read information. use burp or curl, like so
+curl http://mountaindesserts.com/meteor/index.php?page=../../../../../../../../../home/offsec/.ssh/id_rsa
+
+Save SSH key into filecalled dt_key, adjust permissions (failing to change permissions will cause unprotected keyfile error)
+chmod 400 dt_key
+ssh -i dt_key -p 2222 offsec@mountaindesserts.com
+
+Windows /etc/hosts is C:\Windows\System32\drivers\etc\hosts (we use this file because its readable by all local users)
+
+Linux systems, a standard vector for directory traversal is to list the users of the system by displaying the contents of /etc/passwd, check for private keys in their home directory, and use them to access the system via SSH
+In Windows there is really no way to do this...
+
+Windows IIS webserver logs are at C:\inetpub\logs\LogFiles\W3SVC1\
+
+For windows targets try both forward and backslashes...
+
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+Extra Reading   
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+
+https://en.wikipedia.org/wiki/Directory_traversal_attack
+https://www.php.net/manual/en/reserved.variables.get.php
+https://portswigger.net/burp
+https://curl.se/
+https://en.wikipedia.org/wiki/Internet_Information_Services
+https://docs.microsoft.com/en-us/iis/manage/provisioning-and-managing-iis/managing-iis-log-file-storage
+https://www.ietf.org/rfc/rfc1738.txt
