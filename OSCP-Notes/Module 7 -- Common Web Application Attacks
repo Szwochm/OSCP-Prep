@@ -151,6 +151,9 @@ kind of confusing but basically the php is nesting another page called admin.php
 
 with the filter wrapper, its basically showing the code as it would look like if it was encoded. This stops it from being executed so that we can see it. then we decode it to see what the underlying code is.
 
+
+### 9.2.3. Remote File Inclusion (RFI)
+
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
