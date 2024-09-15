@@ -45,7 +45,7 @@ curl http://192.168.50.16/cgi-bin/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd
 NOTE: 2e hexidecimal is 46. 46 in ascii is a DOT or period ".". no need to encode slashes as those are naturally part of URLS
 
 Lab notes: Q1 had us look for the flag in /opt/passwords... is the /opt folder supposed to be something we check? Is there a way that we can automate directory traversal to locate low hanging fruit?
-This reddit has a couple of good answers on some files to check.. one mentioned loading Seclists/fuzzing/LFI into burp intruder as a way to automate
+This reddit has a couple of good answers on some files to check.. one mentioned loading Seclists/fuzzing/LFI into burp intruder as a way to automate -- https://www.reddit.com/r/oscp/comments/1ae050m/path_traversal/
 
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
