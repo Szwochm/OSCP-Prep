@@ -207,11 +207,32 @@ Extra Reading
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 8.4.5 Privilege Escalation via XSS
 https://en.wikipedia.org/wiki/HTTP_cookie
+- cookies allow the storage of state (what items are in a shopping cart)
+- Http-only cookie -- cannot be accessed by Javascript (xss). Does not prevent XST and CSRF attacks
+- Session cookies expire or are deleted when the user closes the web browser -- exists only in temporary memory while the user navigates a website.
+- XST attack is basically a XSS attack using the trace method (On IIS, it is TRACK), and can bypass javascript restrictions
+
 https://en.wikipedia.org/wiki/Session_(computer_science)
+Sessions are also a basic step in connectionles communication modes
+
 https://en.wikipedia.org/wiki/Secure_cookie
+Secure Cookie only helps against confidentiality attacks... attackers can overwrite the cookies from an insecure channel
+cookies are inheritantly insecure -- no sensitive information should be stored on them 
+
+
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies
+- if an attacker has access to the users client they can still steal cookies secured with secure and httponly headers
+- DOM is an api that allows you to view XML and HTML files
+
 https://shift8web.ca/2018/01/craft-xss-payload-create-admin-user-in-wordpress-user/
+- goes over the wordpress exploit covered in class. I think the course covered it enough.
+- .htaccess files or nginx configuration can force http authentication for post requests
+	this led me to look into ht access files. https://www.youtube.com/watch?v=vaHG_XhOwKI
+	htaccess files let you do a bunch of things such as redirect, ACLs. You can even force iphones to redirect to a mobile site using .htaccess
+
 https://developer.wordpress.org/reference/functions/wp_nonce_field/
+how a nonce is used and best practices with a nonce
+
 https://owasp.org/www-community/attacks/csrf
 https://jscompress.com/
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt
