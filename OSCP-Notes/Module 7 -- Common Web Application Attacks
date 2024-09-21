@@ -269,6 +269,9 @@ I was reading sourcecode and trying to inject in the cmd arg for console.py, and
 Concepts to focus on
 Simple payloads to verify if a vulnerability exists
 
+Guessing potentially vulnerable back-ends
+ eval() or popen(): popen(f'echo "test"') and creating a payload from there
+
 Bash command injection test used in this course
 ;whoami
 "&&whoami
