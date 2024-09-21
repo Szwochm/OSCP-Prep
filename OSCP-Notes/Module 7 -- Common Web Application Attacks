@@ -275,6 +275,13 @@ Guessing potentially vulnerable back-ends
 Bash command injection test used in this course
 ;whoami
 "&&whoami
+
+resources for more command injection payloads
+https://book.hacktricks.xyz/pentesting-web/command-injection
+
+more linux payloads
+https://book.hacktricks.xyz/linux-hardening/bypass-bash-restrictions
+
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
