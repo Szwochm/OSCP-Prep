@@ -284,6 +284,15 @@ https://book.hacktricks.xyz/linux-hardening/bypass-bash-restrictions
 
 What conditions or file allow for sudo su or sudo -I to give the account root?
 
+Some other stuff I learned...
+If you are sending the payload in the post data, do not encode it, unless you have a mechanism to decode it after the fact.
+Uploading an exe will not help you unless you have another vulnerability to execute it.
+When using a cradle to download a file, make sure you are outputting that file somewhere the account has permissions
+Powershell 1-liner through a webshell did not work...
+
+
+
+
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
