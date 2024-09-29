@@ -59,6 +59,9 @@ somethings that I think are worth noting:
 mysql user name was queried from mysql.users which seems like a default... for mssql, we intentionally skip the default databases.
 in mysql it seems like there is one information_schema which is its own database. in mssql, it seems like each database has their own information schema within.
 I am not sure if this is a common occurance or just this particular example. Something to keep in the back of the mind.
+There seems to be an inconsistancy on which route they pursue and I can't tell if its to give a more holistic view, or specifically for the different database types.
+
+update: A few google searches show that mysql.users is shown to be where users grant permissions are stored
 
 
 
