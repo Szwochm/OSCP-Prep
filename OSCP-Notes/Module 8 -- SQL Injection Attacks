@@ -1,1 +1,85 @@
+# 10. SQL Injection Attacks
+SQL vulnerabilities typically allow the attacker to extend the original application query to include database tables that would normally be inaccessible
 
+## 10.1. SQL Theory and Databases
+no notes
+
+### 10.1.1. SQL Theory Refresher
+User interact with front end - HTML, CSS, and JavaScript.
+
+Front end sends data to backend - PHP, Java, and Python.
+
+Back end interact with data residing in a database - MySQL, Microsoft SQL Server, PostgreSQL, and Oracle 
+
+The $_Post variable lets you extract data from a post request.
+$uname = $_POST['uname'];
+$passwd =$_POST['password'];
+
+It appears to be stored in a map where the variable uname stores the username key
+
+### 10.1.2. DB Types and Characteristics (focus on mysql and mssql)
+MariaDB is a fork of Mysql, and is open-source
+
+default mysql port is 3306
+
+mysql -u root -p'root' -h 192.168.50.16 -P 3306
+select version();
+select system_user(); -- note root in db is only for db not for entire system
+show databases;
+
+example of how a query to get a password might look -- in this example the password is stored as a Caching-Sha-256 hash
+SELECT user, authentication_string FROM mysql.user WHERE user = 'offsec';
+
+Once you get the hash you may be able to crack it
+
+MSQL part
+
+Windows has SQL command that lets queries be run via CMD prompt or remotely from another machine
+
+Impacket has a tool for interacting with a protocol adapted by MSSQL called Tabular Data Stream (this is the name of the protocol not the tool)
+
+The tools name is called impacket-mssqlclient tool
+
+impacket-mssqlclient Administrator:Lab123@192.168.50.18 -windows-auth
+-windows-auth: forces Windows authentication instead of Kerberos
+Administrator: the username
+Lab123: The password
+192...18: the host
+
+SELECT @@version;
+NOTE: using sqlcmd "SELECT @@version;" must be followed by GO on a seperate line. However TDS protocol does not require this. Since Impacket uses TDS, the command above does not have this!
+
+SELECT name FROM sys.databases;
+
+Since master, tempdb, model, and msdb are default databases, we want to explore the custom offsec database because it might contain data belonging to our target
+
+SELECT * FROM offsec.information_schema.tables;
+
+somethings that I think are worth noting:
+mysql user name was queried from mysql.users which seems like a default... for mssql, we intentionally skip the default databases.
+in mysql it seems like there is one information_schema which is its own database. in mssql, it seems like each database has their own information schema within.
+I am not sure if this is a common occurance or just this particular example. Something to keep in the back of the mind.
+
+
+
+
+
+
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+Extra Reading   
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><
+10.1.2. DB Types and Characteristics
+https://www.mysql.com/
+https://mariadb.org/ -- open source fork of mysql
+https://dev.mysql.com/doc/refman/8.0/en/caching-sha2-pluggable-authentication.html
+http://www.microsoft.com/sqlserver
+https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility
+https://github.com/SecureAuthCorp/impacket
+https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-tds/893fcc7e-8a39-4b3c-815a-773b7b982c50/
+
+10. SQL Injection Attacks
+https://owasp.org/www-project-top-ten/
+https://owasp.org/Top10/A03_2021-Injection/
