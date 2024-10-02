@@ -63,6 +63,18 @@ There seems to be an inconsistancy on which route they pursue and I can't tell i
 
 update: A few google searches show that mysql.users is shown to be where users grant permissions are stored
 
+https://learnsql.com/blog/sql-server-cheat-sheet/ -- resource for navigating mssql.
+https://book.hacktricks.xyz/network-services-pentesting/pentesting-mssql-microsoft-sql-server is pretty good as well
+
+select * from sys.databases;
+use <database>
+select * from sys.tables --while in current database
+
+get all users
+SELECT * FROM sysusers
+or
+select * from sys.database_principals;
+
 
 
 
