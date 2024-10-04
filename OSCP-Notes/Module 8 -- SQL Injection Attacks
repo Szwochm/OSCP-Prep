@@ -115,7 +115,7 @@ name LIKE '".$_POST["search_input"]."%'"; -- this returns any value that has inp
 Figure out how many columns are needed. increment 1 until you hit an error
 ' ORDER BY 1-- //
 
-replace uneeded extra columns with null
+replace un-needed extra columns with null
 %' UNION SELECT database(), user(), @@version, null, null -- //
 
 Since we want to retrieve all the data from the customers table, we'll use the percentage sign followed by a single quote to close the search parameter. 
