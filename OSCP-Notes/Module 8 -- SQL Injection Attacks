@@ -109,6 +109,7 @@ The injected UNION query has to include the same number of columns as the origin
 The data types need to be compatible between each column.
 
 $query = "SELECT * from customers WHERE name LIKE '".$_POST["search_input"]."%'";
+. is the concat operator in sql % is the wild card that matches 0 or more characters
 
 name LIKE '".$_POST["search_input"]."%'"; -- this returns any value that has input from post request and a wildcard of characters (specified by the %)
 
@@ -136,19 +137,32 @@ see other tables in current database
 attempt to dump passwords
 extra reading
 
+### 10.2.3. Blind SQL Injections
+
+blind SQL injections describe scenarios in which database responses are never returned and behavior is inferred
+
+Although "boolean-based" might not seem like a blind SQLi variant, the output used to infer results comes from the web application, not the database itself.
+
+Boolean Based
+http://192.168.50.16/blindsqli.php?user=offsec' AND 1=1 -- //
+' AND 1=1 -- //
+Only returns values if the user is present in the database
+
+time based
+http://192.168.50.16/blindsqli.php?user=offsec' AND IF (1=1, sleep(3),'false') -- //
+if user does exist, sleep for 3 seconds.
+
+
+
+
 
 
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
-
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
-
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
-
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
-
 Extra Reading  
-
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
 10.2.2 UNION-based Payloads
 https://www.w3schools.com/sql/sql_union.asp 
