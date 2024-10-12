@@ -1,0 +1,76 @@
+# 11 Client-side attacks
+Most initial footholds are obtained by credential attacks and phishing attacks.
+
+When we leverage client-side attacks in penetration tests, we must also consider the moral aspect of targeting users.
+Our goal should not only be to obtain code execution on their system.
+It is also to not overstep any ethical or legal boundaries such as blackmailing employees or impersonating the police.
+
+Client systems are rarely exposed publically. Access can be gained with malicious attachments, websites, USB dropping, etc
+
+It has become increasingly difficult to deliver payloads via email due to spam filters, firewalls,
+and other security technologies scanning emails for links and attachments.
+
+.lnk shortcuts can point to malicious resources
+
+JScript executed via Windows Script host has been noted as a potential vector
+
+
+## 11.1. Target Reconnaissance
+
+Before executing a client side attack, identify potential users. Target and gather information about OS and installed software.
+
+### 11.1.1 Information Gathering
+
+metadata tags of publicaly-available documents may clue you into which verions of adobe, word, etc is being used,
+
+Google Dork to Find pdfs hosted on a website
+site:example.com filetype:pdf 
+
+Exiftool displays metadata of basically every common filetype. There's a list on the website
+
+exiftool -a -u brochure.pdf
+-a: display duplicated tags
+-u display unknown tags
+
+offsec's client-side content was written in 2022
+
+Author name can show employee names
+
+
+
+Extra Reading
+
+11.1.1. Information Gathering
+
+https://exiftool.org/TagNames/ 
+	- list of supported formats by exif
+
+https://exiftool.org/#Tag Groups
+	- more information on what is supported by exif
+
+https://github.com/OJ/gobuster
+	- tool
+
+11. Client-side Attacks
+
+https://www.verizon.com/business/resources/reports/2022/dbir/2022-data-breach-investigations-report-dbir.pdf
+	- link to request a data breach report investigation
+
+https://support.microsoft.com/en-au/windows/protect-yourself-from-phishing-0c7ea947-ba98-3bd9-7184-430e1f860a44
+	- no notes
+https://www.tripwire.com/state-of-security/featured/does-dropping-malicious-usb-sticks-really-work-yes-worryingly-well/
+	- no notes
+https://en.wikipedia.org/wiki/Watering_hole_attack
+	- no website should be considered safe.
+
+https://en.wikipedia.org/wiki/JScript
+	- microsofts version of Javascript. used mostly in internet explorer. Functions the same as Javascript
+	- version 11 is available for Windows 11 verison 24H2. Some references to Edge as well.
+
+https://en.wikipedia.org/wiki/Windows_Script_Host
+	- cant pinpoint the exact relationship between JScript and WSH
+	- Available Script engines -- basically every programming language has a scripting engine available and its own extension
+	- most commonly used are VBScript, JScript, PythonScript, PerlScript, ActivePHPScript, and ooRexxScript
+
+
+https://docs.microsoft.com/en-us/windows/client-management/windows-libraries 
