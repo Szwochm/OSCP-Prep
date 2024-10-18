@@ -1,3 +1,0 @@
-crackmapexec smb 10.10.11.35
-
-smbclient -L 10.10.11.35 

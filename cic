@@ -1,0 +1,8 @@
+crackmapexec smb <IP>
+
+smbclient -L <IP>
+
+interestingly enough, none of the auto tools were able to do the following
+smbclient \\\\IP\\SHARE -U guest
+
+This got me a password.
