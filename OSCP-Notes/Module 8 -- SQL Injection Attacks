@@ -226,6 +226,7 @@ plugins must be a .php file which is then zipped!
 
 example that I used
 
+note: Only the plugin : name is needed 
 <?php
 
 /**
