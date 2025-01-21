@@ -68,6 +68,62 @@ If you see "Learn more" instead of "Enable content", files have to be unblocked 
 
 Even with all of these hoops, macro attacks are still a very common client-side attack
 
+11.2.3 Leveraging Microsoft Word Macros
+
+Macro - series of commands and instructions to programatically achieve a task
+
+Macros can be written in Visual Basic for Applicatons (VBA). VBA is powerful and has access ActiveX objects and Windows Script Host.
+This is similar to Javascript in HTML applications
+
+Attack vectors such as [Dynamic Data Exchange] (DDE) and [Object Linking, and Embedding] (OLE) are old and will probably fail without you configuring the target system prior.
+
+Saving a Macro as a .docx requires attaching a containing template.
+This means that macros are not persistant. They can be run but cannot be embedded or saved into the document.
+This can be bypassed by just saving it as .doc or .docm
+
+Macros can be created from the View tab -> Macros
+
+Body of the macro is between "Sub" and "End Sub"
+
+Subs are similar to functions, but cannot be used in expressions they do not return values. In other words, no Answer = MyMacro() + 1
+
+ActiveX Objects can be leveraged to provide access to system commands. WScript via Windows Script Host Shell object will achieve this.
+
+instantiate a Windows Script Host Shell object with CreateObject:
+  CreateObject("Wscript.Shell").Run "powershell"
+
+Macros do not execute automatically, we need to use pre-made macro AutoOpen and event Document_Open
+Note: Both cover special cases which the other one doesn't and therefore we use both
+<Start of macro, do not paste>
+Sub AutoOpen()
+
+  MyMacro
+  
+End Sub
+
+Sub Document_Open()
+
+  MyMacro
+  
+End Sub
+
+Sub MyMacro()
+
+  CreateObject("Wscript.Shell").Run "powershell"
+  
+End Sub
+<End of Macro, do not paste>
+
+'s are single-line comments in VBA
+
+Remember that for macros to run the user has to Enable Content. Create a pretext to trick them
+
+Next, base64-encoded powershell download cradle to download powercat and start reverse shell.
+
+NOTE:VBA has a 255-character limit for literal strings and therefore, we can't just embed the base64-encoded PowerShell commands as a single string.
+Resolution: Create a variable, and concatenate commands together
+
+
 Extra Reading
 
 11.2
