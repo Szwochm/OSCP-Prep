@@ -36,9 +36,72 @@ offsec's client-side content was written in 2022
 
 Author name can show employee names
 
+11.1.2 Client Fingerprinting
 
+Hey can use canary tokens to get info on clients
+
+Extrareading
+11.2. Exploiting Microsoft Office
+
+This Learning Unit covers the following Learning Objectives:
+
+Understand variations of Microsoft Office client-side attacks
+Install Microsoft Office
+Leverage Microsoft Word Macros
+
+11.2.1. Preparing the Attack
+
+Using an attachment in an email for the attack isn't going to cut it. Too much awareness and mitigations are implemented. 
+
+Files downloaded from email or links are marked with MOTW (Mark of the Web) -- This opens them in protected mode. A target must be convinced to "Enable editing" for macros to execute.
+
+An attacker can blur the rest of the document and say that the user has to Enable Editing to trick them into clicking it...
+
+There are some macro programs that do not have a protected view such as Microsoft Publisher.
+
+If you see "Learn more" instead of "Enable content", files have to be unblocked using the macro unblock checkbox
+
+Even with all of these hoops, macro attacks are still a very common client-side attack
 
 Extra Reading
+
+11.2
+
+https://attack.mitre.org/techniques/T1553/005/
+Mark of the web can be bypassed. A compressed folder may be marked, but its contents may not.
+MOTW is a NTFS, feature and does not support NTFS alternative data streams.
+A NTFS data stream is similar to a pipe. (Pipes are used for inter-process communication, streams are just how the files are stored.)
+Most files only have a main stream for reading and writing to a file, but can have alternate streams. These alternate streams can be used to bypass motw.
+
+https://support.office.com/en-us/article/what-is-protected-view-d6f09ac7-e6b9-4495-8e43-2bbcdbcb6653
+
+https://techcommunity.microsoft.com/t5/microsoft-365-blog/helping-users-stay-safe-blocking-internet-macros-by-default-in/ba-p/3071805
+
+https://learn.microsoft.com/en-us/deployoffice/security/internet-macros-blocked
+
+https://support.microsoft.com/en-us/topic/a-potentially-dangerous-macro-has-been-blocked-0952faa0-37e7-4316-b61d-5b5ed6024216
+
+11.1.2 Client Fingerprinting
+
+https://en.wikipedia.org/wiki/Device_fingerprint 
+
+https://github.com/laramies/theHarvester 
+
+https://msdn.microsoft.com/en-us/library/ms536496(VS.85).aspx 
+
+https://thehackernews.com/2021/04/lazarus-apt-hackers-are-now-using-bmp.html 
+
+https://canarytokens.com 
+
+https://www.imperva.com/learn/application-security/pretexting/ 
+
+https://canarytokens.org/generate
+
+https://developers.whatismybrowser.com/useragents/parse/
+
+https://grabify.link/
+
+https://github.com/fingerprintjs/fingerprintjs
 
 11.1.1. Information Gathering
 
