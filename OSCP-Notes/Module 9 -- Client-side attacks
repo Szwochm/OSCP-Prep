@@ -46,7 +46,6 @@ pretext - the social engineering concept of coming up with a scenario to trick s
 
 A webhook is one way for an pplication to sent real-time update to another app when a specific event happens. We can use these in canary tokens with links, attachments, pdfs jpgs, etc.
 
-Extrareading
 11.2. Exploiting Microsoft Office
 
 This Learning Unit covers the following Learning Objectives:
