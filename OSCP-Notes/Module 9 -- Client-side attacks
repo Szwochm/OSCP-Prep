@@ -38,7 +38,13 @@ Author name can show employee names
 
 11.1.2 Client Fingerprinting
 
-Hey can use canary tokens to get info on clients
+We can use canary tokens to get info on clients
+
+HTA applications -- attachments that can execute code. Only work in internet explorer and to some extent microsoft edge. Still very commonly used today
+
+pretext - the social engineering concept of coming up with a scenario to trick someone into clicking on a link or opening a document
+
+A webhook is one way for an pplication to sent real-time update to another app when a specific event happens. We can use these in canary tokens with links, attachments, pdfs jpgs, etc.
 
 Extrareading
 11.2. Exploiting Microsoft Office
